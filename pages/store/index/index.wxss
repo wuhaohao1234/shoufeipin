@@ -1,0 +1,32 @@
+.bg-box{
+    background-color: #efefef;
+}
+.shop-pic{
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.margin-tb {
+    margin-top: 6rpx;
+    margin-bottom: 20rpx;
+    background: #fff;
+}
+.check-tab{
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.tab{
+    width: 160rpx;
+    text-align: center;
+    color: #999;
+    flex-grow: 1;
+}
+
+.checked-tab{
+    border-bottom: 5rpx solid #49EAC1;
+    /*width: 130rpx;*/
+    margin-left: 8rpx;
+    height: 79rpx;
+    color: #333;
+    font-size: 28rpx;
+}

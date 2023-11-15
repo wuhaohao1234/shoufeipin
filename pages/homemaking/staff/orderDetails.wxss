@@ -1,0 +1,117 @@
+page {
+  background-color: #f3f3f3;
+}
+
+.order-top {
+  height: 100rpx;
+  background: #49EAC1;
+}
+
+.color-df {
+  color: #49EAC1;
+}
+
+.color-red {
+  color: #FE4646;
+}
+
+.info-box {
+  position: relative;
+  z-index: 2;
+  width: 690rpx;
+  background: #FFFFFF;
+  opacity: 1;
+  border-radius: 10rpx;
+  margin: 0 auto 30rpx auto;
+  padding: 30rpx;
+}
+
+.top-box{
+  top: -40rpx;
+  margin-bottom: -10rpx;
+}
+
+.info-title {
+  position: relative;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding-bottom: 20rpx;
+  padding-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.info-title::after{
+  position: absolute;
+  content: '';
+  z-index: 0;
+  top: 8rpx;
+  left: 0;
+  width: 6rpx;
+  height: 35rpx;
+  border-radius: 10rpx;
+  background-color: #49EAC1;
+}
+
+.order-type{
+  font-size: 28rpx;
+}
+
+.info-item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.info-item .item-l{
+  font-weight: bold;
+  width: 160rpx;
+}
+
+.info-item .item-r{
+  font-size: 24rpx;
+}
+
+.staff{
+  margin-bottom: 180rpx;
+}
+.staff-box{
+  text-align: center;
+  padding: 20rpx 0;
+}
+.staff-img{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+/* 底部 */
+.bottom-box {
+  width: 750rpx;
+  height: 96rpx;
+  background: #FFFFFF;
+  opacity: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+}
+.bottom-box .submit-box{
+  background-color: #49EAC1;
+  font-size: 36rpx;
+  width: 320rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.bottom-box .couny-box{
+  padding-left: 20rpx;
+}
+
+.bottom-box .money{
+  color: #49EAC1;
+}
+
+.bottom-box .finish{
+  background-color: #999;
+}

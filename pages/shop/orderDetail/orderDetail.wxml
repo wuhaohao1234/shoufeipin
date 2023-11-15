@@ -1,0 +1,78 @@
+<!-- pages/shop/orderDetail/orderDetail.wxml -->
+<view>
+    <view class="padding">
+        <view class="radius bg-white text-center padding">
+            <view class=" cuIcon-card text-xxl text-main" style="font-size: 80rpx"></view>
+            <view class="margin-xs text-xl text-black text-bold" wx:if="{{order.order_status==0}}">待支付</view>
+            <view class="margin-xs text-xl text-black text-bold" wx:if="{{order.order_status==1}}">待发货</view>
+            <view class="margin-xs text-xl text-black text-bold" wx:if="{{order.order_status==2}}">已发货</view>
+            <view class="margin-xs text-xl text-black text-bold" wx:if="{{order.order_status==3}}">已收货</view>
+        </view>
+        <view class="address flex justify-between padding margin-top-sm bg-white radius">
+            <view>
+                <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+            </view>
+            <view style="max-width: 500rpx">
+                <view class="text-black text-lg">{{order.name}} {{order.phone}}</view>
+                <view class="text-gray">{{order.address}}</view>
+            </view>
+            <view class="cuIcon-right text-xxl padding-top" style="font-size: 50rpx"></view>
+        </view>
+        <view class="padding bg-white radius margin-top">
+            <view class="flex justify-between margin-top-sm padding-bottom-sm" style="border-bottom: 1rpx solid #efefef">
+                <view>
+                    <image class="goods-img" src="{{order.picture}}"></image>
+                </view>
+                <view style="flex-grow: 1" class="padding-lr flex justify-between flex-direction">
+                    <view class="text-xxl text-bold text-black">{{order.goods_name}}</view>
+                    <view class="flex justify-between">
+                        <view class="flex">
+                            <view style="margin-top: 5rpx" class="cuIcon-coin main-font-color"></view>
+                            <view style="margin-top: -5rpx" class="main-font-color text-xxl">
+                                {{order.points}}
+                            </view>
+                            <view class="margin-left-xs">+</view>
+                            <view class="margin-left-xs text-xl">¥{{order.money}}</view>
+                        </view>
+                        <view style="width: 80rpx" class="cu-btn sm round bg-gray text-lg margin-lr-xs padding-lr text-center">
+                            x{{order.number}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="flex justify-between padding-top-sm">
+                <view>配送方式:</view>
+                <view>物流配送</view>
+            </view>
+        </view>
+        <view class="padding bg-white radius margin-top">
+            <view class="flex justify-between">
+                <view>
+                    <view class="text-xl">订单信息</view>
+                    <view>订单编号: {{order.order_no}}</view>
+                    <view>下单时间: {{order.create_at}}</view>
+                    <view>备注: {{order.remark}}</view>
+                </view>
+                <view class="text-red margin-top-xl text-xl">复制</view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-box bg-white flex justify-between padding-lr">
+        <view></view>
+        <view wx:if="{{order.order_status==0}}">
+            <view class="cu-btn bg-main margin-lr" bindtap="toShop">继续兑换</view>
+        </view>
+        <view class="text-red" wx:if="{{order.order_status==1}}">
+            <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+            <button size="mini" class="cu-btn line-main" open-type="contact" >联系客服</button>
+        </view>
+        <view class="text-red" wx:if="{{order.order_status==2}}">
+            <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+            <view class="cu-btn bg-main" bindtap="confirmReceipt" data-id="{{order.id}}">确认收货</view>
+        </view>
+        <view class="text-red" wx:if="{{order.order_status==3}}">
+            <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+            <button size="mini" class="cu-btn line-main" open-type="contact" >联系客服</button>
+        </view>
+    </view>
+</view>

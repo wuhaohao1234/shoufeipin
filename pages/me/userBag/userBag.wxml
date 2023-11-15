@@ -1,0 +1,43 @@
+<!--pages/me/userBag/userBag.wxml-->
+<view>
+    <view class="padding text-center text-main" bindtap="toBagRule">环保袋使用规则>>></view>
+    <view class="item margin padding radius bg-white" wx:for="{{list}}" bindtap="toDetail" data-id="{{item.id}}" data-status="{{item.status}}">
+        <view class="flex justify-between align-center">
+            <view class="text-black text-bold">
+                使用记录
+            </view>
+
+            <view class="cu-btn bg-main" wx:if="{{item.status == 0}}">
+                使用中
+            </view>
+            <view class="cu-btn bg-gray" wx:if="{{item.status == 1}}">
+                已完成
+            </view>
+        </view>
+
+        <view class="flex">
+             <view>
+                 开始时间:
+             </view>
+            <view>
+                {{item.bind_time}}
+            </view>
+        </view>
+        <view class="flex" wx:if="{{item.status == 1}}">
+            <view>
+                结束时间:
+            </view>
+            <view>
+                {{item.end_time}}
+            </view>
+        </view>
+        <view class="flex">
+            <view>
+                袋子编号:
+            </view>
+            <view>
+                {{item.code_number}}
+            </view>
+        </view>
+    </view>
+</view>

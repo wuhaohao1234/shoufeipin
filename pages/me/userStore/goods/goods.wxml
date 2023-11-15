@@ -1,0 +1,44 @@
+<!--pages/me/userAddress/userAddress.wxml-->
+<view class="padding-lg the_body">
+    <view class="address-list">
+        <view class="address-item margin-bottom-sm padding flex align-center" wx:for="{{list}}">
+            <view class="flex justify-between">
+                <image style="width: 180rpx;height: 180rpx;border-radius: 12rpx" src="{{item.picture[0]}}"></image>
+            </view>
+            <view class="address-bottom padding-left align-center" style="flex-grow: 1">
+                <view style="width: 100%" class="text-xl text-bold text-cut flex justify-between align-center">
+                    <view class="flex">
+                        {{item.name}}
+                        <view class="text-red text-sm" wx:if="{{item.status===0}}">
+                            (已禁用)
+                        </view>
+                        <view class="text-main text-sm" wx:if="{{item.status===1}}">
+                            (使用中)
+                        </view>
+                    </view>
+                </view>
+                <view>
+                    库存:{{item.inventory}}
+                </view>
+                <view>
+                    金额:{{item.money}}
+                </view>
+                <view class="flex text-cut">
+                    <view class="flex" bindtap="edit" data-id="{{item.id}}">
+                        <view class="cuIcon-edit"></view>
+                        <view class="margin-left-xs">编辑</view>
+                    </view>
+                    <view class="flex margin-left-xl" bindtap="deleteData" data-id="{{item.id}}">
+                        <view class="cuIcon-delete"></view>
+                        <view class="margin-left-xs">删除</view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+
+    <view class="add-btn" bindtap="addData">
+        新增商品
+    </view>
+</view>

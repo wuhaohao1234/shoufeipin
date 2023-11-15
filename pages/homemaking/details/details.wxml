@@ -1,0 +1,47 @@
+<!-- banner -->
+<view class="banner-box">
+  <swiper autoplay="true" class="banner-list" bindchange="bindchange">
+    <block wx:for="{{info.banner_picture}}" wx:key="*this">
+      <swiper-item>
+        <view class="banner-item">
+          <image src="{{item}}" mode="widthFix" class="banner-path"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="bannr-count">{{bannerCurrent}}/{{info.banner_picture.length}}</view>
+</view>
+<!-- 基本信息 -->
+<view class="info-box">
+  <view class="title">{{info.title}}</view>
+  <view class="slogan">{{info.subtitle}}</view>
+  <view class="money">金额
+    <text class="money-val">¥{{info.money}}/{{info.unit}}</text>
+  </view>
+</view>
+<!-- 服务信息 -->
+<view wx:if="{{info.housekeeper.length > 0 || info.housekeeper.length > 0}}" class="info-box">
+  <view wx:if="{{info.housekeeper.length > 0}}"  class="title">家艺师<text class="text-sm">（{{info.housekeeper.length}}）</text></view>
+  <scroll-view wx:if="{{info.housekeeper.length > 0}}" scroll-x="true" enable-flex="true" class="staff-box">
+    <view wx:for="{{ info.housekeeper }}" wx:key="id" class="staff-item">
+      <image src="{{item.logo_picture}}" class="staff-avatar"></image>
+      <view class="staff-name">{{ item.name }}</view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{info.guarantee.length > 0}}" class="title">服务保障</view>
+  <view wx:if="{{info.guarantee.length > 0}}" class="service-box">
+    <view wx:for="{{info.guarantee}}" wx:key="*this" class="service-item">
+    <text class="cuIcon-shopfill"></text>
+      {{ item }}
+    </view>
+  </view>
+</view>
+<!-- 服务详情 -->
+<view class="info-box">
+  <view class="title">服务详情</view>
+  <view class="info-contnt">
+    <rich-text nodes="{{info.detail}}"></rich-text>
+  </view>
+</view>
+<!-- 按钮 -->
+<view class="submit-btn" bindtap="onSubmit">立刻预约</view>

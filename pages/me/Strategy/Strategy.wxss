@@ -1,0 +1,9 @@
+/* pages/me/Strategy/Strategy.wxss */
+.accept-invitation{
+	width: 750rpx;
+	position: fixed;
+	bottom: 0;
+	z-index: 99;
+	background: linear-gradient(to top,#49EAC1,#44eec1);
+	color: #fff;
+}

@@ -1,0 +1,100 @@
+<view>
+  <view class="top"></view>
+  <view class="padding-sm">
+    <view class="item" style="margin-top:-120rpx;min-height:400rpx;position:relative">
+      <block wx:for="{{list}}">
+        <view class="top-one" wx:if="{{index == 0}}">
+          <view class="flex justify-center padding-top">
+            <view class="top-img">
+              <image class="top-img-bg-img" src="../https://cdn.wuhuit.com/fths/test/top1.png"> </image>
+              <image class="face-img2" src="{{item.avatar}}"></image>
+            </view>
+          </view>
+
+          <view class="text-center margin-top text-xl text-cut">
+            {{item.nickname}}
+          </view>
+
+          <view class="text-center flex justify-center text-main margin-top">
+            <view>
+              ¥{{item.money}}
+            </view>
+          </view>
+
+        </view>
+
+        <view class="left-item" wx:if="{{index == 1}}">
+          <view class="flex justify-center padding-top">
+            <view class="top-img">
+              <image class="top-img-bg-img" src="../https://cdn.wuhuit.com/fths/test/top2.png">
+
+              </image>
+              <image class="face-img2" src="{{item.avatar}}">
+
+              </image>
+            </view>
+          </view>
+
+          <view class="text-center margin-top text-xl text-cut">
+            {{item.nickname}}
+          </view>
+
+          <view class="text-center flex justify-center text-main margin-top">
+            <view>
+              ¥{{item.money}}
+            </view>
+          </view>
+
+        </view>
+
+        <view class="right-item" wx:if="{{index == 2}}">
+          <view class="flex justify-center padding-top">
+            <view class="top-img">
+              <image class="top-img-bg-img" src="../https://cdn.wuhuit.com/fths/test/top3.png">
+
+              </image>
+              <image class="face-img2" src="{{item.avatar}}">
+
+              </image>
+            </view>
+          </view>
+
+          <view class="text-center margin-top text-xl text-cut">
+            {{item.nickname}}
+          </view>
+
+          <view class="text-center flex justify-center text-main margin-top">
+            <view>
+              ¥{{item.money}}
+            </view>
+          </view>
+
+        </view>
+
+        <view wx:if="{{index > 2}}" style="{{index == 3 ? 'margin-top:350rpx' : ''}}"
+          class="flex align-center padding-bottom-sm padding-left-sm padding-right-sm">
+          <view class="margin-left-sm">
+            {{index+1}}
+          </view>
+
+          <view class="flex justify-between align-center border-bottom padding-bottom-sm" style="width:100%">
+            <view class="flex align-center">
+              <view class="margin-left-sm">
+                <image class="face-img2" src="{{item.avatar}}">
+                </image>
+              </view>
+              <view class="margin-left-sm text-xl text-black text-cut">
+                {{item.nickname}}
+              </view>
+            </view>
+            <view>
+              {{item.money}}元
+            </view>
+          </view>
+        </view>
+
+      </block>
+    </view>
+  </view>
+
+</view>

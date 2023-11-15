@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "pickerYMDHM": "/components/pickerYMDHM/pickerYMDHM"
+  },
+  "navigationBarTitleText": "预约回收",
+  "navigationBarBackgroundColor": "#49EAC1",
+  "navigationBarTextStyle": "white"
+}

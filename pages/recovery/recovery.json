@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-icon": "../../components/vant/icon/index",
+    "pickerYMDHM": "/components/pickerYMDHM/pickerYMDHM"
+  },
+  "navigationStyle":"custom",
+  "navigationBarTitleText": "预约上门",
+  "navigationBarBackgroundColor": "#49EAC1",
+  "navigationBarTextStyle": "white",
+  "tabBar": {
+    "hide": true
+  }
+}

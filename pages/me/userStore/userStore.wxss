@@ -1,0 +1,45 @@
+.shop-pic{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+
+.tag-pic{
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.check-tab{
+    border-bottom: 1rpx solid #e5e5e5;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.tab{
+    width: 160rpx;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.checked-tab{
+    border-bottom: 5rpx solid #49EAC1;
+    /*width: 150rpx;*/
+    /*width: 160rpx;*/
+    /*margin-left: 20rpx;*/
+    height: 79rpx;
+}
+
+.order-item{
+    width: 690rpx;
+    min-height: 360rpx;
+    background-color: #fff;
+    margin-left: 30rpx;
+    border-radius: 20rpx;
+    margin-top: 30rpx;
+}
+
+.goods-img{
+    width: 160rpx;
+    height: 160rpx;
+}

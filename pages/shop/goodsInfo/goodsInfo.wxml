@@ -1,0 +1,73 @@
+<!--pages/shop/goodsInfo/goodsInfo.wxml-->
+<view>
+    <view class="page-section page-section-spacing swiper">
+        <swiper class="banner" indicator-dots="{{indicatorDots}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{goods.picture}}" wx:key="*this">
+                <swiper-item>
+                    <image src="{{item}}" class="banner"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="padding-xs" style="background-color: #efefef">
+
+    </view>
+
+    <view class="padding">
+
+        <view class="flex justify-between">
+            <view style="max-width: 500rpx">
+                <view class="text-black text-xxl">
+                    {{goods.name}}
+                </view>
+                <view class="flex" style="line-height: 60rpx">
+                    <view class="cuIcon-coin main-font-color">
+
+                    </view>
+                    <view class="main-font-color text-xxl">
+                        {{goods.points}}
+                    </view>
+                    <view class="margin-left-xs">
+                        +
+                    </view>
+                    <view class="margin-left-xs text-xl">
+                        ¥{{goods.money}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="text-gray flex justify-center flex-direction">
+                <text>
+                    剩余{{goods.inventory}}份
+                </text>
+
+            </view>
+        </view>
+
+        <view class="text-black text-xxl goods-name text-center">
+            商品详情
+        </view>
+        <view class="margin-tb" style="border-bottom: 1rpx solid #efefef"></view>
+
+        <rich-text nodes="{{goods.details}}">
+
+        </rich-text>
+
+<!--        <view class="text-black">-->
+<!--            活动券详情-->
+<!--        </view>-->
+
+<!--        <view class="text-gray">-->
+<!--            此款帆布袋为预售商品 \n-->
+<!--            预计4月上旬在按照下单顺序发出 \n-->
+<!--            此款拍下为帆布袋一款产品 \n-->
+<!--            购买“许你彩虹”系列晴雨伞的可免费赠送同款帆布 \n-->
+<!--            点击图片查看详情-->
+<!--        </view>-->
+    </view>
+
+    <view class="buy-btn" bindtap="toConfirmOrder">
+        立即兑换
+    </view>
+</view>

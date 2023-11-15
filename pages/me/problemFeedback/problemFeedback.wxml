@@ -1,0 +1,20 @@
+<view class="padding">
+    <view class="content">
+        <view class="text-center" style="line-height: 60rpx">
+            请描述您的问题或建议,我们会第一时间反馈
+        </view>
+        <form bindsubmit="formSubmit">
+            <view class="padding">
+                <textarea placeholder="请描述您的问题或建议(不低于10个字)" class="other-border padding" name="content"/>
+                <input placeholder="请留下您的姓名方便我们联系您" value="" class="other-border margin-top padding-left" name="name"></input>
+                <input placeholder="请留下您的手机号方便我们联系您" value="" class="other-border margin-top padding-left" name="phone"></input>
+            </view>
+            <button form-type="submit" style="width: 620rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+                提交
+            </button>
+        </form>
+
+    </view>
+
+
+</view>

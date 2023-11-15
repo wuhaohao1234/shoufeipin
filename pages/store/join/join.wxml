@@ -1,0 +1,62 @@
+<view>
+    <form bindsubmit="formSubmit" class="" >
+
+        <view class="margin-top-sm">
+            <view class="cu-form-group ">
+                <view class="title">店铺名称</view>
+                <input placeholder="输入真实姓名" value="{{data.shop_name}}" name="shop_name"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">联系电话</view>
+                <input placeholder="输入联系电话" value="{{data.telephone}}" name="telephone"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">联系地址</view>
+                <input disabled bindtap="checkMap" placeholder="输入联系地址" value="{{address}}" name="address"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">营业时间</view>
+                <input placeholder="营业时间" value="{{data.business_hours}}" name="business_hours"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title text-black">门店分类</view>
+                <picker name="cate" bindchange="bindCateChange" value="{{selCateIndex}}" range="{{shopCate}}">
+                    <view wx:if="{{selCateIndex==null}}">
+                        --请选择--
+                    </view>
+                    <view wx:else class="picker">
+                        {{shopCate[selCateIndex]}}
+                    </view>
+                </picker>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">图片</view>
+
+            </view>
+            <view>
+<!--                <view bindtap="uploadAvatar" style="font-size: 120rpx" class="cuIcon-camerafill text-center margin text-gray">-->
+
+<!--                </view>-->
+                <view bindtap="uploadAvatar" class="cu-form-group">
+                    <view class="grid col-3 grid-square flex-sub padding-sm">
+                        <view class="padding-xs bg-img" style="background-image:url({{picture}});" wx:if="{{picture}}">
+                        </view>
+                        <view  class="padding-xs solids" wx:else>
+                            <text class="cuIcon-cameraaddfill"></text>
+<!--                            <text class="cuIcon-loading2 iconfont-spin"></text>-->
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+        </view>
+
+        <button form-type="submit" style="width: 690rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+            提交
+        </button>
+    </form>
+
+
+
+</view>

@@ -1,0 +1,81 @@
+<!--pages/news/news.wxml-->
+<view>
+  <view style="padding:20rpx;    background: linear-gradient(#49EAC1, #f1f6f9,#fff);">
+    <view class="banner">
+      <swiper class="banner" autoplay="{{autoplay}}" duration="{{duration}}" indicatorActiveColor="rgb(255, 255, 255)" indicatorColor="rgba(255, 255, 255, 0.4)" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{banners}}" wx:key>
+          <image class="slide-image" height="500" src="{{item.picture}}" bindtap="toBanner" data-url="{{ item.link }}"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view style="margin: 0 20rpx;">
+    <view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}} " wx:for="{{category}}" bindtap="checkTab" wx:key data-id="{{item.id}}" data-index="{{index}}" >
+    <block wx:if="{{index == 0}}">
+      <block wx:if="{{index !=TabCur}}">
+        <image src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E9%80%9A%E7%9F%A5%E6%9C%AA%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE.png" mode="widthFix" />
+      </block>
+      <block wx:else>
+        <image src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E9%80%9A%E7%9F%A5%E5%B7%B2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE.png" mode="widthFix" />
+      </block>
+
+    </block>
+    <block wx:else>
+      <block wx:if="{{index !=TabCur}}">
+        <image src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E6%8E%92%E8%A1%8C%E6%A6%9C%E6%9C%AA%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE.png" mode="widthFix"/>
+      </block>
+      <block wx:else>
+        <image src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%B7%B2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE.png" mode="widthFix"/>
+      </block>
+    </block>
+    </view>
+  </view>
+  </view>
+
+  
+  <!-- 	<scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+	  <view class="cu-item {{cate_id===item.id?'text-green cur':''}} " wx:for="{{category}}" wx:key bindtap="checkTab" data-id="{{item.id}}" style="margin:0 20rpx">
+	    {{item.name}}
+	  </view>
+	</scroll-view>
+    <view class="check-tab flex justify-center margin-tb">
+        <view wx:for="{{category}}" bindtap="checkTab" data-id="{{item.id}}" class="tab" style="flex-grow: 0">
+            <view class="text-df {{cate_id===item.id?'checked-tab':''}} ">
+                {{item.name}}
+            </view>
+        </view>
+    </view> -->
+
+  <view class="new-list padding" style="padding:30rpx 20rpx;" wx:for="{{news}}" bindtap="toNewsInfo" data-id="{{item.id}}">
+    <view class="new-item">
+
+      <image class="new-img" src="{{item.picture}}">
+
+      </image>
+      <view class="new-contetn">
+    
+
+        <view>
+          <view class="new-title">
+          <image wx:if="{{index == 0}}" mode="widthFix" style="margin-right: 10rpx;" src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E6%96%B0%E6%9B%BF%E6%8D%A2%E5%9B%BE%E6%A0%87.png">
+
+</image>
+      <view class="aaaa">    {{item.title}}</view>
+        
+        </view>
+        <view class="" style="margin-top: 10rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+          {{item.subtitle ? item.subtitle : ''}}
+        </view>
+        </view>
+        <view class="time">
+          <image mode="widthFix" style="width: 40rpx;height: 40rpx;  margin-right: 10rpx;" src="http://gchscc.zaishenziyuan.cn/e9/%E8%B5%84%E8%AE%AF/%E6%97%B6%E9%97%B4%E6%9B%BF%E6%8D%A2%E5%9B%BE%E6%A0%87.png">
+
+</image>
+          {{item.create_at}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

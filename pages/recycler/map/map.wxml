@@ -1,0 +1,60 @@
+<!--pages/launchPoint/launchPoint.wxml-->
+<map id="map" scale="14" latitude="{{latitude}}" longitude="{{longitude}}"
+     markers="{{markers}}" bindmarkertap="markertap"  bindregionchange="regionchange"
+     show-location style="width: 100vw; height: 100vh;" bindtap="checkmarker"></map>
+
+<view wx:if="{{checkMarker.id}}" class="showTip padding-sm margin-sm" >
+    <view class="margin-bottom-xs" style="line-height: 50rpx">
+        <view class="flex">
+            <view class="text-black text-bold text-xl">
+                {{checkMarker.name}}
+            </view>
+        </view>
+        <view class="flex text-gray text-cut">
+            <view class="cuIcon-locationfill"></view>
+            <view class="text-df">
+                {{checkMarker.meter}}
+            </view>
+            <view class="text-df margin-left">
+                {{checkMarker.address}}
+            </view>
+        </view>
+
+
+    </view>
+
+    <!--    <view class="text-gray flex">-->
+    <!--        <view class="cuIcon-locationfill margin-right-xs"></view>-->
+    <!--        <view>广州市白云区嘉禾望岗上胜东街21号104...</view>-->
+    <!--    </view>-->
+    <view class="text-gray flex padding-bottom-sm" style="border-bottom: 1rpx solid #efefef;position: relative">
+        <text class="cuIcon-countdownfill margin-right-xs"></text>
+        <view>营业时间 {{checkMarker.business_hours}}</view>
+    </view>
+
+    <view class="price-list flex flex-wrap" >
+<!--        <view wx:for="{{checkMarker.priceList}}" class="margin-tb-xs" style="width: 220rpx">-->
+<!--            <view class="flex">-->
+<!--                <image src="{{item.picture}}" style="width: 120rpx;height: 120rpx" mode="widthFix"></image>-->
+<!--                <view class="padding-top">-->
+<!--                    <view class="text-cut text-bold">-->
+<!--                        {{item.name}}-->
+<!--                    </view>-->
+<!--                    <view class="text-cut text-sm text-gray">-->
+<!--                        {{item.explain}}-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+
+        <view class="daohang" bindtap="toSite" data-marker="{{checkMarker}}">
+            导航
+        </view>
+    </view>
+
+
+</view>
+
+<!--<view class="cu-btn lg bg-main tag-btn round" bindtap="toList" >-->
+<!--    列表模式-->
+<!--</view>-->

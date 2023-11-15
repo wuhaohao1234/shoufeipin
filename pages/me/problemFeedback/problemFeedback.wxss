@@ -1,0 +1,26 @@
+/* pages/me/problemFeedback/problemFeedback.wxss */
+
+.content{
+    background-color: #F5F5F5;
+    border-radius: 10rpx;
+    width: 690rpx;
+    min-height: 700rpx;
+}
+
+.other-border{
+    border: 1rpx dotted  #49EAC1;
+    width: 630rpx;
+}
+
+input{
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.main-btn{
+    width: 690rpx;
+    margin-top: 120rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-radius: 50rpx;
+}

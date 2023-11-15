@@ -1,0 +1,43 @@
+/* pages/me/userCode/userCode.wxss */
+.main{
+    width: 100vw;
+    height: 100vh;
+    background:  linear-gradient(to bottom,#49EAC1,#1ffdc2);
+}
+.t-face-img{
+    width: 750rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.t-face-img image{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+    border: 5rpx solid #fff;
+    margin-top: 50rpx;
+    z-index: 11;
+}
+
+.qr-box{
+    width: 640rpx;
+    height: 680rpx;
+    border-radius: 16rpx;
+    background: #fff;
+    margin-left: 55rpx;
+    margin-top: -60rpx;
+    text-align: center;
+}
+
+.qr-code{
+    width: 350rpx;
+    height: 350rpx;
+}
+
+.bottom-image{
+    position: fixed;
+    bottom: 0;
+    height: 360rpx;
+    width: 710rpx;
+    margin-left: 20rpx;
+}

@@ -1,0 +1,14 @@
+/* pages/recycler/list/list.wxss */
+
+.item{
+    border-radius: 20rpx;
+    border: 1rpx solid #efefef;
+}
+
+.tag-btn{
+    position: fixed;
+    top: 200rpx;
+    right: -35rpx;
+    /*padding-right: 150rpx;*/
+
+}

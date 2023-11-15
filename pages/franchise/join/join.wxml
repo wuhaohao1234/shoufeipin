@@ -1,0 +1,104 @@
+<view>
+    <image style="width: 100%;height: 200px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%81/%E5%9B%BE%E6%80%AA%E5%85%BD_eafc3f35e204547644b444c09668ce7b_32846.jpg" mode=""/>
+    <form bindsubmit="formSubmit" class="" >
+
+        <view class="margin-top-sm">
+            <view class="cu-form-group ">
+                <view class="title">姓名</view>
+                <input placeholder="输入真实姓名" value="{{name}}" name="name"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">联系电话</view>
+                <input placeholder="输入联系电话" bindinput="editPhone" value="{{phone}}" name="phone"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">验证码</view>
+                <input placeholder="输入接到的验证码" value="{{code}}" name="code"></input>
+                <button wx:if="{{send}}" style="width: 80rpx" class='cu-btn sm radio bg-green round' bindtap="getCode">获取</button>
+                <button wx:else style="width: 80rpx" class='cu-btn sm radio bg-gray round' disabled>{{second}}</button>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">登陆密码</view>
+                <input placeholder="输入登陆密码" value="{{password}}" name="password"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">办公地址</view>
+                <input disabled bindtap="chooseMap" placeholder="选择详细的办公地址" value="{{address}}" name="address"></input>
+            </view>
+            <!-- <view class="cu-form-group ">
+                <view class="title">身份证号</view>
+                <input placeholder="输入身份证号" value="{{ident_no}}" name="ident_no"></input>
+            </view> -->
+            <view class="cu-form-group ">
+                <view class="title">加盟商名称</view>
+                <input placeholder="输入加盟商名称" value="{{alliance_name}}" name="alliance_name"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title text-black">省份</view>
+                <picker bindchange="bindProvinceChange" value="{{province_index}}" range="{{check_province_arr}}">
+                    <view wx:if="{{province_index <0}}">
+                        --请选择--
+                    </view>
+                    <view wx:else  class="picker">
+                        {{check_province_arr[province_index]}}
+                    </view>
+                </picker>
+            </view>
+
+            <view class="cu-form-group">
+                <view class="title text-black">城市</view>
+                <picker bindchange="bindCityChange" value="{{city_index}}" range="{{check_city_arr}}">
+                    <view wx:if="{{city_index <0}}">
+                        --请选择--
+                    </view>
+                    <view wx:else class="picker">
+                        {{check_city_arr[city_index]}}
+                    </view>
+                </picker>
+            </view>
+
+            <view class="cu-form-group">
+                <view class="title text-black">县区</view>
+                <picker bindchange="bindDistrictChange" value="{{district_index}}" range="{{check_district_arr}}">
+                    <view wx:if="{{district_index <0}}">
+                        --请选择--
+                    </view>
+                    <view wx:else  class="picker">
+                        {{check_district_arr[district_index]}}
+                    </view>
+                </picker>
+            </view>
+            <!-- <view class="cu-form-group ">
+                <view class="title">身份证图片</view>
+
+            </view>
+            <view>
+                <view bindtap="uplaod" wx:if="{{imgList.length === 0}}" style="font-size: 120rpx" class="cuIcon-camerafill text-center margin text-gray">
+
+                </view>
+                <view wx:if="{{imgList.length > 0}}" class="cu-form-group">
+                    <view class="grid col-3 grid-square flex-sub padding-sm">
+                        <view class="padding-xs bg-img" style="background-image:url({{item.url}});" wx:for="{{imgList}}" wx:key="{{index}}">
+                            <view bindtap="deleteImg" class="cu-tag bg-red" data-id="{{index}}">
+                                <text class="cuIcon-close"></text>
+                            </view>
+                        </view>
+                        <view bindtap="uplaod" class="padding-xs solids" wx:if="{{imgList.length<2}}">
+                            <text class="cuIcon-cameraadd" wx:if="{{loading}}"></text>
+                            <text class="cuIcon-loading2 iconfont-spin" wx:else></text>
+                        </view>
+                    </view>
+                </view>
+            </view> -->
+
+
+        </view>
+
+        <button form-type="submit" style="width: 690rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+            申请成为加盟商
+        </button>
+    </form>
+
+
+
+</view>

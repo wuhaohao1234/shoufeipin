@@ -1,0 +1,81 @@
+<!-- 订单确认头部 -->
+<view class="order-top"></view>
+<view class="user-info" bindtap="checkAddress">
+  <view class="flex justify-between align-center">
+    <view class="text-xl text-bold">{{address.name}}</view>
+    <view class="text-lg text-bold">{{address.phone}}</view>
+  </view>
+  <view class="flex justify-between align-center">
+    <view class="address">
+      {{address.province}} {{address.city}} {{address.district}}
+      {{address.street}} {{address.address}}
+    </view>
+    <text class="cuIcon-right"></text>
+  </view>
+</view>
+<!-- 订单信息 -->
+<view wx:if="{{info}}" class="order-goods flex">
+  <image src="{{info.cover}}" class="order-img" mode="aspectFill"></image>
+  <view class="goods-info">
+    <view class="flex justify-between align-center">
+      <view class="goods-name text-lg text-bold">{{ info.title }}</view>
+      <view class="goods-money">¥{{info.money}}/{{info.unit}}</view>
+    </view>
+    <view class="goods-hint text-gray">{{ info.subtitle }}</view>
+  </view>
+</view>
+<!-- 预约时间 -->
+<view class="form-box">
+  <view class="form-item flex justify-between align-center">
+    <view class="text-xl text-bold">预约日期</view>
+    <view class="flex align-center text-gray">
+      <picker mode="date" value="{{date}}" start="{{startDate}}" bindchange="bindDateChange">
+        <view class="picker">
+          {{ date ? date : '请选择日期' }}
+        </view>
+      </picker>
+      <text class="cuIcon-right text-xxl"></text>
+    </view>
+  </view>
+  <view wx:if="{{date}}" class="form-item flex justify-between align-center">
+    <view class="text-xl text-bold">上门时间</view>
+    <view class="flex align-center text-gray">
+      <picker mode="time" value="{{time}}" start="{{startTime}}" bindchange="bindTimeChange">
+        <view class="picker">
+          {{ time ? time : '请选择时间' }}
+        </view>
+      </picker>
+      <text class="cuIcon-right text-xxl"></text>
+    </view>
+  </view>
+  <view class="remark-box">
+    <view class="text-xl text-bold">留言备注</view>
+    <textarea value="{{user_remark}}" class="remark-input" placeholder="可以向家艺师提出定制的需求" bindinput='onRemark'></textarea>
+  </view>
+</view>
+<!-- 选择支付方式 -->
+<view class="pay-box">
+  <view class="pay-item" data-type='1' bindtap="setPayType">
+    <view>
+      余额支付 <text class="text-sm">(余额：{{ userInfo.may_withdraw_money }}元)</text>
+    </view>
+    <view wx:if="{{ payType == 1 }}" class="cuIcon-roundcheckfill main-font-color"></view>
+  </view>
+  <view class="pay-item" data-type='0' bindtap="setPayType">
+    微信支付
+    <view wx:if="{{payType == 0}}" class="cuIcon-roundcheckfill main-font-color"></view>
+  </view>
+</view>
+
+<!-- 底部统计 -->
+<view class="bottom-box flex justify-between align-center">
+  <view class="couny-box flex align-center">
+    <view class="text-lg text-bold">合计：</view>
+    <view class="money">
+      <text class="text-xl">¥</text>
+      <text class="text-xxl">{{info.money}}</text>
+    </view>
+  </view>
+  <view wx:if="{{!isSubmit}}" class="submit-box" bindtap="onSubmit">确认支付</view>
+  <view wx:else class="submit-box submit-gray">支付中...</view>
+</view>

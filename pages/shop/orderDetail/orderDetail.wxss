@@ -1,0 +1,16 @@
+/* pages/shop/orderDetail/orderDetail.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.bottom-box{
+    position: fixed;
+    bottom: 0;
+    width: 750rpx;
+    height: 110rpx;
+    line-height: 110rpx;
+}
+
+.goods-img{
+    width: 160rpx;
+    height: 160rpx;
+}

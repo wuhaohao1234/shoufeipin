@@ -1,0 +1,43 @@
+<!--pages/me/aboutUs/aboutUs.wxml-->
+<view class="padding">
+	<view class="margin-top flex justify-center">
+		<image src="{{info.site_icon}}" mode="widthFix" class="site_icon">
+			
+		</image>
+	</view>
+	<view class="margin-top-sm flex justify-center">
+		<view class="text-xxl text-center">
+			{{info.name}}
+		</view>
+	</view>
+	<view class="padding">
+		{{  info.introduction}}
+	</view>
+	
+	<view class="padding">
+		<view class="cu-form-group margin-top">
+		    <view class="title">客服电话</view>
+		
+		    <view class="text-blue">{{info.service_tel}}</view>
+		</view>
+		
+		<view class="cu-form-group">
+		    <view class="title">工作日</view>
+		
+		    <view class="text-black">{{info.workday}}</view>
+		</view>
+		
+		<view class="cu-form-group ">
+		    <view class="title">客服邮箱</view>
+		
+		    <view class="text-black">{{info.service_email}}</view>
+		</view>
+		<view class="cu-form-group ">
+		</view>
+	</view>
+</view>
+
+<view class="bg-gray text-center text-gray" 
+style="position: fixed;bottom: 0;width: 750rpx;line-height: 80rpx;">
+	最终解释权归{{info.company}}所有
+</view>

@@ -1,0 +1,70 @@
+<!-- 订单详情 -->
+<view class="order-top"></view>
+<view class="info-box top-box">
+  <view class="info-title flex justify-between align-center">
+    <view class=" text-xl text-bold">订单详情</view>
+    <view wx:if="{{infoData.order_status == 0}}" class="order-type color-df">待接单</view>
+    <view wx:if="{{infoData.order_status == 1}}" class="order-type color-red">待服务</view>
+    <view wx:if="{{infoData.order_status == 2}}" class="order-type">已完成</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">订单号</view>
+    <view class="item-r">{{infoData.order_no}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">下单时间</view>
+    <view class="item-r">{{infoData.create_at}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">联系电话</view>
+    <view class="item-r color-df">{{infoData.phone}}</view>
+  </view>
+</view>
+
+<view class="info-box">
+  <view class="info-title flex justify-between align-center">
+    <view class="text-xl text-bold">服务详情</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务项目</view>
+    <view class="item-r">{{infoData.title}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务时间</view>
+    <view class="item-r">{{infoData.reservation_time}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务地点</view>
+    <view class="item-r">{{infoData.address}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">备注</view>
+    <view class="item-r">{{infoData.user_remark}}</view>
+  </view>
+</view>
+
+<view class="info-box staff">
+  <view class="info-title flex justify-between align-center">
+    <view class="text-xl text-bold">用户信息</view>
+  </view>
+  <view class="staff-box">
+    <image src="../https://cdn.wuhuit.com/fths/test/goods1.png" class="staff-img" mode="aspectFill"></image>
+    <view class="text-df padding-top-sm">{{infoData.name}}</view>
+    <view class="text-df padding-top-sm">接受订单后，请联系客户商谈具体事宜</view>
+    <view class="text-df">客户电话：<text class="color-df">{{infoData.phone}}</text></view>
+  </view>
+</view>
+
+<!-- 底部统计 -->
+<view class="bottom-box flex justify-between align-center">
+  <view class="couny-box flex align-center">
+    <view class="text-df text-bold">{{infoData.order_status == 2 ? '本单共获得：' : '预计可获得：'}}</view>
+    <view class="money">
+      <text class="text-df">¥</text>
+      <text class="text-xxl text-bold">{{infoData.money}}</text>
+    </view>
+  </view>
+  <view wx:if="{{infoData.order_status == 0}}" class="submit-box" bindtap="onTake">接受订单</view>
+  <view wx:if="{{infoData.order_status == 1}}" class="submit-box" bindtap="onFinish">完成服务</view>
+  <view wx:if="{{infoData.order_status == 2}}" class="submit-box finish">已完成</view>
+</view>

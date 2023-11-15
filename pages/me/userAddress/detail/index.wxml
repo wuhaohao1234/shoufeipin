@@ -1,0 +1,96 @@
+<form bindsubmit="formSubmit" class="">
+    <view class="bg-white cu-card case margin-top-sm ">
+        <view class="cu-form-group">
+            <view class="title text-black">省份</view>
+            <picker bindchange="bindProvinceChange" value="{{province_index}}" range="{{check_province_arr}}">
+                <view wx:if="{{province_index <0}}">
+                    --请选择--
+                </view>
+                <view wx:else  class="picker">
+                    {{check_province_arr[province_index]}}
+                </view>
+            </picker>
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">城市</view>
+            <picker bindchange="bindCityChange" value="{{city_index}}" range="{{check_city_arr}}">
+                <view wx:if="{{city_index <0}}">
+                    --请选择--
+                </view>
+                <view wx:else class="picker">
+                    {{check_city_arr[city_index]}}
+                </view>
+            </picker>
+        </view>
+
+        <view class="cu-form-group">
+            <view class="title text-black">县区</view>
+            <picker bindchange="bindDistrictChange" value="{{district_index}}" range="{{check_district_arr}}">
+                <view wx:if="{{district_index <0}}">
+                    --请选择--
+                </view>
+                <view wx:else  class="picker">
+                    {{check_district_arr[district_index]}}
+                </view>
+            </picker>
+        </view>
+
+        <view class="cu-form-group">
+            <view class="title text-black">街道</view>
+            <picker bindchange="bindTownChange" value="{{town_index}}" range="{{check_town_arr}}">
+                <view wx:if="{{town_index <0}}">
+                    --请选择--
+                </view>
+                <view wx:else  class="picker">
+                    {{check_town_arr[town_index]}}
+                </view>
+            </picker>
+        </view>
+
+        <!-- <view class="cu-form-group">
+            <view class="title text-black">获取地址</view>
+            <view class="radius" style="width: 490rpx;"  bindtap="getAddress" >
+            <text wx:if="{{defAddressData.province}}">{{defAddressData.province}}{{defAddressData.city}}{{defAddressData.district}}{{defAddressData.street}}</text>
+            <text wx:if="{{!defAddressData.province}}">点击获取地址</text>
+            </view>
+            <image bindtap="getAddress" class="location" src="../../../../images/my/icon_setting1.png"></image>
+        </view> -->
+
+        <view class="cu-form-group" wx:if="{{recycle_community_is_show == 1}}">
+            <view class="title text-black">小区选择</view>
+
+            <picker value="{{communityIndex}}" range="{{communityList}}" bindchange="bindCommunityChange" range-key="name">
+                <view wx:if="{{communityIndex <0}}">
+                    --请选择--
+                </view>
+                <view wx:else  class="picker">
+                    {{communityList[communityIndex]['name']}}
+                </view>
+
+            </picker>
+        </view>
+
+        <view class="cu-form-group">
+            <view class="title text-black">详细地址</view>
+            <input class="radius" name="address_detail" placeholder="门牌号：如5号楼6单元602" value="{{detail.address}}"></input>
+        </view>
+
+        <view class="cu-form-group">
+            <view class="title text-black">联系人</view>
+            <input class="radius" name="name" placeholder="请填写联系人" value="{{detail.name}}"></input>
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">联系电话</view>
+            <!-- <input class="radius" name="phone" placeholder="请输入联系电话" value="{{phone?phone:detail.phone}}"></input> -->
+			<input disabled disabled="true" placeholder="输入电话号码" value="{{phone?phone:detail.phone}}" name="phone" bindinput="editPhone"></input>
+			<button style="width: 80rpx" class='cu-btn sm radio bg-green round' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取</button>
+<!--            <button bindgetphonenumber="getPhoneNumber" class="cu-btn line-blue sm" openType="getPhoneNumber">获取电话</button>-->
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">是否默认</view>
+            <switch checked="true" name="default" wx:if="{{detail.is_default==1}}"></switch>
+            <switch name="default" wx:else></switch>
+        </view>
+    </view>
+    <button class="cu-btn block bg-main margin-tb-sm lg text-white" formType="submit" style="position: fixed;left: 10rpx;right:10rpx;bottom: 66rpx;">保存地址</button>
+</form>

@@ -1,0 +1,77 @@
+<!-- pages/shop/shopOrder/shopOrder.wxml -->
+<view>
+    <view class="check-tab flex justify-between">
+        <view bindtap="checkTab" data-status="" class="tab">
+            <view class="{{order_status===''?'checked-tab':''}} ">全部</view>
+        </view>
+        <view bindtap="checkTab" data-status="0" class="tab">
+            <view class="{{order_status==='0'?'checked-tab':''}} ">待支付</view>
+        </view>
+        <view bindtap="checkTab" data-status="1" class="tab">
+            <view class="{{order_status==='1'?'checked-tab':''}} ">待发货</view>
+        </view>
+        <view bindtap="checkTab" data-status="2" class="tab">
+            <view class="{{order_status==='2'?'checked-tab':''}} ">已发货</view>
+        </view>
+        <view bindtap="checkTab" data-status="3" class="tab">
+            <view class="{{order_status==='3'?'checked-tab':''}} ">已完成</view>
+        </view>
+    </view>
+    <view class="order-list">
+        <view class="order-item padding-sm" wx:for="{{orders}}" bindtap="orderDetail" data-status="{{item.order_status}}" data-id="{{item.id}}">
+            <view class="flex justify-between">
+                <view>
+                    <view>订单编号: {{item.order_no}}</view>
+                    <view>下单时间: {{item.create_at}}</view>
+                </view>
+                <view class="padding-top-xs text-xl">
+                    <view wx:if="{{item.order_status==0}}">待支付</view>
+                    <view class="text-red" wx:if="{{item.order_status==1}}">待发货</view>
+                    <view class="text-red" wx:if="{{item.order_status==2}}">已发货</view>
+                    <view class="text-red" wx:if="{{item.order_status==3}}">已收货</view>
+                </view>
+            </view>
+            <view class="flex justify-between margin-top-sm">
+                <view>
+                    <image class="goods-img" src="{{item.picture}}"></image>
+                </view>
+                <view style="flex-grow: 1" class="padding-lr flex justify-between flex-direction">
+                    <view class="text-xxl text-bold text-black">{{item.goods_name}}</view>
+                    <view class="flex justify-between">
+                        <view class="flex">
+                            <view style="margin-top: 5rpx" class="cuIcon-coin main-font-color"></view>
+                            <view style="margin-top: -5rpx" class="main-font-color text-xxl">
+                                {{item.points}}
+                            </view>
+                            <view class="margin-left-xs">+</view>
+                            <view class="margin-left-xs text-xl">¥{{item.money}}</view>
+                        </view>
+                        <view style="width: 80rpx" class="cu-btn sm round bg-gray text-lg margin-lr-xs padding-lr text-center">
+                            x{{item.number}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="flex justify-between margin-top-xs">
+                <view></view>
+                <view >
+                    <view class="cu-btn bg-main margin-lr" >订单详情</view>
+                </view>
+                <!-- <view class="text-red" wx:if="{{item.order_status==1}}">
+                    <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+                    <button size="mini" class="cu-btn line-main" open-type="contact">联系客服</button>
+                </view>
+                <view class="text-red" wx:if="{{item.order_status==2}}">
+                    <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+                    <view class="cu-btn bg-main" bindtap="confirmReceipt" data-id="{{order.id}}">
+                        确认收货
+                    </view>
+                </view>
+                <view class="text-red" wx:if="{{item.order_status==3}}">
+                    <view class="cu-btn bg-main  margin-lr" bindtap="toShop">继续兑换</view>
+                    <button size="mini" class="cu-btn line-main" open-type="contact">联系客服</button>
+                </view> -->
+            </view>
+        </view>
+    </view>
+</view>

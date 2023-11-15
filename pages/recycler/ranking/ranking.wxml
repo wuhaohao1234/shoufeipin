@@ -1,0 +1,98 @@
+<!--pages/recycler/ranking/ranking.wxml-->
+<view class="little-bg">
+    <view class="flex justify-center">
+        <view class="flex justify-center">
+            <view class="text-white text-center">
+                <view class="name text-xl margin-top">
+                    我今日的排名
+                </view>
+                <view class="text-xxl margin-top">
+                    {{info.top_num || "暂无排名"}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="margin-right-lg flex justify-end">
+        <image src="../https://cdn.wuhuit.com/fths/test/jiangbei.png" style="width: 110rpx;height: 110rpx"></image>
+    </view>
+</view>
+
+<view class="check-tab-list to-top margin-sm justify-between">
+    <view class="flex justify-between padding-top-xl">
+        <view class="text-center" style="flex-grow: 1">
+
+            <view class="text-gray">
+                累计回收单数
+            </view>
+            <view class="text-bold text-black text-xxl main-font-color margin">
+                {{info.order_count || 0}}
+            </view>
+        </view>
+
+        <view style="width: 3rpx;height: 120rpx;background-color: #efefef">
+
+        </view>
+
+        <view class="text-center" style="flex-grow: 1">
+            <view class="text-gray">
+                累计回收总金额
+            </view>
+            <view class="text-bold text-xxl text-red margin">
+                {{info.sum_money|| 0.00}}
+            </view>
+
+        </view>
+    </view>
+</view>
+
+<view class="">
+    <view class="flex justify-between padding border-bottom">
+        <view class="sort">
+            排名
+        </view>
+
+        <view class="user margin-left-lg">
+            用户
+        </view>
+
+        <view class="all-price">
+            总金额
+        </view>
+    </view>
+
+    <view wx:for="{{info.top}}" class="flex justify-between padding border-bottom">
+        <view wx:if="{{item.top === 1}}" class="sort padding-top">
+            <image src="../https://cdn.wuhuit.com/fths/test/1.png" style="width: 50rpx;height: 50rpx"></image>
+        </view>
+        <view wx:if="{{item.top === 2}}" class="sort padding-top">
+            <image src="../https://cdn.wuhuit.com/fths/test/2.png" style="width: 50rpx;height: 50rpx"></image>
+        </view>
+        <view wx:if="{{item.top === 3}}" class="sort padding-top">
+            <image src="../https://cdn.wuhuit.com/fths/test/3.png" style="width: 50rpx;height: 50rpx"></image>
+        </view>
+        <view wx:if="{{item.top > 3}}" class="sort main-font-color text-xxl padding-top">
+            {{item.top}}
+        </view>
+
+
+        <view class="user flex align-center">
+            <view>
+                <image class="face-img" src="{{item.avatar}}"></image>
+            </view>
+            <view class="margin-sm">
+                <view class="name  text-bold text-lg">
+                    {{item.nickname}}
+                </view>
+<!--                <view>-->
+<!--                    {{item.community || ""}}-->
+<!--                </view>-->
+            </view>
+
+        </view>
+
+        <view class="all-price main-font-color text-lg padding-top-xl">
+            ¥{{item.money}}
+        </view>
+    </view>
+</view>

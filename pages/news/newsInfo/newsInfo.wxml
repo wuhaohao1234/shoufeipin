@@ -1,0 +1,26 @@
+<!--pages/news/newsInfo/newsInfo.wxml-->
+<view class="padding">
+    <view class="new-title text-xl text-black text-bold margin-top">
+        {{news.title}}
+    </view>
+
+    <view class="margin-top flex text-gray">
+        <view class="cuIcon-attention"></view>
+        <view class="margin-left-xs">{{news.visit_count}}</view>
+        <view class="margin-left">
+            {{news.create_at}}
+        </view>
+<!--        <view class="margin-left-xs">-->
+<!--            11:14:02-->
+<!--        </view>-->
+    </view>
+
+    <view class="margin-top">
+        <image style="width: 690rpx;" mode="widthFix" src="{{news.picture}}"></image>
+    </view>
+
+    <rich-text class="margin-top" nodes="{{news.content}}">
+
+    </rich-text>
+
+</view>

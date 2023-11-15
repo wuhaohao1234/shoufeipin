@@ -1,0 +1,63 @@
+<!-- 我的订单头部 -->
+<view class="check-tab flex justify-between bg-white shadow">
+  <view bindtap="checkTab" data-status="" class="tab">
+    <view class="{{status===''?'checked-tab':''}} ">
+      全部订单
+    </view>
+  </view>
+  <view bindtap="checkTab" data-status="0" class="tab">
+    <view class="{{status==='0'?'checked-tab':''}} ">
+      待接单
+    </view>
+  </view>
+  <view bindtap="checkTab" data-status="1" class="tab">
+    <view class="{{status==='1'?'checked-tab':''}} ">
+      待服务
+    </view>
+  </view>
+  <view bindtap="checkTab" data-status="2" class="tab">
+    <view class="{{status==='2'?'checked-tab':''}} ">
+      已完成
+    </view>
+  </view>
+</view>
+
+<!-- 列表 -->
+<view class="order-box">
+  <view wx:for="{{orderList}}" wx:key="id" class="order-item">
+    <view class="flex align-center justify-between">
+      <view class="text-df text-bold">订单号：{{item.order_no}}</view>
+      <view wx:if="{{item.order_status == 0}}" class="order-type">待接单</view>
+      <view wx:if="{{item.order_status == 1}}" class="order-type1">待服务</view>
+      <view wx:if="{{item.order_status == 2}}" class="order-type2">已完成</view>
+    </view>
+    <view class="goods-box flex align-center">
+      <image src="{{item.main_picture}}" class="goods-img" mode="aspectFill" lazy-load></image>
+      <view class="order-info">
+        <view class="name">{{item.name}}</view>
+        <view class="text-gray">{{item.subtitle}}</view>
+        <view class="time">预约上门时间：{{item.reservation_time}}</view>
+      </view>
+    </view>
+    <view class="order-hint">
+      <text class="text-bold">下单时间：</text>{{ item.order_no }}
+    </view>
+    <view wx:if="{{item.user_remark && item.user_remark != 'null'}}" class="order-hint">
+      <text class="text-bold">备注：</text>{{item.user_remark}}
+    </view>
+    <view class="flex padding-top-sm align-center justify-between">
+      <view class="flex align-center">
+        <text class="text-bold">金额：</text>
+        <text class="money">{{item.money}}</text>
+      </view>
+      <view class="flex">
+        <view wx:if="{{item.order_status == 0}}" bindtap="onCancelOrder" data-id="{{item.id}}" class="order-btn">取消订单</view>
+        <view class="order-btn" bindtap="toDetail" data-id="{{item.id}}">订单详情</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{isLoading}}' class="loading-box">
+    <view class="cuIcon-loading2 iconfont-spin"></view>
+    <view>加载中..</view>
+  </view>
+</view>

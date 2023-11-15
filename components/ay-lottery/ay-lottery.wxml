@@ -1,0 +1,17 @@
+<view>
+    <turnLottery wx:if="{{type===1}}"
+                 themeColor="{{themeColor}}"
+                 btn_Color="{{btn_Color}}"
+                 seled_Color="{{seled_Color}}"
+                 seled_t_Color="{{seled_t_Color}}"
+                 un_seled_Color="{{un_seled_Color}}"
+                 un_seled_t_Color="{{un_seled_t_Color}}"
+                 show_again="{{show_again}}"
+                 again_txt="{{again_txt}}"
+                 result_txt="{{result_txt}}"
+                 tips_init="{{tips_init}}"
+                 no_z_init="{{no_z_init}}"
+                 list="{{list}}">
+
+    </turnLottery>
+</view>

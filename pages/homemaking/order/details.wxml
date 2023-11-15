@@ -1,0 +1,56 @@
+<!-- 订单详情 -->
+<view class="order-top"></view>
+<view class="info-box top-box">
+  <view class="info-title flex justify-between align-center">
+    <view class=" text-xl text-bold">订单详情</view>
+    <view wx:if="{{infoData.order_status == 0}}" class="order-type color-df">待接单</view>
+    <view wx:if="{{infoData.order_status == 1}}" class="order-type color-red">待服务</view>
+    <view wx:if="{{infoData.order_status == 2}}" class="order-type">已完成</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">订单号</view>
+    <view class="item-r">{{infoData.order_no}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">下单时间</view>
+    <view class="item-r">{{infoData.create_at}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">联系电话</view>
+    <view class="item-r color-df">{{infoData.phone}}</view>
+  </view>
+</view>
+
+<view class="info-box">
+  <view class="info-title flex justify-between align-center">
+    <view class="text-xl text-bold">服务详情</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务项目</view>
+    <view class="item-r">{{infoData.title}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务时间</view>
+    <view class="item-r">{{infoData.reservation_time}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">服务地点</view>
+    <view class="item-r">{{infoData.address}}</view>
+  </view>
+  <view class="info-item">
+    <view class="item-l">备注</view>
+    <view class="item-r">{{infoData.user_remark}}</view>
+  </view>
+</view>
+
+<view wx:if="{{infoData.housekeeper}}" class="info-box" bindtap="onJumpStaff" data-id="{{infoData.housekeeper.id}}">
+  <view class="info-title flex justify-between align-center">
+    <view class="text-xl text-bold">家艺师信息</view>
+  </view>
+  <view class="staff-box">
+    <image src="{{infoData.housekeeper.logo_picture}}" class="staff-img" mode="aspectFill"></image>
+    <view class="text-df padding-top-sm">{{infoData.housekeeper.name}}</view>
+    <view class="text-df padding-top-sm">将由{{infoData.housekeeper.name}}为您提供服务，请保持电话联系顺畅</view>
+    <view class="text-df">家艺师电话：<text class="color-df">{{infoData.housekeeper.phone}}</text></view>
+  </view>
+</view>

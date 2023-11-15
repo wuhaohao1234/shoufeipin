@@ -1,0 +1,6 @@
+<!--pages/me/userBag/userBagRule/userBagRule.wxml-->
+<view>
+    <rich-text nodes="{{content}}">
+
+    </rich-text>
+</view>

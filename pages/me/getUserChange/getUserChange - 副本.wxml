@@ -1,0 +1,63 @@
+<view>
+    <view class="top padding bg-white">
+        <view class="text-gray">
+            提现方式
+        </view>
+
+        <view class="flex justify-between" wx:if="{{recycle_withdraw_wechat_is_open == 1}}">
+            <view class="flex">
+                <view class="bg-green radius" style="width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center">
+                    <view class="cuIcon-weixin text-white" ></view>
+                </view>
+
+                <view class="margin-left-xs">微信提现</view>
+                <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+                </view>
+            </view>
+            <!-- <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+            </view> -->
+        </view>
+        <view wx:else class="flex justify-between margin-top-sm">
+            <view class="flex">
+                <view class="bg-gradual-blue radius" style="width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center">
+                    <view class="cuIcon-pay text-white" ></view>
+                </view>
+
+                <view class="margin-left-xs">支付宝打款</view>
+            </view>
+            <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+            </view>
+        </view>
+    </view>
+
+    <view class="margin-top bg-white padding">
+        <view class="margin-bottom-sm">
+            提现金额
+        </view>
+
+        <view class="text-sl price flex">
+            <input bindinput="changeGetMoney" value="{{get_money}}" placeholder=" ¥ 输入提现金额"></input>
+        </view>
+
+        <view class="flex justify-between margin-top-sm">
+            <view class="flex">
+                <view class="text-gray">
+                    可提现金额
+                </view>
+                <view class="text-red margin-left-sm">
+                    {{money}}
+                </view>
+            </view>
+            <view class="text-red" bindtap = "getAll">
+                全部提现
+            </view>
+        </view>
+    </view>
+
+    <view class="getChangeBtn" bindtap="enterWithdrawal">
+        提交
+    </view>
+</view>

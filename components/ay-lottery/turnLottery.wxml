@@ -1,0 +1,16 @@
+<view>
+    <view>
+        <view class="box" :style="style_box">
+            <view class="dot {{'dot-'+index+1}}" wx:for="dotList" wx:key="index"></view>
+            <view class="box-in" style="{{style_box_in}}">
+                <view bindtap="tamin(index)" wx:for="list" wx:key="index"
+                class="box-item {{really === index+1?'animt':''}} {{really !== index+1 && surplus?'animt':''}} {{really === ''?'item'+(index+1):''}}"
+                style="{{really === index+1 && implement > 1?style_seled:style_un_seled}}">
+                <image wx:if="{{really===index+1 && implement===2}}" src="{{item.img}}" style="width: 80rpx;height: 80rpx;border-radius: 40rpx;" mode=""></image>
+                <image wx:if="{{really && implement===3}}" src="{{item.img}}" style="width: 80rpx;height: 80rpx;border-radius: 40rpx;" mode=""></image>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{show_again}}" class="re-turn" style="[{'background-color': themeColor},{color: btn_Color }]" bindtap="again">{{again_txt}}</view>
+        </view>
+</view>

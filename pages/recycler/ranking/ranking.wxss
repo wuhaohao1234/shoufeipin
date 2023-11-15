@@ -1,0 +1,37 @@
+/* pages/recycler/ranking/ranking.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.little-bg{
+    width: 750rpx;
+    height: 360rpx;
+    background: #49EAC1;
+}
+.check-tab-list{
+    width: 710rpx;
+    min-height: 210rpx;
+    background: #fff;
+    border-radius: 16rpx;
+
+}
+
+.to-top{
+    position: relative;
+    top: -100rpx;
+}
+
+.sort{
+    width: 100rpx;
+}
+
+.user{
+    flex-grow: 1;
+}
+
+.all-price{
+    width: 180rpx;
+}
+
+.border-bottom{
+    border-bottom: 1rpx solid #eee;
+}

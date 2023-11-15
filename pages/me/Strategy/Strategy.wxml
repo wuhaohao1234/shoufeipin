@@ -1,0 +1,5 @@
+<!--pages/me/Strategy/Strategy.wxml-->
+<rich-text nodes="{{content}}"></rich-text>
+<button wx:if="{{showJoin}}" open-type="getUserInfo" style="width: 750rpx;" bindgetuserinfo="acceptInvitation" class="accept-invitation cu-btn lg">
+	接受邀请
+</button>

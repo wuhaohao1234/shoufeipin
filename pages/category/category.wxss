@@ -1,0 +1,50 @@
+/* pages/category/category.wxss */
+page{
+    padding-bottom: 130rpx;
+}
+.check-tab{
+    border-bottom: 1rpx solid #e5e5e5;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.tab{
+    width: 160rpx;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.checked-tab{
+    border-bottom: 5rpx solid #49EAC1;
+    width: 150rpx;
+    margin-left: 20rpx;
+    height: 79rpx;
+}
+
+.tab-image{
+    width: 700rpx;
+    height: 190rpx;
+    border-radius: 16rpx;
+    margin-left: 5rpx;
+}
+.tab-desc{
+    background-color: #daf1ff;
+    color: #333;
+    line-height: 50rpx;
+}
+
+.cate-list{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cate{
+    width: 250rpx;
+}
+
+.litte-img{
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 60rpx;
+}

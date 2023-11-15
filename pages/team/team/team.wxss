@@ -1,0 +1,59 @@
+/* pages/team/team/team.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.top-bg{
+    background-color: #49EAC1;
+    position: fixed;
+    top: 0;
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+    height: 280rpx;
+    width: 750rpx;
+    z-index: -1;
+}
+
+.item{
+    width: 710rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    padding: 20rpx;
+    /*box-shadow: 10rpx 10rpx 5rpx #eee;*/
+}
+
+.item:first-child{
+    padding-left: 0;
+}
+
+.group-face{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    color: #eee;
+    margin-top: -5rpx;
+}
+
+.first-item{
+    margin-top: -50rpx;
+
+}
+
+.check-head{
+    border: 3rpx solid #49EAC1;
+}
+
+.head-btn{
+    margin-top: -10px;
+    position: absolute;
+    bottom: -5rpx;
+    left: 0rpx;
+    width: 80rpx;
+    height: 30rpx;
+    border: 3rpx;
+    font-size: 20rpx;
+    padding: 0;
+}
+.qr-code{
+    width: 350rpx;
+    height: 350rpx;
+}

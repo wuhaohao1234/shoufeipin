@@ -1,0 +1,76 @@
+<!--pages/recovery/order/detail/detail.wxml-->
+<view>
+    <view class="little-bg">
+<!--        <view class="padding-sm padding-top text-white text-xxl">-->
+<!--            <view  wx:if="{{info.status == 1}}">-->
+<!--                待分配回收员-->
+<!--            </view>-->
+<!--            <view  wx:if="{{info.status == 2}}">-->
+<!--                已安排回收员上门-->
+<!--            </view>-->
+<!--            <view  wx:if="{{info.status == 3}}">-->
+<!--                回收已完成-->
+<!--            </view>-->
+<!--            <view  wx:if="{{info.status == 4}}">-->
+<!--                订单已取消-->
+<!--            </view>-->
+<!--        </view>-->
+        <view class="padding-sm text-white">
+            对应订单编号:{{info.order_no}}
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm flex justify-between">
+        <view  style="max-width: 600rpx" class="padding-sm ">
+            <view class="text-black text-lg">{{info.name}} {{info.phone}}</view>
+            <view class="text-gray text-cut">{{info.address}}</view>
+            <view class="text-gray text-cut margin-top">下单时间: {{info.create_at}}</view>
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm">
+        <view class="flex justify-between padding-sm">
+            <view >
+                <view class="text-gray text-bold text-xl">回收员信息</view>
+
+                <view class="flex margin-top">
+                    <view class="sm-img margin-top-xs margin-right-xs">
+                        <image class="sm-img" src="{{info.avatar}}"></image>
+                    </view>
+
+                    <view>
+                        <view class="flex">
+                            <view class="bg-main margin-right">回收员</view>
+                            <view>{{info.c_name}}</view>
+                        </view>
+                        <view>
+                            {{info.c_phone}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm padding-sm">
+        <view class="text-gray text-cut">订单总金额: {{info.money}}</view>
+        <view class="text-gray text-cut">备注: {{info.describe || ""}}</view>
+        <view class="text-gray text-cut" wx:if="{{info.status == 4}}">拒绝时间: {{info.refuse_time || ""}}</view>
+        <view class="text-gray text-cut" wx:if="{{info.status == 4}}">拒绝理由: {{info.refuse_reason || ""}}</view>
+
+
+    </view>
+
+    <view class="check-tab to-top margin-sm padding-sm">
+        <view>回收类别详情</view>
+        <view class="cu-form-group" wx:for="{{info.detail}}">
+            <view style="width: 210rpx" class="title text-black text-bold text-cut">{{item.name}}</view>
+            <view class="flex">
+                <input style="width: 80rpx" disabled="true" value="{{item.weight}}" ></input>
+                <view style="padding-top: 5rpx">{{item.unit}}</view>
+            </view>
+            <view style="min-width: 120rpx">{{item.money}}元</view>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,75 @@
+<!-- pages/shop/shopOrder/orders.wxml -->
+<view>
+    <view class="check-tab flex justify-around bg-white">
+
+        <view bindtap="checkTab" data-status="1" class="tab">
+            <view class="{{order_status!='2'?'checked-tab':''}} ">待核销</view>
+        </view>
+        <view bindtap="checkTab" data-status="2" class="tab">
+            <view class="{{order_status=='2'?'checked-tab':''}} ">已完成</view>
+        </view>
+    </view>
+    <view class="order-list">
+        <view class="order-item padding-sm" wx:for="{{orders}}">
+            <view class="flex justify-between">
+                <view>
+                    <view>订单编号: {{item.order_no}}</view>
+                </view>
+                <view class="padding-top-xs text-xl">
+                    <view class="text-red" wx:if="{{item.order_status==1}}">待核销</view>
+                    <view class="text-red" wx:if="{{item.order_status==2}}">已完成</view>
+                </view>
+            </view>
+            <view class="flex justify-between margin-top-sm padding-tb-sm" style="border-bottom:1rpx solid #efefef;border-top:1rpx solid #efefef">
+                <view>
+                    <image class="goods-img" src="{{item.picture}}"></image>
+                </view>
+                <view style="flex-grow: 1" class="padding-lr flex justify-between flex-direction">
+                    <view class="text-lg text-black">{{item.g_name}}</view>
+                    <view class="text-sm text-gray">
+                        购买时间:{{item.create_at}}
+                    </view>
+                </view>
+
+                <view class="">
+                    <view class="flex">
+                        <view style="margin-top: -5rpx" class="main-font-color text-lg margin-bottom-sm">
+                            积分{{item.points}}
+                        </view>
+                    </view>
+                    <view style="width: 80rpx" class=" text-df text-gray  text-center">
+                        x{{item.number}}
+                    </view>
+                </view>
+            </view>
+            <view class="flex justify-between margin-top-xs">
+                <view></view>
+                <view class="flex">
+<!--                    <view class="cu-btn bg-gray margin-lr round" >取消订单</view>-->
+                    <view bindtap="showQrCode" data-id="{{item.id}}" class="cu-btn bg-main round" >核销订单</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view bindtap="hideModal" class="cu-modal  {{modalName==='showQrCode'?'show':''}}">
+    <view catchtap class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content ">展示二维码核销此订单</view>
+
+        </view>
+
+
+        <view class="flex justify-center">
+            <image src="{{img}}" style="width:360rpx;height:360rpx"></image>
+        </view>
+
+
+        <view class="cu-bar bg-white">
+            <view bindtap="hideModal" class="action margin-0 flex-sub ">取消</view>
+            <view bindtap="enterGetGoods" class="action margin-0 flex-sub text-green solid-left">确认</view>
+        </view>
+    </view>
+
+</view>

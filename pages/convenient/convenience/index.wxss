@@ -1,0 +1,14 @@
+/* pages/convenience/convenience/index.wxss */
+page{
+  background-color: #fff;
+}
+
+.lite-img{
+  width: 60rpx;
+  height: 100rpx;
+}
+
+.item{
+  width: 330rpx;
+  border-radius: 20rpx;
+}

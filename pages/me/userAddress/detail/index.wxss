@@ -1,0 +1,5 @@
+.cu-form-group .location{
+  width: 50rpx;
+  height: 50rpx;
+  /* background: red; */
+}

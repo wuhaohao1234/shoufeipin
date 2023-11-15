@@ -1,0 +1,60 @@
+/* pages/me/customerService/customerService.wxss */
+page{
+    background-color: #f5f5f5;
+}
+
+.send-msg{
+    background-color: #fff;
+    border-top: 1rpx solid #efefef;
+    position: fixed;
+    bottom: 0;
+    width: 750rpx;
+    box-shadow: 0 -4rpx 6rpx -2rpx #eee;
+    line-height: 100rpx;
+    font-size: 28rpx;
+}
+
+.send-btn{
+    height: 60rpx;
+    margin-top: 20rpx;
+    line-height: 60rpx;
+    background-color: #49EAC1;
+    color: #fff;
+    text-align: center;
+    padding-left: 50rpx;
+    padding-right: 50rpx;
+    border-radius: 30rpx;
+    box-shadow: 2rpx 2rpx 4rpx 2rpx #49EAC1;
+}
+
+.msg-content-user{
+    width: 500rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    background-color: #49EAC1;
+    color: #fff;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: pre-line;
+    margin-bottom: 70rpx;
+}
+
+.msg-content-customer{
+    width: 500rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+    background-color: #fff;
+    color: #999;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: pre-line;
+    margin-bottom: 70rpx;
+}
+
+.little-face{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}

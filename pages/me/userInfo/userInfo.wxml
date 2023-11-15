@@ -1,0 +1,72 @@
+<view>
+    <form bindsubmit="formSubmit" class="" >
+        <view bindtap="uploadAvatar" class="top flex justify-between padding-sm">
+            <view>
+                <view class="text-black text-xl">
+                    头像
+                </view>
+                <view class="text-gray margin-top-sm">
+                    上传真实头像客户联系您的几率更高
+                </view>
+            </view>
+
+            <view>
+                <image class="face-img" src="{{avatar}}"></image>
+            </view>
+        </view>
+
+        <view class="margin-top-sm">
+            <view class="cu-form-group margin-top">
+                <view class="title" style="flex-grow: 1">电话号码</view>
+                <input placeholder="输入电话号码" value="{{userInfo.phone}}" name="phone" bindtap="goToPhone" disabled></input>
+            </view>
+
+            <view class="cu-form-group ">
+                <view class="title">真实姓名</view>
+                <input placeholder="输入真实姓名" value="{{userInfo.real_name}}" name="real_name"></input>
+            </view>
+<!--
+            <view class="cu-form-group ">
+                <view class="title">性别</view>
+                <view  class="main-font-color flex" style="border: 2rpx solid #eee">
+                    <view bindtap="checkGender" data-type="1" class="cu-btn lg {{gender == 1?'radius bg-main':' bg-white'}} ">
+                                         <view class="cuIcon-baby"></view>
+                        ♂ 男
+                    </view>
+                    <view bindtap="checkGender" data-type="2" class="cu-btn lg {{gender == 2?'radius bg-main':' bg-white'}} ">
+                                         <view class="cuIcon-baby"></view>
+                        ♀ 女
+                    </view>
+                </view>
+            </view>  -->
+       
+       <!--       <view class="cu-form-group ">
+                <view class="title">支付宝账号</view>
+                <input placeholder="输入收款支付宝账号" value="{{userInfo.alipay_account}}" name="alipay_account"></input>
+            </view>
+         <!--    <view class="cu-form-group ">
+                <view class="title">身份证</view>
+                <input placeholder="输入个人身份证号" value="{{userInfo.identity}}" name="identity"></input>
+            </view> -->
+          <view class="cu-form-group ">
+                <view class="title">地址</view>
+                <input placeholder="输入居住地址" value="{{userInfo.address}}" name="address"></input>
+            </view>
+<!--
+           <view class="cu-form-group ">
+                <view class="title">所属区域</view>
+                <input placeholder="输入所属区域" value="{{userInfo.place}}" name="place"></input>
+            </view>   -->
+
+            
+
+        </view>
+
+        <button form-type="submit" style="width: 690rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+            完成基本信息
+        </button>
+    </form>
+
+
+
+</view>

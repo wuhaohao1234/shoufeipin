@@ -1,0 +1,45 @@
+<view>
+  <form bindsubmit="formSubmit" class="">
+    <view class="margin-top-sm">
+      <view class="cu-form-group margin-top">
+        <view class="title" style="flex-grow: 1">电话号码</view>
+        <input disabled disabled="true" placeholder="输入电话号码" value="{{phone}}" name="phone" bindinput="editPhone"></input>
+        <button style="width: 80rpx" class='cu-btn sm radio bg-green round' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取</button>
+      </view>
+      <view class="cu-form-group ">
+        <view class="title">真实姓名</view>
+        <input placeholder="输入真实姓名" value="{{real_name}}" name="real_name"></input>
+      </view>
+      <view class="cu-form-group ">
+        <view class="title">地址</view>
+        <!-- <input placeholder="点击获取详细地址" value="{{real_name}}" name="real_name"></input>
+                  -->
+        <view class="radius" style="width: 490rpx;text-align: right;    font-size: 32rpx;" bindtap="getAddress">
+          <text wx:if="{{addressData}}">{{addressData}}</text>
+          <text style="color: #848484;" wx:if="{{!addressData}}">点击获取地址</text>
+        </view>
+        <!-- <button style="width: 120rpx" class='cu-btn sm radio bg-green round' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取地址</button> -->
+        <image bindtap="getAddress" class="location" src="../https://cdn.wuhuit.com/fths/my/icon_setting1.png"></image>
+      </view>
+      <view class="cu-form-group ">
+        <view class="title">渠道</view>
+        <radio-group name="channel_type" class="radio-box" bindchange="radioChange">
+          <label   class="radio-item" wx:for="{{items}}" wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+              <radio style="transform:scale(0.8)" value="{{item.value}}"  />
+            </view>
+            <view class="name">{{item.name}}</view>
+          </label>
+        </radio-group>
+      </view>
+
+    </view>
+
+    <button form-type="submit" style="width: 690rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+      绑定基本信息
+    </button>
+  </form>
+
+
+
+</view>

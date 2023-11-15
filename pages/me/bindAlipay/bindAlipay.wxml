@@ -1,0 +1,31 @@
+<view class="padding-lr-sm margin-top-sm">
+    <form bindsubmit="formSubmit" class="" >
+    
+
+        <view class="margin-top-sm">
+			<view class="cu-form-group ">
+			    <view class="title" >支付宝账号</view>
+			    <input placeholder="输入支付宝账号" value="{{userInfo.alipay_account}}" name="alipay_account"  ></input>
+			</view>
+			<view class="cu-form-group">
+			    <view class="title" >姓名</view>
+			    <input placeholder="请输入支付宝账号绑定的姓名" value="{{userInfo.real_name}}" name="real_name" ></input>
+			</view>
+	
+			<view class="cu-form-group">
+			    <view class="title" >手机号</view>
+				<input disabled disabled="true" placeholder="输入电话号码" value="{{phone}}" name="phone" bindinput="goToPhone"></input>
+				<button style="width: 80rpx" class='cu-btn sm radio bg-green round' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取</button>
+			</view>
+
+        </view>
+		<view class="padding-tb padding-lr-sm margin-bottom-xl" style="font-size:22rpx;color:#b2b2b2">注：填写支付宝账号请仔细核对。</view>
+
+        <button form-type="submit" style="width: 690rpx;margin:0 auto;border-radius:10rpx;line-height: 40rpx;" class="cu-btn lg  bg-main text-white radius main-btn">
+            完成
+        </button>
+    </form>
+
+
+
+</view>

@@ -1,0 +1,23 @@
+<view>
+  <form bindsubmit="formSubmit" class="">
+    <view class="margin-top-sm">
+      <view class="cu-form-group margin-top">
+        <view class="title" style="flex-grow: 1">电话号码</view>
+
+        <input placeholder="输入电话号码" value="{{userInfo.phone}}" name="phone" bindinput="editPhone"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">验证码</view>
+        <input placeholder="输入接到的验证码" value="{{code}}" name="code"></input>
+        <button wx:if="{{send}}" style="width: 80rpx" class='cu-btn sm radio bg-green round'
+          bindtap="getCode">获取</button>
+        <button wx:else style="width: 80rpx" class='cu-btn sm radio bg-gray round' disabled>{{second}}</button>
+      </view>
+    </view>
+
+    <button form-type="submit" style="width: 690rpx;margin-left: 30rpx"
+      class="cu-btn lg bg-main text-white radius main-btn">
+      确认修改
+    </button>
+  </form>
+</view>

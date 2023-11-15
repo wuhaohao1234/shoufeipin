@@ -1,0 +1,123 @@
+page {
+  background: #F3F3F3;
+}
+
+.banner-box {
+  position: relative;
+}
+
+.banner-box .banner-list {
+  height: 700rpx;
+}
+
+.banner-box .banner-path {
+  width: 100%;
+}
+
+.banner-box .bannr-count {
+  position: absolute;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #000000;
+  opacity: 0.5;
+  border-radius: 100rpx;
+  color: #fff;
+  padding: 0 15rpx;
+  bottom: 20rpx;
+  right: 30rpx;
+  font-size: 22rpx;
+}
+
+/* 信息 */
+.info-box {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 26rpx;
+}
+
+.info-box .title {
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 44rpx;
+  color: #333333;
+}
+
+.slogan {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.money {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.money-val {
+  font-size: 32rpx;
+  color: #FE4646;
+  font-weight: bold;
+  padding: 8rpx;
+}
+
+.staff-box {
+  display: flex;
+  height: 170rpx;
+  margin-top: 20rpx;
+}
+
+.staff-box .staff-item {
+  text-align: center;
+  margin-right: 30rpx;
+  width: 90rpx;
+  height: 150rpx;
+}
+
+.staff-box .staff-item .staff-avatar {
+  width: 90rpx;
+  height: 90rpx;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+
+.staff-box .staff-item .staff-name {
+  font-size: 23rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 5rpx;
+}
+
+.service-box{
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-box .cuIcon-shopfill{
+  color: #35D4AB;
+}
+
+.service-box .service-item{
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.info-contnt{
+  margin:20rpx 0 100rpx 0;
+}
+
+/* 按钮 */
+.submit-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 96rpx;
+  width: 750rpx;
+  height: 96rpx;
+  background: #35D4AB;
+}

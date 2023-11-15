@@ -1,0 +1,26 @@
+<view>
+    <view class="padding-top-xl padding" style="margin-top:200rpx">
+        <view class="text-center">
+            <view class="margin-bottom text-xl text-bold">
+                填写资料
+            </view>
+            <view bindtap="uploadImg">
+                <image wx:if="{{team_avatar}}" src="{{team_avatar}}" class="" style="width:270rpx;height:270rpx;border-radius:135rpx"></image>
+                <image wx:else src="../https://cdn.wuhuit.com/fths/test/big-face.png" class="" style="width:240rpx;height:270rpx"></image>
+            </view>
+
+            <view class="margin-top border-bottom flex padding justify-center">
+                <view class="text-lg text-bold text-black">
+                    团队名称
+                </view>
+                <view>
+                    <input bindinput="editName" value="{{team_name}}" placeholder="请输入团队名称"></input>
+                </view>
+            </view>
+
+            <view bindtap="enterData" class="cu-btn lg bg-main margin-top-xl round" style="width:100%">
+                完成
+            </view>
+        </view>
+    </view>
+</view>

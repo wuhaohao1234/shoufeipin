@@ -1,0 +1,60 @@
+<!--公益捐赠-->
+<view class="certificate-box flex justify-between align-center" bindtap="openShow">
+  <view>
+    <view class="text-lg">我的爱心证书</view>
+    <view class="text-sm text-gray">您的爱心捐赠都会保存在这里</view>
+  </view>
+  <text class="cuIcon-right"></text>
+</view>
+<view class="donate-list">
+  <view wx:for="{{list}}" wx:key="id" class="donate-item" bindtap="onJumpDetails" data-id='{{item.id}}'>
+    <image class="donate-cover" src="{{item.main_picture}}" mode="widthFix" lazy-load></image>
+    <view class="margin-sm">
+      <view class="text-xl text-bold">{{ item.title }}</view>
+      <view class="text-df text-gray padding-top-xs">{{ item.subtitle }}</view>
+      <view class="flex justify-between align-center solid-top margin-top-sm padding-top padding-bottom">
+        <view class="donate-count flex align-center">
+          <text class="cuIcon-likefill padding-right-xs"></text>
+           已累计捐赠{{ item.this_money }}元
+        </view>
+        <view class="donate-btn">捐爱心</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{isLoading}}' class="loading-box">
+    <view class="cuIcon-loading2 iconfont-spin"></view>
+    <view>加载中..</view>
+  </view>
+</view>
+
+<!-- 证书弹窗 -->
+<view wx:if='{{ isShowPopup }}' class="donate-popup">
+  <view class="certificate-box">
+    <text class="cuIcon-close" bindtap="closeShow"></text>
+    <view class="certificate-main">
+      <view class="certificate-name">{{ certificateData.nickname }}</view>
+      <view class="certificate-hint">感谢您的无私奉献，您捐赠的爱心会帮助到更 多的人，感谢你们！</view>
+      <view class="flex">
+        <view class="certificate-item">
+          <view class="certificate-item-name">本次捐赠</view>
+          <view class="certificate-item-val">{{ certificateData.this_count }}</view>
+        </view>
+        <view class="certificate-item">
+          <view class="certificate-item-name">累计捐赠</view>
+          <view class="certificate-item-val">{{ certificateData.this_money }}</view>
+          </view>
+      </view>
+      <view class="issue-box">
+        <view class="issue-item">
+          <text class="color-gray">颁发机构</text>
+          {{ certificateData.company }}
+        </view>
+        <view class="issue-item">
+          <text class="color-gray">颁发时间</text>
+          {{ certificateData.issue_date }}
+        </view>
+      </view>
+      <image src="{{ certificateData.mini_signet }}" class="issue-logo" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

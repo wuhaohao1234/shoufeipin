@@ -1,0 +1,56 @@
+/* pages/me/launchData/launchData.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.little-bg{
+    width: 750rpx;
+    height: 240rpx;
+    background: #49EAC1;
+}
+
+.text-edit{
+    color: #fffcfc;
+    font-size: 24rpx;
+}
+
+
+.check-tab{
+    width: 710rpx;
+    background: #fff;
+    border-radius: 16rpx;
+
+}
+
+.to-top{
+    position: relative;
+    top: -80rpx;
+}
+
+.data-content{
+    border-bottom: 1rpx solid #efefef;
+    border-top: 1rpx solid #efefef;
+}
+
+.content-item{
+    min-width: 300rpx;
+    min-height: 80rpx;
+    line-height: 50rpx;
+}
+
+.data-price{
+    line-height: 80rpx;
+}
+
+.list-item{
+    line-height: 60rpx;
+}
+
+.pieCanvas{
+
+    width:950rpx;
+
+    height:452rpx;
+
+    margin: 0 auto;
+
+}

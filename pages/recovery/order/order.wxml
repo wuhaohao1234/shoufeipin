@@ -1,0 +1,170 @@
+<!--pages/recovery/order/order.wxml-->
+<view style="min-height: 100vh;">
+  <view class="check-tab flex justify-between" style="padding: 10rpx 0;">
+    <view bindtap="checkTab" data-status="0" class="tab">
+      <view class="{{status==='0'?'checked-tab navitem':'navitem'}} ">
+        全部订单
+      </view>
+    </view>
+
+    <view bindtap="checkTab" data-status="1" class="tab">
+      <view class="{{status==='1'?'checked-tab navitem':'navitem'}} ">
+        待分配
+      </view>
+    </view>
+
+    <view bindtap="checkTab" data-status="2" class="tab">
+      <view class="{{status==='2'?'checked-tab navitem':'navitem'}} ">
+        待回收
+      </view>
+    </view>
+
+    <view bindtap="checkTab" data-status="3" class="tab">
+      <view class="{{status==='3'?'checked-tab navitem':'navitem'}} ">
+        已回收
+      </view>
+    </view>
+
+    <view bindtap="checkTab" data-status="4" class="tab">
+      <view class="{{status==='4'?'checked-tab navitem':'navitem'}} ">
+        已取消
+      </view>
+    </view>
+
+  </view>
+
+  <view style="padding:0 4px;margin-top: 30rpx;">
+    <view class="order-wrapper" wx:for="{{orders}}">
+		<view class="{{item.status===1?'theme0':'theme1'}}">
+			  <!-- <view class="text-gray">预约上门时间: {{item.reservation_time || ""}}</view> -->
+			  <view class="{{item.status === 1 || item.status === 2 ? 'order-item' : 'order-item'}}">
+			    <!-- <view bindtap="toDetail" data-id="{{item.id}}" class="flex padding-top-sm padding-right-sm" style="align-items: center;padding-left: 11px;">
+			      <image style="width: 18px;height: 18px;" src="http://gchscc.zaishenziyuan.cn/11%20%E7%8A%B6%E6%80%81%E7%BB%9F%E8%AE%A1.png" />
+			      <view style="padding-left: 4px;color: #000;" wx:if="{{item.status === 1}}">
+			        请等待分配回收员
+			      </view>
+			      <view style="padding-left: 4px;color: #000;" wx:if="{{item.status === 2}}">
+			        请等待回收员上门
+			      </view>
+			      <view style="padding-left: 4px;color: #49EAC1;" wx:if="{{item.status === 3}}">
+			        您的废品已回收完成
+			      </view>
+			      <view style="padding-left: 4px;color: #000;" wx:if="{{item.status === 4}}">
+			        您的订单已经取消
+			      </view>
+			    </view> -->
+			
+			    <view class="flex justify-between padding-top-sm padding-right-sm">
+			      <view style="padding-left: 20rpx;width:100%" class="flex justify-between">
+			        <view style="display: flex; align-items: center;" bindtap="toDetail" data-id="{{item.id}}">
+			          <image style="width: 14px;height: 14px;margin-left: 2px;margin-right: 6px;" src="{{item.status===1?'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/%E8%AE%A2%E5%8D%95%E7%BC%96%E5%8F%B7.png':'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/111/%E8%AE%A2%E5%8D%95%E7%BC%96%E5%8F%B7.png'}}" mode="aspectFit"/>
+			          订单号:{{item.order_no}}
+			        </view>
+			        <view class="cpbox" style="padding: 0 14px;" bindtap="onCopy" data-id="{{item.order_no}}">
+			          复制
+			        </view>
+			      </view>
+			    </view>
+			
+			    <view class="{{item.status === 1 || item.status === 2 ? 'order-info-new' : 'order-info-new'}}">
+			
+			      <view class="order-info-new__info">
+			        <view bindtap="toDetail" data-id="{{item.id}}" class="flex justify-between padding-right-sm">
+			          <view style="padding-left: 20rpx;display: flex; align-items: center;">
+			            <image style="width: 18px;height: 18px;margin-right: 4px;" src="{{item.status===1?'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/%E5%9B%9E%E6%94%B6%E6%97%B6%E9%97%B4.png':'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/111/%E5%9B%9E%E6%94%B6%E6%97%B6%E9%97%B4.png'}}" mode="aspectFit"/>
+			
+			            预约上门时间:{{item.reservation_time || "尽快上门"}}
+			          </view>
+			        </view>
+			
+			        <view bindtap="toDetail" data-id="{{item.id}}" style="max-width: 600rpx;display: flex; align-items: center;" class="padding-left-sm">
+			          <view class="text-lg" style="display: flex;align-items: center;margin-right: 8px;">
+			            <image style="width: 18px;height: 18px;margin-right: 4px;" src="{{item.status===1?'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/%E5%A7%93%E5%90%8D%E5%9B%BE%E6%A0%87.png':'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/111/%E5%A7%93%E5%90%8D%E5%9B%BE%E6%A0%87.png'}}" mode="aspectFit"/>
+			            {{item.name}}
+			          </view>
+			          <view class="text-lg" style="display: flex;align-items: center;">
+			            <image style="width: 18px;height: 18px;margin-right: 4px;" src="{{item.status===1?'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/%E7%94%B5%E8%AF%9D%E5%9B%BE%E6%A0%87.png':'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/111/%E7%94%B5%E8%AF%9D%E5%9B%BE%E6%A0%87.png'}}" mode="aspectFit"/>
+			            {{item.phone}}
+			          </view>
+			        </view>
+			        <view bindtap="toDetail" data-id="{{item.id}}" style="max-width: 600rpx" style="display: flex;">
+			          <view class="text-cut" style="margin-left: 20rpx;max-width: 600rpx;">
+			            <image style="width: 18px;height: 18px;" src="{{item.status===1?'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/%E5%9C%B0%E5%9D%80%E5%9B%BE%E6%A0%87.png':'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%20%E9%BB%91%E8%89%B2%E5%9B%BE%E6%A0%87/111/%E5%9C%B0%E5%9D%80%E5%9B%BE%E6%A0%87.png'}}" mode="aspectFit"/>
+			            <span style="vertical-align: text-bottom;margin-left: 10rpx;">{{item.address}}</span>
+			          </view>
+			        </view>
+			      </view>
+			      <view>
+			        <image wx:if="{{item.status === 1}}" class="order-ztpic-new" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%E5%BE%85%E5%88%86%E9%85%8D%E6%A0%8F%E7%AD%89%E5%BE%85%E6%8E%A5%E5%8D%95%E5%9B%BE%E6%A0%87.png" mode="aspectFit" />
+			        <image wx:if="{{item.status === 2}}" class="order-ztpic-new" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%E5%B8%A6%E5%9B%9E%E6%94%B6%E6%A0%8F%E6%AD%A3%E5%9C%A8%E5%9B%9E%E6%94%B6%E5%9B%BE%E6%A0%87.png" mode="aspectFit" />
+			        <image wx:if="{{item.status === 3}}" class="order-ztpic-new" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%E5%B7%B2%E5%9B%9E%E6%94%B6%E6%A0%8F%E5%9B%9E%E6%94%B6%E5%AE%8C%E6%88%90%E5%9B%BE%E6%A0%87.png" mode="aspectFit" />
+			        <image wx:if="{{item.status === 4}}" class="order-ztpic-new" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8A%B6%E6%80%8111/%E5%A4%A7%E5%9B%BE%E6%A0%87/%E5%B7%B2%E5%8F%96%E6%B6%88%E6%A0%8F%E5%8F%96%E6%B6%88%E8%AE%A2%E5%8D%95%E5%9B%BE%E6%A0%87.png" mode="aspectFit" />
+			      </view>
+			    </view>
+			
+			    <view class="c-wrapper" wx:if="{{item.cid > 0}}">
+			      <view class="c-content">
+					  <view style="padding-left: 20rpx;width:100%;display: flex;line-height: 1;">
+					    <view style="font-size: 13px;font-weight: 900;white-space: nowrap;margin-right: 12px;margin-top: 20rpx;">
+					      回收员信息
+					      <!-- <image src="../../../images/order/自定义模板 (47).png" style="width: 165px;height: 33px;" mode="aspectFit"></image> -->
+					    </view>
+					    <!-- <view style="display: flex;align-items: center; color: #49EAC1;border-top: 1px dashed;line-height: 20px;margin-top: 4px;">
+					      <image style="width: 26px;height: 26px;" src="http://gchscc.zaishenziyuan.cn/%E9%AA%91%E8%BD%A6.png" mode="aspectFit"></image>
+					      回收状态:已安排回收员上门
+					    </view> -->
+					  </view>
+					  <view class="flex justify-between" style="position: relative;padding: 10rpx 20rpx 20rpx 20rpx">
+					    <!-- <image style="position: absolute; right: 20px;top: 10px; width: 60px;height: 60px;" src="http://gchscc.zaishenziyuan.cn/%E5%AE%8C%E6%88%90.png" mode="aspectFit"></image> -->
+					  			
+					    <view>
+					      <view class="flex " style="align-items: center;font-size: 14px;">
+					        <view class="margin-top-xs margin-right-xs" style="text-align: center;">
+					          <image class="sm-img" src="{{item.avatar}}"></image>
+					          <!-- <view style="margin-top: -3px;">回收员</view> -->
+					        </view>
+					  			
+					        <view style="margin-left: 12px;">
+					          <view style="display: flex;align-items: center;">
+					            <image style="width: 28px;height: 28px;" src="http://gchscc.zaishenziyuan.cn/%E5%8C%A1%E5%A8%81%E9%A3%8E%E6%A0%BC%E4%BA%BA%E7%89%A94.png" mode="aspectFit"></image>
+					            {{item.c_name}}
+					          </view>
+					          <view style="display: flex;align-items: center;">
+					            <image style="width: 20px;height: 20px;margin-left: 4px;margin-right: 4px;" src="http://gchscc.zaishenziyuan.cn/24gf-phoneLoudspeaker.png" mode="aspectFit"></image>
+					            {{item.c_phone}}
+					          </view>
+					          <view class="flex" style="font-size: 12px;margin-top: 10px;margin-left: 5px;">
+					            <view style="border-radius: 4px;border: 1px solid pink;padding: 2px 4px;color: pink;">上门及时</view>
+					            <view style="border-radius: 4px;border: 1px solid rgb(155, 194, 48);padding: 2px 4px;margin: 0 6px;color: rgb(155, 194, 48);">培训上岗</view>
+					            <view style="border-radius: 4px;border: 1px solid rgb(255, 192, 255);padding: 2px 4px;color: rgb(255, 192, 255);">状态良好</view>
+					          </view>
+					        </view>
+					      </view>
+					    </view>
+					  </view>
+					  			
+					  <view class="acts-v1"  wx:if="{{item.status == 3}}">
+					    <view style="width: 100%;" class="pjbtn-v1 cu-btn line-main" data-id="{{item.id}}" bindtap="toComment" wx:if="{{item.status == 3 && item.is_comment == 0}}">
+					      <image style="width: 18px;height: 18px;margin-right: 14px;" src="http://gchscc.zaishenziyuan.cn/%E8%AF%84%E4%BB%B7%20%281%29.png" />
+					      前去评价
+					    </view>
+					    <view style="width: 100%;" class="pjbtn-v1 cu-btn line-main" data-id="{{item.id}}" bindtap="toShowComment" wx:if="{{item.status == 3 && item.is_comment == 1}}">
+					      查看评价
+					    </view>
+					  			
+					    <view style="width: 49%;color: #49EAC1;" class="pjbtn-v1 act1  cu-btn line-main round margin-top" bindtap="clearOrder" data-id="{{item.id}}" wx:if="{{item.status == 1 || item.status == 2}}">
+					      <image style="width: 18px;height: 18px;margin-right: 14px;" src="http://gchscc.zaishenziyuan.cn/%E8%AE%A2%E5%8D%95%E5%8F%96%E6%B6%88_icon.png" />
+					      取消订单
+					    </view>
+					    <view style="width: 49%;" class="pjbtn-v1 act cu-btn line-main round margin-top-sm" bindtap="phone" data-number="{{item.c_phone}}" wx:if="{{item.status == 2 || item.status == 1}}">
+					      <image style="width: 18px;height: 18px;margin-right: 14px;" src="http://gchscc.zaishenziyuan.cn/%E6%89%93%E7%94%B5%E8%AF%9D.png" />
+					      联系师傅
+					    </view>
+					  </view>
+				  </view>
+			    </view>
+			  </view>
+		</view>
+    </view>
+  </view>
+</view>

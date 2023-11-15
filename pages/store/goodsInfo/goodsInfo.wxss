@@ -1,0 +1,13 @@
+/* pages/shop/goodsInfo/goodsInfo.wxss */
+.buy-btn{
+    width: 750rpx;
+    line-height: 100rpx;
+    height: 100rpx;
+    font-size: 48rpx;
+    text-align: center;
+    background:  linear-gradient(to top,#18c6b8,#6fecce);
+    color: #fff;
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+}

@@ -1,0 +1,87 @@
+<view>
+    <view class="bg-box">
+        <view class="cu-bar search bg-main">
+
+            <view class="search-form round">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="搜索一下附近好店" bindblur="searchStore" confirm-type="search"></input>
+            </view>
+        </view>
+        
+        <view style="width: 100%;overflow: scroll;">
+            <view style="min-width:{{cateData.length*80}}px"  class="check-tab flex justify-between ">
+                <view bindtap="checkTab" data-id="" class="tab">
+                    <view class="text-df {{cate_id===''?'checked-tab':''}} ">
+                        全部
+                    </view>
+                </view>
+                <view wx:for="{{cateData}}" bindtap="checkTab" data-id="{{item.id}}" class="tab">
+                    <view class="text-df {{cate_id===item.id?'checked-tab':''}} ">
+                        {{item.name}}
+                    </view>
+                </view>
+                <!-- <view bindtap="checkTab"  class="tab">
+                    <view class="text-df ">
+                        按钮1
+                    </view>
+                </view>
+                <view bindtap="checkTab"  class="tab">
+                    <view class="text-df ">
+                        按钮1
+                    </view>
+                </view>
+                <view bindtap="checkTab"  class="tab">
+                    <view class="text-df ">
+                        按钮1
+                    </view>
+                </view> -->
+            </view>
+        </view>
+
+        <view class="bg-box padding-bottom">
+            <view class="padding-sm margin-sm bg-white radius item" wx:for="{{list}}">
+                <view class="flex justify-between">
+                    <view class="margin-right-xs">
+                        <image src="{{item.picture}}" class="shop-pic"></image>
+                    </view>
+                        <!-- .text-cut -->
+                    <view class=" flex flex-direction justify-between" style="max-width:320rpx">
+                        <view>
+                            {{item.shop_name}}
+                        </view>
+
+                        <view class="text-gray margin-left-xs">
+                            营业时间:{{item.business_hours}}
+                        </view>
+                        <view class="flex">
+                            <view class="cuIcon-phone text-main" >
+
+                            </view>
+                            <view class="text-gray margin-left-xs">
+                                {{item.telephone}}
+                            </view>
+                        </view>
+
+                        <view class="flex">
+                            <view class="cuIcon-location text-main" >
+
+                            </view>
+                            <view class="text-gray margin-left-xs">
+                                {{item.address}}
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="text-center flex flex-direction justify-end">
+                        <view>
+                            {{item.meter}}米
+                        </view>
+                        <view bindtap="toDetail" data-id="{{item.id}}" class="bg-main cu-btn round margin-top">
+                            进店看看
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

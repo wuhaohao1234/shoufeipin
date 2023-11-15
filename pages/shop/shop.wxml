@@ -1,0 +1,77 @@
+<!--pages/shop/shop.wxml-->
+<view class="">
+
+    <view class="main-top">
+
+
+
+<!--    <view class="top-box">-->
+
+<!--        <view class="location-box">-->
+<!--            <text class="location-text"></text>-->
+<!--            &lt;!&ndash; <text class="cuIcon-right"></text> &ndash;&gt;-->
+<!--        </view>-->
+<!--        <view class="work-time">工作时间：{{workday}}</view>-->
+<!--    </view>-->
+
+    <!-- banner -->
+    <view class="banner " style="z-index:9">
+        <swiper class="banner" autoplay="{{autoplay}}" duration="{{duration}}"
+                indicatorActiveColor="rgb(255, 255, 255)" indicatorColor="rgba(255, 255, 255, 0.4)"
+                indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+            <swiper-item wx:for="{{banners}}" wx:key>
+                <image class="slide-image" height="500" src="{{item.picture}}" bindtap="toBanner"
+                       data-url="{{ item.link }}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+
+        <view class="nav-list">
+            <view wx:for="{{navList}}" wx:key="index" class="nav-item" bindtap="goto" data-url="{{item.url}}">
+                <image class="nav-icon" src="{{item.icon}}"></image>
+                <view class="nav-text">{{item.name}}</view>
+            </view>
+        </view>
+
+    <!-- <view class="cu-bar search bg-white">
+        <view class="search-form round padding-lr-xs" style="margin-right: 0">
+           <input class="padding-left-xs" type="text" bindinput="searchGoodsInput" placeholder="请输入商品名称" confirm-type="search"></input>
+            <text class="cuIcon-search" bindtap="searchGoods" style="font-size: 46rpx"></text>
+       </view>
+   </view> -->
+   <view style="width: 100%;overflow: scroll;">
+        <view style="min-width:{{category.length*80}}px" class="check-tab flex justify-between margin-tb">
+            <view wx:for="{{category}}" wx:key bindtap="checkTab" data-id="{{item.id}}" class="tab">
+                <view class="text-df {{cate_id===item.id?'checked-tab':''}} ">
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="goods-list flex justify-between flex-wrap">
+        <view class="goods-item shadow text-center" wx:for="{{goods}}" bindtap="toGoodsInfo" data-id="{{item.id}}">
+            <view>
+                <image class="goods-img" src="{{item.picture}}"></image>
+            </view>
+            <view class="text-black text-df padding-left-sm text-cut margin-bottom-xs">
+                {{item.name}}
+            </view>
+            <view class="flex main-font-color justify-center text-xl padding-left-sm" style="line-height: 40rpx;">
+                <view class="cuIcon-coin">
+
+                </view>
+                <view>
+                    {{item.points}}
+                </view>
+                <view  class="margin-left-xs text-black">
+                    +
+                </view>
+                <view class="margin-left-xs text-xl text-black">
+                    ¥{{item.money}}
+                </view>
+            </view>
+        </view>
+    </view>
+    </view>
+</view>

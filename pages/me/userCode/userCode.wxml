@@ -1,0 +1,22 @@
+<!--pages/me/userCode/userCode.wxml-->
+<view class="main">
+    <view class="t-face-img">
+        <image src="{{userInfo.avatar}}"></image>
+    </view>
+
+    <view class="qr-box">
+        <view class="text-black text-lg" style="padding-top: 80rpx">身份名片</view>
+        <view class="flex justify-center padding">
+            <image class="qr-code" src="{{img}}">
+
+            </image>
+        </view>
+        <view class="text-center">
+            请出示该二维码供回收员扫描
+        </view>
+    </view>
+
+    <view class="bottom-image">
+        <image src="https://cdn.wuhuit.com/fths/test/bottom-img.png" class="bottom-image"></image>
+    </view>
+</view>

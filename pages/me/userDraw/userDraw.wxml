@@ -1,0 +1,12 @@
+<view>
+    <aylottery type="{{1}}" themeColor="#33CCCC" btn_Color="#ffffff" seled_Color="#fff" seled_t_Color="#fff" un_seled_Color="#fff"
+               un_seled_t_Color="#fff" result_txt="{{result_turn}}"
+               list="{{list}}"
+               show_again="{{true}}"
+               again_txt="开始洗牌"
+               tips_init="{{tips_init_turn}}"
+               no_z_init="{{no_z_init_turn}}">
+
+    </aylottery>
+
+</view>

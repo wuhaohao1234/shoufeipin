@@ -1,0 +1,63 @@
+<view>
+    <form bindsubmit="formSubmit" class="" >
+        <!-- <view bindtap="uploadAvatar" class="top flex justify-between padding-sm">
+            <view>
+                <view class="text-black text-xl">
+                    头像
+                </view>
+                <view class="text-gray margin-top-sm">
+                    上传真实头像客户联系您的几率更高
+                </view>
+            </view>
+
+            <view>
+                <image class="face-img" src="{{avatar}}"></image>
+            </view>
+        </view> -->
+
+        <view class="margin-top-sm">
+
+            <view class="address flex justify-between padding margin-top-sm bg-white" style="border: 1rpx solid #efefef" bindtap="checkAddress">
+                <view>
+                    <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+                </view>
+
+                <view wx:if="{{address.id}}" style="max-width: 500rpx">
+                    <view class="text-black text-lg">{{address.name}} {{address.phone}}</view>
+                    <view class="text-gray">  {{address.province}} {{address.city}}  {{address.district}}  {{address.street}} {{address.address}}</view>
+                </view>
+                <view wx:else  style="max-width: 500rpx;flex-grow: 1">
+                    <view class="text-black text-lg padding-top text-left">添加地址</view>
+                    <!-- <view class="text-gray">点击此处添加地址 </view> -->
+                </view>
+
+                <view class="cuIcon-right text-xxl padding-top"  style="font-size: 50rpx">
+
+                </view>
+            </view>
+        
+            <view class="cu-form-group ">
+                <view class="title">真实姓名</view>
+                <input placeholder="输入真实姓名" value="{{userInfo.real_name}}" name="real_name"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title" style="flex-grow: 1">电话号码</view>
+                <input placeholder="输入电话号码" value="{{userInfo.phone}}" name="phone" bindtap="goToPhone" disabled></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">所属区域</view>
+                <input placeholder="输入所属区域" value="{{userInfo.place}}" name="place"></input>
+            </view>
+
+            
+
+        </view>
+
+        <button form-type="submit" style="width: 690rpx;margin-left: 30rpx" class="cu-btn lg bg-main text-white radius main-btn">
+            注册
+        </button>
+    </form>
+
+
+
+</view>

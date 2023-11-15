@@ -1,0 +1,23 @@
+<view class="order-top"></view>
+<view class="info-box flex">
+  <image src="{{infoData.logo_picture}}" class="staff-img" mode="aspectFill"></image>
+  <view class="staff-content">
+    <view class="text-xl text-bold">{{infoData.name}}</view>
+    <view class="text-sm">联系方式：<text class="color-df">{{infoData.phone}}</text></view>
+    <view class="text-sm">年龄：{{infoData.age}}岁</view>
+    <view class="text-sm">经验：{{infoData.work_experience}}年</view>
+    <view class="text-sm">简介：{{infoData.about}}</view>
+  </view>
+</view>
+<view class="approve-box">
+  <view class="approve-title">
+    <image src="../https://cdn.wuhuit.com/fths//index/icon-shield.png" class="title-icon" mode="widthFix"></image>
+    认证信息
+  </view>
+  <view class="approve-list">
+    <view wx:for="{{infoData.certification}}" wx:key="id" class="approve-item">
+      <image src="{{item.picture}}" class="approve-img" mode="widthFix"></image>
+      <view class="approve-name">{{item.title}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,93 @@
+/* pages/team/teamRank/teamRank.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.top{
+    width: 750rpx;
+    height: 260rpx;
+}
+
+.list-item{
+    border-bottom: 1rpx solid #efefef;
+    height: 120rpx;
+    padding-top: 20rpx;
+}
+
+.checkItemBox{
+    display: flex;
+    justify-content: space-between;
+    width: 440rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid #fff;
+    overflow: hidden;
+}
+
+.checkItem{
+    width: 220rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+}
+.checkItem:first-child{
+    border-right: 1rpx solid #fff;
+}
+.checked{
+    background: #a7ecda;
+    color: #333;
+}
+
+.item{
+    width: 710rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    padding: 20rpx;
+    /*box-shadow: 10rpx 10rpx 5rpx #eee;*/
+    position: relative;
+    min-height: 500rpx;
+}
+
+.top-one{
+    position: absolute;
+    top: -80rpx;
+    left: 230rpx;
+    width: 250rpx;
+    height: 320rpx;
+    background: #fff;
+    box-shadow: 0px -8px 8px rgba(52, 212, 171, 0.3);
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.face-img2{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 55rpx;
+    margin-left: 18rpx;
+    margin-top: 15rpx;
+}
+
+.top-img{
+    position: relative;
+    width: 150rpx;
+    height: 140rpx;
+}
+.top-img-bg-img{
+    position: absolute;
+    z-index: 1;
+    width: 150rpx;
+    height: 140rpx;
+}
+.left-item{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 220rpx;
+}
+
+.right-item{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 220rpx;
+}

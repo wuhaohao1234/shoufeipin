@@ -1,0 +1,23 @@
+/* pages/me/getUserChange/getUserChange.wxss */
+.price{
+    border-bottom: 1rpx solid #efefef;
+}
+
+.getChangeBtn{
+    width: 690rpx;
+    margin: 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx;
+    font-size: 36rpx;
+    position: fixed;
+    bottom: 50rpx;
+    background-color: #49EAC1;
+}
+.price {font-size:32rpx;line-height:100px;}
+.margin-bottom-sm  {font-weight: 200;font-size:35rpx;}
+.text-gray {font-weight: 200;font-size:35rpx;}
+.margin-left-sm {line-height:55rpx;}
+.margin-left-xs {line-height:55rpx;}

@@ -1,0 +1,46 @@
+<!--pages/category/category.wxml-->
+<view class="padding-sm" style="padding-top: 0">
+    <!-- <view class="cu-bar search bg-white">
+        <view class="action" style="margin-left: 0">
+            <view class="cuIcon-location main-font-color text-bold"></view>
+            <text class="text-bold text-black address-text">{{city}}</text>
+        </view>
+        <view class="search-form round" style="margin-right: 0">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="请输入关键词" confirm-type="search"></input>
+        </view>
+
+    </view> -->
+
+    <view class="check-tab flex justify-between">
+        <view bindtap="checkTab"  wx:for="{{category}}" data-id="{{item.id}}" class="tab">
+            <view class=" {{cate_id===item.id?'checked-tab':''}} ">
+                {{item.name}}
+            </view>
+        </view>
+
+    </view>
+
+    <view class="show-tab margin-top">
+        <image class="tab-image" src="{{check_cate.bg_img}}"></image>
+        <view class="tab-image tab-desc padding-sm text-df">
+            {{check_cate.description}}
+        </view>
+    </view>
+</view>
+
+<view class="cate-list">
+    <view wx:for="{{check_cate.product}}" class="cate margin-tb">
+			<view class="flex justify-center">
+				<image wx:if="{{item.picture}}" class="litte-img" src="{{item.picture}}"></image>
+				<image wx:else class="litte-img" src="https://cdn.wuhuit.com/fths/test/default.png"></image>
+			</view>
+			<view class="flex justify-center">
+				<view class="margin-top-sm">
+					{{item.name}}
+				</view>
+			</view>
+    </view>
+
+</view>
+

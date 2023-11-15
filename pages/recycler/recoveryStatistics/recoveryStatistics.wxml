@@ -1,0 +1,147 @@
+<!--pages/recycler/recoveryStatistics/recoveryStatistics.wxml-->
+<view class="little-bg">
+    <view class="flex justify-center">
+        <view class="flex justify-center">
+            <view class="text-white text-center">
+                <view class="text-sl margin-top">
+                    {{info.sum_money || '0.00'}}
+                </view>
+                <view class="name text-xl margin-top">
+                    回收总金额
+                </view>
+
+            </view>
+        </view>
+    </view>
+</view>
+
+<view>
+    <view class="check-tab to-top bg-white flex justify-between margin-top">
+        <view bindtap="checkTab" data-type="1" class="tab">
+            <view class="text-df {{type==='1'?'checked-tab':''}} ">
+                近一月
+            </view>
+        </view>
+        <view bindtap="checkTab" data-type="2" class="tab" >
+            <view class="text-df {{type==='2'?'checked-tab':''}}  ">
+                近三月
+            </view>
+        </view>
+        <view bindtap="checkTab" data-type="3" class="tab">
+            <view class="text-df {{type==='3'?'checked-tab':''}}  ">
+                近一年
+            </view>
+        </view>
+    </view>
+
+    <view class="data-content bg-white flex justify-between flex-wrap padding-sm">
+        <view class="content-item text-center">
+            <view class="text-gray margin-bottom-xs">
+                预约单数
+            </view>
+            <view class="main-font-color text-xxl">
+                {{info.recycle_count}}
+            </view>
+        </view>
+
+        <view class="content-item text-center">
+            <view class="text-gray margin-bottom-xs">
+                回收金额
+            </view>
+            <view class="main-font-color text-xxl">
+                {{info.recycle_money}}
+            </view>
+        </view>
+
+<!--        <view class="content-item text-center">-->
+<!--            <view class="text-gray margin-bottom-xs">-->
+<!--                商城订单-->
+<!--            </view>-->
+<!--            <view class="main-font-color text-xxl">-->
+<!--                100-->
+<!--            </view>-->
+<!--        </view>-->
+
+        <view class="content-item text-center">
+            <view class="text-gray margin-bottom-xs">
+                回收积分
+            </view>
+            <view class="main-font-color text-xxl">
+                {{info.recycle_points}}
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="margin-top bg-white">
+    <view class="flex list-item" wx:for="{{info.category}}">
+        <view class="flex">
+            <view style="background-color:#3eaff7; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 35rpx">
+
+            </view>
+            <view class="margin-left-sm">
+                {{item.name}}
+            </view>
+        </view>
+        <view class="text-gray margin-left-sm">
+            {{item.weight+item.unit}}
+        </view>
+    </view>
+
+<!--    <view class="flex list-item">-->
+<!--        <view class="flex">-->
+<!--            <view style="background-color:#4fdad2; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 35rpx">-->
+
+<!--            </view>-->
+<!--            <view class="margin-left-sm">-->
+<!--                废旧衣服-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="text-gray margin-left-sm">-->
+<!--            2002,000.00-->
+<!--        </view>-->
+<!--    </view>-->
+
+<!--    <view class="flex list-item">-->
+<!--        <view class="flex">-->
+<!--            <view style="background-color:#f5b366; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 35rpx">-->
+
+<!--            </view>-->
+<!--            <view class="margin-left-sm">-->
+<!--                废旧塑料-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="text-gray margin-left-sm">-->
+<!--            2002,000.00-->
+<!--        </view>-->
+<!--    </view>-->
+
+<!--    <view class="flex list-item">-->
+<!--        <view class="flex">-->
+<!--            <view style="background-color:#f3d38c; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 35rpx">-->
+
+<!--            </view>-->
+<!--            <view class="margin-left-sm">-->
+<!--                废旧金属-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="text-gray margin-left-sm">-->
+<!--            2002,000.00-->
+<!--        </view>-->
+<!--    </view>-->
+
+<!--    <view class="flex  list-item">-->
+<!--        <view class="flex">-->
+<!--            <view style="background-color:#c9f0f4; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 35rpx">-->
+
+<!--            </view>-->
+<!--            <view class="margin-left-sm">-->
+<!--                废旧家电-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="text-gray margin-left-sm">-->
+<!--            62台-->
+<!--        </view>-->
+<!--    </view>-->
+</view>
+

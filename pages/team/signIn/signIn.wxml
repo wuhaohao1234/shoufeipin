@@ -1,0 +1,142 @@
+<view>
+    <view class="top-bg">
+        <view class="flex justify-between align-center">
+            <view class="flex align-center">
+                <view>
+                    <image src="{{userInfo.avatar}}" class="face-img">
+
+                    </image>
+                </view>
+
+                <view class="text-white margin-left-xs">
+                    <view class="text-bold text-lg margin-bottom-sm">
+                        已连续签到 {{data.week_day}} 天
+                    </view>
+                    <view class="text-sm">
+                        今日签到获得{{data.points}}积分
+                    </view>
+                </view>
+            </view>
+
+            <view class="text-white padding-right-sm align-center">
+                <view>
+                    <view class="cu-btn line-white round " style="padding:0 30rpx">
+                        <view >
+                            <image src="https://cdn.wuhuit.com/fths/test/star_icon.png" class="little-icon"></image>
+                        </view>
+                        <view>
+                            {{userInfo.points}}
+                        </view>
+                    </view>
+                </view>
+                <view class="text-center">
+                    积分明细
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="padding-sm margin-top">
+        <view class="item  text-center">
+            <view class="text-left text-bold text-black">
+                连续签到拿好礼
+            </view>
+            <view class="margin-top-sm">
+                <view class="flex justify-between" style="flex-wrap: wrap;">
+                    <view class="sign-box flex justify-center" wx:for="{{signData.week_points}}">
+
+                        <view  class="sign-item {{signData.week_day >= index?'bg-main':'bg-gray'}}   padding-top-xs">
+                            <view class="flex justify-center">
+                                <view>
+                                    <view class="text-center">
+                                        第{{index}}天
+                                    </view>
+                                    <view class="flex justify-center margin-top-xs margin-bottom-xs">
+                                        <image wx:if="{{signData.week_day >= index}}" src="https://cdn.wuhuit.com/fths/test/star_icon.png" class="little-icon">
+
+                                        </image>
+                                        <image wx:else src="https://cdn.wuhuit.com/fths/test/none_icon.png" class="little-icon">
+
+                                        </image>
+                                    </view>
+                                    <view class="text-center text-sm">
+                                        {{item}}积分
+                                    </view>
+                                </view>
+                                <view wx:if="{{index==7}}" class="margin-left-xs">
+                                    <image src="https://cdn.wuhuit.com/fths/test/goods.png" style="width:130rpx;height:130rpx">
+
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="item  text-center" style="margin-top:30rpx">
+            <block wx:for="{{taskData}}">
+            <view class="flex align-center padding-sm">
+                <view class="">
+                    <image style="width:80rpx;height:80rpx" src="{{item.picture}}">
+
+                    </image>
+                </view>
+
+                <view class="flex justify-between align-center border-bottom" style="width:100%">
+
+                    <view class="margin-left-sm align-center">
+
+                        <view class="flex text-lg text-black">
+                            <view>
+                                {{item.title}}:
+                            </view>
+                            <view>
+                                {{item.points}}积分
+                            </view>
+                        </view>
+
+                        <view class="text-sm text-left margin-top-xs">
+                            {{item.subtitle}}
+                        </view>
+                    </view>
+
+                    <view>
+                        <view data-ident="{{item.ident}}" class="cu-btn sm bg-gray round" wx:if="{{item.is_get==2}}">
+                            已领取
+                        </view>
+                        <view bindtap="welfareTaskGet" data-ident="{{item.ident}}" class="cu-btn sm bg-blue round" wx:elif="{{item.is_get==1}}">
+                            去领取
+                        </view>
+                        <view wx:else>
+                            <view bindtap="toLogin" class="cu-btn sm bg-main round" wx:if="{{item.ident=='first_register'}}">
+                                去授权
+                            </view>
+                            <view bindtap="toUserInfo" class="cu-btn sm bg-main round" wx:if="{{item.ident=='basic_info'}}">
+                                去完善
+                            </view>
+                            <view bindtap="toRecovery" class="cu-btn sm bg-main round" wx:if="{{item.ident=='success_full_order'}}">
+                                去完成
+                            </view>
+                            <view bindtap="toFriends" class="cu-btn sm bg-main round" wx:if="{{item.ident=='invite_friends'}}">
+                                去邀请
+                            </view>
+                            <button open-type="share" class="cu-btn sm bg-main round" wx:if="{{item.ident=='mini_share'}}">
+                                去分享
+                            </button>
+                        </view>
+
+                        <view wx:if="{{item.success_count > 0}}">
+                            {{item.this_success_count}}/{{item.success_count}}
+                        </view>
+
+                    </view>
+                </view>
+            </view>
+
+        </block>
+        </view>
+
+    </view>
+</view>

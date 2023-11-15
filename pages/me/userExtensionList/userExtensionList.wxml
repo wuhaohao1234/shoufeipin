@@ -1,0 +1,77 @@
+<!--pages/me/userExtensionList/userExtensionList.wxml-->
+<view>
+  <view class="top-bg">
+
+  </view>
+  <view class="main-total margin-sm margin-top-xl flex justify-between text-center">
+    <view style="flex-grow: 1">
+      <view class="text-gray margin margin-top-xl">
+        已获得积分
+      </view>
+      <view class="flex text-center justify-center">
+        <view class="main-font-color text-xxl margin-right-xs flex  flex-direction justify-end">{{userInfo.sum_points}}</view>
+        <view class="flex flex-direction justify-end" style="padding-bottom: 5rpx;">积分</view>
+      </view>
+    </view>
+    <view style="flex-grow: 1">
+      <view class="text-gray margin margin-top-xl">
+        已获得金额
+      </view>
+      <view class="flex text-center justify-center">
+        <view class="main-font-color text-xxl margin-right-xs flex  flex-direction justify-end">{{userInfo.sum_money}}</view>
+        <view class="flex flex-direction justify-end" style="padding-bottom: 5rpx;">元</view>
+      </view>
+    </view>
+    <view style="flex-grow: 1">
+      <view class="text-gray margin margin-top-xl">
+        已成功邀请
+      </view>
+      <view class="flex text-center justify-center">
+        <view class="main-font-color text-xxl margin-right-xs flex flex-direction justify-end">{{userInfo.recommend_number}}</view>
+        <view class="flex flex-direction justify-end" style="padding-bottom: 5rpx;">人</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex justify-between padding margin-top-xl">
+    <view class="text-black text-xxl flex flex-direction justify-end">
+      返佣记录
+    </view>
+
+    <!-- <view class="text-gray flex flex-direction justify-end">
+            共计800积分
+        </view> -->
+  </view>
+
+  <view class="list">
+    <view class="item  padding" wx:for="{{list}}">
+      <view style="line-height: 35rpx;padding-top: 15rpx;">
+      
+      获得时间：{{item.create_at}}</view>
+      <view class="flex justify-between">
+        <view class="flex" style="flex-grow: 1">
+          <view>
+            <image class="jfjf-av" src="{{item.avatar}}"></image>
+          </view>
+          <view style="padding-top: 20rpx">
+            <view class="text-df">
+              {{item.nickname}}
+            </view>
+            <view class="margin-top-xs" style="font-size: 12px;">
+              类型：{{item.name}}
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{item.type == 'points'}}" class="text-red padding-top">
+          获得:{{item.number}}积分
+        </view>
+        <view wx:if="{{item.type == 'money'}}" class="text-red padding-top">
+          获得:￥{{item.number}}
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+<view class="flex padding-lr margin-top-sm align-center">
+	<view class="text-bold margin-right-xs">定位:</view>
+	<view class="cuIcon-locationfill text-gray"></view>
+	<view class="text-gray">{{selfAddress.address}}</view>
+</view>
+<view class="padding flex justify-between flex-wrap">
+
+	<view wx:for="{{list}}" style="background: {{item.bg_color}}"
+	bindtap="create" data-id="{{item.id}}"  data-name="{{item.title}}"
+	class="item radius flex padding justify-between margin-bottom">
+		<view class="text-cut">
+			<view class="text-lg margin-bottom-sm">
+				{{item.title}}
+			</view>
+			<view>
+				{{item.subtitle}}
+			</view>
+		</view>
+		<view>
+			<image class="lite-img" src="{{item.icon}}"></image>
+		</view>
+	</view>
+
+	<view wx:if="{{list%2>0}}"></view>
+
+</view>

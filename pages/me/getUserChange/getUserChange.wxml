@@ -1,0 +1,107 @@
+<view>
+    <view class="top padding bg-white">
+        <view class="text-gray">
+            提现方式
+        </view>
+		<!-- <view class="page-section">
+			<radio-group bindchange="radioChange">
+				<label class="flex align-center padding-tb-sm justify-between" wx:for="{{items}}" wx:key="{{item.value}}">
+						<view class="">
+							<image src="{{item.icon}}" style="width:50rpx;height:50rpx;border-radius:50%;vertical-align: middle;" />
+						</view>
+					    <view class="padding-left-xs" style="width:570rpx">{{item.name}}</view>
+						<view class="weui-cell__hd">
+						    <radio value="{{item.value}}" checked="true"/>
+						</view>
+					</label>
+			</radio-group>
+		</view> -->
+	<!-- 	<view class="padding-sm flex justify-between align-center" style="background:#ffedef;color:#ff3a41;">
+			<view>
+				 <text class="cuIcon-pay" style="color:#ff3a41;font-size:30rpx;"></text><text class="padding-left-xs" style="font-size:24rpx;">您还未绑定银行卡，点击绑卡</text>
+			</view>
+			<view>
+				<text class="cuIcon-right"></text>
+			</view>
+		</view> -->
+		
+        <view class="flex justify-between" wx:if="{{recycle_withdraw_wechat_is_open == 1}}">
+            <view class="flex">
+                <view class="bg-green radius" style="width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center">
+                    <view class="cuIcon-weixin text-white" ></view>
+                </view>
+
+                <view class="margin-left-xs">微信提现</view>
+                <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+                </view>
+            </view>
+            <!-- <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+            </view> -->
+        </view>
+        <view wx:else class="flex justify-between margin-top-sm" >
+			<view class="flex">
+			    <view class="bg-gradual-blue {{alipay_account!=''?'radius margin-top-xs':''}}" style="width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center">
+			        <view class="cuIcon-pay text-white" ></view>
+			    </view>
+			
+			    <view class="margin-left-sm">
+					<view>支付宝打款</view>
+					<view class="flex align-center" wx:if="{{alipay_account!=''}}" >
+						<view style="font-size:22rpx;color:#999999;line-height:1">支付宝账号：{{alipay_account}}</view>
+						<view class="margin-left-sm" bindtap="goChangeZh" style="border:1rpx solid #49EAC1;padding:9rpx 13rpx;font-size:18rpx;line-height:1;border-radius:25rpx;color:#49EAC1">更换账号</view>
+					</view>
+					
+				</view>
+			</view>
+			<view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+			
+			</view>
+           <!-- <view class="flex">
+                <view class="bg-gradual-blue radius" style="width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center">
+                    <view class="cuIcon-pay text-white" ></view>
+                </view>
+
+                <view class="margin-left-xs">支付宝打款</view>
+            </view>
+            <view class="cuIcon-check text-red text-bold text-xsl" style="font-size: 48rpx">
+
+            </view> -->
+        </view>
+    </view>
+	<view style="height:20rpx;background:#F5F5F5;"></view>
+    <view class="margin-top-xs bg-white padding">
+		<view class="flex justify-between margin-bottom-sm">
+			<view class="">
+			    提现金额
+			</view>
+			<view class="" style="font-size:24rpx;color:#ff3a41;">
+			    单笔 提现至少1元
+			</view>
+		</view>
+        
+
+        <view class="text-sl price flex padding-bottom-sm padding-top-sm">
+            <input bindinput="changeGetMoney" value="{{get_money}}" placeholder=" ¥ 输入提现金额" style="font-size: 38rpx;height:50rpx;"></input>
+        </view>
+
+        <view class="flex justify-between margin-top-sm">
+            <view class="flex">
+                <view class="text-gray">
+                    可提现金额
+                </view>
+                <view class="text-red margin-left-sm">
+                    {{money}}
+                </view>
+            </view>
+            <view class="text-red" bindtap = "getAll">
+                全部提现
+            </view>
+        </view>
+    </view>
+
+    <view class="getChangeBtn" bindtap="enterWithdrawal">
+        提交
+    </view>
+</view>

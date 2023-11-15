@@ -1,0 +1,532 @@
+<view id="page">
+  <view class="nav-box">
+    <!-- 状态栏高度 -->
+    <view style="height: {{titleTop}}px"></view>
+    <!-- 标题栏高度 -->
+    <view class='nav-img' style="height: {{titleHeight}}px;">
+      <image bindtap="goHome" mode='heightFix' style="margin-right: 10rpx;" class="ad_img" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/1/%E8%BF%94%E5%9B%9E.png"></image>
+      <image bindload="initAdImg" mode='heightFix' class="ad_img" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2%E5%B7%A6%E4%B8%8A%E8%A7%92%E9%A2%84%E7%BA%A6%E4%B8%8A%E9%97%A8%E6%94%B6%E5%BA%9F%E5%93%811.png"></image>
+    </view>
+  </view>
+  <view style="height: {{titleTop+titleHeight}}px"></view>
+  <view class="bg">
+    <view class="address card p-20" bindtap="checkAddress">
+      <view class="address-left">
+        <view wx:if="{{address.id}}" style="max-width: 500rpx">
+          <view class="text-black text-lg flex-row align-center">
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%20%282%29.png" style="width: 40rpx;margin-right: 5rpx;" mode="widthFix" />{{address.name}}
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/24gf-phoneLoudspeaker.png" style="width: 40rpx;margin-right: 5rpx;margin-left: 90rpx;" mode="widthFix" /> {{address.phone}}
+          </view>
+          <view class="text-gray text-cut flex-row align-center" style="margin-top: 10rpx;">
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%9C%B0%E5%9D%80.png" style="width: 40rpx;margin-right: 5rpx;" mode="widthFix" />
+            <view style="width: 500rpx;overflow: auto;">{{address.province}} {{address.city}} {{address.district}}
+              {{address.street}} {{address.address}}
+            </view>
+          </view>
+        </view>
+        <view wx:else style="max-width: 500rpx;flex-grow: 1">
+          <view class="text-black text-lg text-left flex-row align-center">
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%9C%B0%E5%9D%80.png" style="width: 40rpx;margin-right: 5rpx;" mode="widthFix" />
+            请添加回收地址
+          </view>
+          <!-- <view class="text-gray">点击此处添加地址 </view> -->
+        </view>
+      </view>
+      <view>
+        <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E6%96%B0%E5%BB%BA%E3%80%81%E5%BD%95%E5%85%A5.png " style="width: 50rpx;margin-right: 20rpx;" mode="widthFix" />
+      </view>
+    </view>
+
+
+
+
+
+
+    <view class="service-type mt-20 card p-20">
+      <view class=" flex justify-between">
+        <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%B0%8A%E6%95%AC%E7%9A%84%E7%94%A8%E6%88%B7%EF%BC%8C%E4%BD%A0%E5%A5%BD%E9%80%89%E6%8B%A9%E5%9B%9E%E6%94%B6%E7%A7%8D%E7%B1%BB.png" mode="" style="width: 100%;height: 60rpx;" />
+      </view>
+
+      <!-- <view class="flex-row">
+	    <view class="flex-sub flex-row align-center items {{item.id == checkCateId ? 'actives' :'' }}" bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}">
+	      <image style="width: 60rpx;" mode="widthFix" src="{{item.picture}}"></image>
+	      {{item.name}}
+	    </view>
+	  </view> -->
+
+
+
+      <view class="type-list">
+        <view class="flex" wx:if="{{cateList.length <= 4}}">
+          <!-- <view class="flex-row" bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}"
+                        class="type-item text-center {{checkCateId===item.id? 'checkCate' : ''}} ">
+                        <image src="{{item.picture}}"></image>
+                        <view>
+                            {{item.name}}
+                        </view>
+                    </view> -->
+
+        </view>
+        <!-- <scroll-view scroll-x="true" wx:else>
+          <view class="flex">
+            <view bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" class="type-item {{checkCateId===item.id? 'checkCate' : ''}} ">
+              <image src="{{item.picture}}"></image>
+              <view>
+                {{item.name}}
+              </view>
+            </view>
+          </view>
+        </scroll-view> -->
+
+
+
+
+        <!-- <view wx:if="{{showPrice}}">
+          <view bindtap="checkIn" class="{{item.is_in ? 'itemxz fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price' : 'fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price'}}" data-item="{{item}}" wx:for="{{category}}">
+            <view class="flex fplist-item align-center">
+              <image class="fplist-checkimg" src="{{item.is_in ? 'http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E5%B7%B2%E9%80%89%E5%9B%BE%E6%A0%87.png' : 'http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E6%9C%AA%E9%80%89%E5%9B%BE%E6%A0%87.png'}}"></image>
+              <view>
+                <image wx:if="{{item.picture}}" src="{{ item.picture }}" class="fplist-item__pic"></image>
+              </view>
+              <view class="fplist-item__info">
+                <view>
+                  <view class="{{item.is_in ? 'asdf1' : 'gggg'}}">{{item.name}}</view>
+                </view>
+                <view class="{{item.is_in ? 'asdf1' : 'gggg'}}">
+                  废品价格： {{item.money}}{{float_price_is_open==1 ?' - '+item.max_money:''}}/{{item.unit_name}}
+                </view>
+              </view>
+            </view>
+            <view class="checked-right {{item.is_in ? 'asdf1' : 'gggg'}}">
+              <checkbox color="#26fbcc" checked="{{item.is_in}}" class="checked-icon" />
+            </view>
+          </view>
+        </view> -->
+
+        <view wx:if="{{needSellCategory.length === 0}}">
+          <view class="text-center" style="margin: 15rpx;font-size: 25rpx;color: gray;">请添加需要卖的废品</view>
+          <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E7%AB%8B%E5%8D%B3%E6%B7%BB%E5%8A%A0%E6%8C%89%E9%92%AE.png" style="width: 100%;" mode="widthFix" bindtap="showCategoryPopupWindow" />
+        </view>
+        <!-- 如果有选择小类型则显示 -->
+        <view wx:else>
+          <view wx:if="{{showPrice}}" style="height: auto;max-height: 825rpx;overflow-y: scroll;">
+            <view bindtap="checkIn" class="{{item.is_in ? 'itemxz fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price' : 'fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price'}}" data-item="{{item}}" wx:for="{{needSellCategory}}">
+              <view class="flex fplist-item align-center">
+                <image class="fplist-checkimg" src="{{item.is_in ? 'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E5%B7%B2%E9%80%89%E5%9B%BE%E6%A0%87%20%281%29.png' : 'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E6%9C%AA%E9%80%89.png'}}"></image>
+                <view>
+                  <image wx:if="{{item.picture}}" src="{{ item.picture }}" class="fplist-item__pic"></image>
+                </view>
+                <view class="fplist-item__info">
+                  <view>
+                    <view class="{{item.is_in ? 'asdf1' : 'gggg'}}">{{item.name}}</view>
+                  </view>
+                  <view class="{{item.is_in ? 'asdf1' : 'gggg'}}">
+                    废品价格： {{item.money}}{{float_price_is_open==1 ?' - '+item.max_money:''}}/{{item.unit_name}}
+                  </view>
+                </view>
+              </view>
+              <view class="checked-right {{item.is_in ? 'asdf1' : 'gggg'}}">
+                <view class="checkbox-wrapper {{item.is_in?'checkedbox-wrapper':''}}">
+                  <checkbox color="#26fbcc" checked="{{item.is_in}}" class="checked-icon {{item.is_in?'cate-checked':'cate-unchecked'}}" />
+                </view>
+              </view>
+            </view>
+          </view>
+          <view style="padding: 20rpx 0 0 0;">
+            <!-- 继续添加 -->
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E7%BB%A7%E7%BB%AD%E6%B7%BB%E5%8A%A0%E6%8C%89%E9%92%AE.png" style="width: 100%;" mode="widthFix" bindtap="showCategoryPopupWindow" />
+          </view>
+        </view>
+
+
+
+      </view>
+    </view>
+
+    <view class="all-category-popup-wrapper" hidden="{{!categoryPopupShow}}" animation="{{categoryBgAnimation}}">
+      <!-- 小分类选择窗口 -->
+      <view class="category-popup-wrapper" hidden="{{!categoryPopupShow}}" animation="{{categoryWindowAnimationData}}">
+        <view class="flex justify-center align-center" style="margin: 40rpx 0 45rpx 0;width: 100%;">
+          <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E8%AF%B7%E6%B7%BB%E5%8A%A0%E9%9C%80%E8%A6%81%E5%8D%96%E7%9A%84%E5%BA%9F%E5%93%81.png" class="flex aligh" style="width: 65%;" mode="widthFix" />
+        </view>
+
+        <!-- 大分类和小分类的内容 -->
+        <view style="padding: 0 30rpx;display: flex;justify-content: flex-start;align-items: center;flex-flow: column;width: 100%;flex: 1;">
+          <view class="flex-row" style="width: 100%;">
+            <view class="flex-sub flex-row align-center items {{item.id == checkCateId ? 'actives' :'' }}" bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" style="display: flex;align-items: center;justify-content: center;flex-flow: column;">
+              <image style="width: 60rpx;" mode="widthFix" src="{{item.picture}}"></image>
+              {{item.name}}
+            </view>
+          </view>
+
+          <view wx:if="{{showPrice}}" style="margin-top: 20rpx;flex: 1;width: 100%;display: flex;justify-content: flex-start;align-items: center;flex-flow: column;">
+			  <view style="overflow-y: scroll;flex: 1 0 auto;width: 100%;height: 0;">
+				<view bindtap="checkIn" class="{{item.is_in ? 'itemxz fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price' : 'fplist flex justify-between align-center text-center margin-top-xs padding-xs checked-price'}}" data-item="{{item}}" wx:for="{{category}}">
+				  <view class="flex fplist-item align-center">
+					<image class="fplist-checkimg" src="{{item.is_in ? 'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E5%B7%B2%E9%80%89%E5%9B%BE%E6%A0%87%20%281%29.png' : 'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E6%9C%AA%E9%80%89.png'}}"></image>
+					<view>
+					  <image wx:if="{{item.picture}}" src="{{ item.picture }}" class="fplist-item__pic"></image>
+					</view>
+					<view class="fplist-item__info">
+					  <view>
+						<view class="{{item.is_in ? 'asdf1' : 'gggg'}}">{{item.name}}</view>
+					  </view>
+					  <view class="{{item.is_in ? 'asdf1' : 'gggg'}}">
+						废品价格： {{item.money}}{{float_price_is_open==1 ?' - '+item.max_money:''}}/{{item.unit_name}}
+					  </view>
+					</view>
+				  </view>
+				  <view class="checked-right {{item.is_in ? 'asdf1' : 'gggg'}}">
+					<view class="checkbox-wrapper {{item.is_in?'checkedbox-wrapper':''}}">
+					  <checkbox color="#26fbcc" checked="{{item.is_in}}" class="checked-icon {{item.is_in?'cate-checked':'cate-unchecked'}}" />
+					</view>
+				  </view>
+				</view>
+			  </view>
+
+			  <!-- 选择好大分类和小分类后的确认按钮和关闭按钮 -->
+			  <view class="category-btn-group flex justify-center align-center" style="gap: 20rpx;padding: 20rpx 0;width: 100%;flex-basis: 100rpx;">
+				<view style="flex-basis: 500rpx;">
+				  <image src="{{yjsy == '0元' ? 'http://gchscc.zaishenziyuan.cn/e9/111/11/11/%E7%BB%84%E4%BB%B6%2034.png' : 'http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E7%A1%AE%E5%AE%9A%E6%B7%BB%E5%8A%A0.png'}}" class="flex aligh" style="width: 100%;" mode="widthFix" bindtap="confirmNeedSellCategory" />
+				</view>
+				<view style="flex: 1;">
+				  <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/33/%E5%85%B3%E9%97%AD.png" class="flex aligh" style="width: 100%;" mode="widthFix" bindtap="closeCategoryPopupWindow" />
+				</view>
+			  </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <view class="card mt-20" style="padding-bottom: 30rpx;">
+      <view class="flex justify-between check-item" wx:if="{{recycle_community_is_show == 1 && false}}">
+        <view class="flex justify-between padding-sm">
+          <view class="text-lg">
+            小区选择
+          </view>
+          <picker value="{{communityIndex}}" range="{{communityList}}" bindchange="bindCommunityChange" range-key="name">
+            <view class="picker">
+              {{communityList[communityIndex]['name']}}
+            </view>
+          </picker>
+        </view>
+        <view class="cuIcon-right text-center text-gray" style="line-height: 80rpx"></view>
+      </view>
+
+      <view class="flex justify-between check-item">
+        <view class="flex justify-between padding-sm align-center" style="flex-grow: 1;padding: 20rpx 10rpx 20rpx 20rpx;">
+          <view class="text-lg">
+            <image style="width: 190rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E9%A2%84%E7%BA%A6%E6%97%B6%E9%97%B41.png" mode="widthFix" />
+          </view>
+          <!-- <view class="text-gray">
+            <picker mode="date" value="{{date}}" start="2020-08-01" end="2025-09-01" bindchange="bindDateChange">
+              <view class="picker">
+                {{date}}
+              </view>
+            </picker>
+          </view> -->
+        </view>
+
+        <view class="text-center text-gray" style="line-height: 86rpx;margin-right: 24rpx;">
+          <!-- <image src="http://gchscc.zaishenziyuan.cn/%E9%80%89%E6%8B%A9.png" style="width: 40rpx;" mode="widthFix" /> -->
+          回收员会根据您的预约时间上门回收
+        </view>
+      </view>
+      <view style="padding: 0 20rpx;">
+        <ul class="daySelBox" style="padding: 0;">
+          <li class="daySelBox-item" wx:for="{{calendar}}" style="background-color : {{item.day == date ? '#46f2bd' : '#e9fef9;'}} ;color:{{item.day == date ? '#fff' : '#000;'}}" bindtap="bindDateChange" data-id="{{item.day}}">
+            <text>{{item.week}}</text>
+            <text>{{item.date}}</text>
+          </li>
+        </ul>
+      </view>
+
+      <!-- <view class="flex justify-between check-item">
+        <view class="flex justify-between padding-sm align-center" style="flex-grow: 1;padding: 20rpx 10rpx 20rpx 20rpx;">
+          <view class="text-lg">
+            <image style="width: 180rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E9%A2%84%E7%BA%A6%E6%97%B6%E6%AE%B51.png" mode="widthFix" />
+          </view>
+          <view class="text-gray">
+            选择 上门时段
+          </view>
+        </view>
+        <view class="text-center text-gray" style="line-height: 88rpx;margin-right: 20rpx;">
+          <image src="http://gchscc.zaishenziyuan.cn/%E6%97%A5%E5%8E%86.png" style="width: 40rpx;" mode="widthFix" />
+        </view>
+      </view> -->
+
+      <view class="weight-list flex flex-wrap ">
+        <view bindtap="checkDataHandler" data-id="{{item.id}}" wx:for="{{timeList}}" class="weight-item margin-lr {{slot_id === item.id ?'checked-weight':''}}" style="margin: 10rpx 10rpx">
+          {{item.start_time}}-{{item.end_time}}
+        </view>
+        <view wx:if="{{timeList.length%2 > 0}}">
+
+        </view>
+      </view>
+      <view style="margin: 0 20rpx;" class="timeCount flex">
+        <image style="width: 30rpx;" src="http://gchscc.zaishenziyuan.cn/e9/111/11/11/%E6%97%B6%E9%97%B4.png" mode="widthFix" />
+        <view style="margin-left: 10rpx;">
+          预约时间：{{dateCount}} {{countTime.start_time}}-{{countTime.end_time}}
+        </view>
+      </view>
+      <view class="flex justify-between check-item">
+        <view class="flex justify-between padding-sm align-center" style="flex-grow: 1;padding: 20rpx 10rpx 20rpx 20rpx;">
+          <view class="text-lg">
+            <image style="width: 180rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E9%87%8D%E9%87%8F.png" mode="widthFix" />
+          </view>
+          <view class="text-gray">
+            如果不清楚重量可随意选择
+          </view>
+        </view>
+        <view class="text-center text-gray" style="line-height: 88rpx;margin-right: 20rpx;">
+          <image src="http://gchscc.zaishenziyuan.cn/kg.png" style="width: 40rpx;" mode="widthFix" />
+        </view>
+      </view>
+
+      <view style="padding:0 20rpx 30rpx 20rpx;">
+        <ul class="daySelBox" style="padding: 0;">
+          <li class="daySelBox-item" wx:for="{{weightList}}" style="background-color : {{checkWeight== item ? '#46f2bd' : '#e9fef9;'}} ;color:{{checkWeight == item ? '#fff' : '#000;'}};height: 50px;width: 140rpx;" bindtap="checkWeightHandler" data-weight="{{item}}">
+            <text>{{item}}</text>
+          </li>
+        </ul>
+      </view>
+      <view style="background-color: #FFF5E5;margin:0 20rpx;border: 0.5px solid #F69007;color: #F69007;border-radius: 5px;">
+        <view class="flex xdsy" style="padding: 10rpx 0;">
+          <view class="xdsy-icon">
+            <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A21/%E9%9D%A2%E6%80%A7%E4%BD%99%E9%A2%9D.png" />
+          </view>
+          <view>
+            <view>预计收益：<text style="font-weight: 700;">{{yjsy || '暂无估价（请先选择废品和斤重）'}}</text></view>
+            <view>结算金额以回收员实际成交金额为准</view>
+          </view>
+        </view>
+
+
+
+
+      </view>
+      <!-- <view class="weight-list flex flex-wrap justify-between">
+        <view bindtap="checkWeightHandler" data-weight="{{item}}" wx:for="{{weightList}}" class="weight-item margin-lr {{checkWeight === item ?'checked-weight':''}}">
+          {{item}}
+        </view>
+        <view wx:if="{{weightList.length%2 > 0}}">
+        </view>
+      </view> -->
+    </view>
+    <view class="card mt-20">
+      <view class="flex justify-between check-item ">
+        <view class="flex justify-between padding-sm align-center" style="flex-grow: 1;padding: 20rpx 10rpx 20rpx 20rpx;">
+          <view class="text-lg">
+            <image style="width: 180rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%BA%9F%E5%93%81%E5%9B%BE%E7%89%871.png" mode="widthFix" />
+          </view>
+          <view class="text-gray">
+            建议上传
+          </view>
+        </view>
+        <view class="text-center text-gray" style="line-height: 94rpx;margin-right: 20rpx;">
+          <image src="http://gchscc.zaishenziyuan.cn/%E9%80%9A%E7%9F%A5.png" style="width: 40rpx;" mode="widthFix" />
+        </view>
+      </view>
+      <view class="cu-form-group" style="border-radius: 20rpx;">
+        <view class="grid col-3 grid-square flex-sub">
+          <view bindtap="uploadAvatar" class="padding-xs ggg">
+            <!-- <text class="cuIcon-cameraaddfill"></text> -->
+            <!-- <image src="" style="width: 250rpx;" /> -->
+          </view>
+          <view class="padding-xs bg-img" wx:for="{{picture}}" style="background-image:url({{item}});" wx:if="{{picture.length>0}}">
+            <view class="close" catchtap="closeImg" data-id="{{index}}"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="card mt-20">
+      <view class="flex justify-between check-item ">
+        <view class="flex justify-between padding-sm" style="flex-grow: 1">
+          <view class="text-lg">
+            <image style="width: 180rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%A4%87%E6%B3%A8%E7%95%99%E8%A8%801.png" mode="widthFix" />
+          </view>
+        </view>
+        <!-- <view class="cuIcon-right text-center text-gray" style="line-height: 80rpx">
+      </view> -->
+      </view>
+      <view class="cu-form-group" style="border-radius: 20rpx;">
+        <textarea value="{{message_remark}}" class="remark-input" placeholder="给回收小哥捎句话吧 · · ·" bindinput="onMessageRemark"></textarea>
+        <view style="padding-bottom: 25rpx;">快捷： <text data-id="{{'带点绳子'}}" bindtap="setKjVal" class="kj_text">带点绳子</text><text bindtap="setKjVal" data-id="{{'带点袋子'}}" class="kj_text">带点袋子</text><text bindtap="setKjVal" data-id="{{'废品比较多'}}" class="kj_text">废品比较多</text><text bindtap="setKjVal" data-id="{{'快点来哦~着急'}}" class="kj_text">快点来哦~</text></view>
+      </view>
+    </view>
+
+    <!-- <view class="clause-box padding-sm flex justify-start align-center ">
+    <image class="c-icon" src="https://cdn.wuhuit.com/fths/index/tips.png"></image>
+    <view class="lable">下单即代表你同意</view>
+    <view class="light" bindtap="showClause">《{{appName}}免责条款》</view>
+  </view> -->
+
+
+    <view class="flex justify-center align-center" style="margin-top: 20rpx;border-radius: 20rpx;overflow: hidden;">
+      <image style="flex: 1;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/1/%E6%9C%AA%E5%91%BD%E5%90%8D%281%29%289%29.jpg" mode="widthFix" />
+
+    </view>
+
+    <view class='help card mt-20' style="margin-top: 20rpx;">
+      <view style="font-size: 40rpx;margin-left: 20rpx;padding-top: 20rpx;">常见问题</view>
+      <view class='help_item ' wx:for="{{questList}}" wx:key="index">
+        <view class='title' data-index='{{index}}' catchtap='panel'>
+          <view class='title_1'>{{item.title}}</view>
+          <view class='title_2'>
+            <image src="/pages/images/common/{{item.t ? 'up':'down'}}.png"></image>
+          </view>
+        </view>
+        <view class='detail' style="padding: {{item.t?'10rpx':0}};height:{{ item.t?'':0}};margin:{{item.t?'10rpx 30rpx':'0'}};">
+		
+		<text>{{item.content}}</text>
+		
+		<view style="font-weight: 700;line-height: 70rpx;margin-top: 20rpx;">回收电话</view>
+		<view bindtap="goPhone" data-phone='18551014057'>卞师傅：18551014057
+		  <image style="width: 30rpx;vertical-align: middle;" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%94%B5%E8%AF%9D%20%281%29.png" mode="widthFix" />
+		</view>
+		<view bindtap="goPhone" data-phone='15195712972'>刘师傅：15195712972
+		  <image style="width: 30rpx;vertical-align: middle;" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%94%B5%E8%AF%9D%20%281%29.png" mode="widthFix" />
+		</view>
+		</view>
+		
+      </view>
+    </view>
+
+
+
+
+  </view>
+
+</view>
+
+<view id='footerBar' class="shad" animation="{{footerBarAnimationData}}">
+  <view style="position: relative; top:50%;transform: translate(0,-50%);">
+    <view class="clause-box flex justify-start align-center">
+      <image class="c-icon" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E6%8F%90%E9%86%92%20%283%29.png"></image>
+      <view class="lable">下单即代表你同意</view>
+      <view class="light" bindtap="showClause">《{{appName}}免责条款》</view>
+      <view style="margin-left:auto;padding:5rpx 15rpx;background-color: #EEFFFB ;border:1px solid #05FFC7;color: #05FFC7;font-size: 22rpx;border-radius: 5px;" bindtap="showzFingerpostDialog">{{fingerpostVisible ? '关闭' : ''}}回收指南</view>
+    </view>
+    <view class="flex-row" style="margin-top: 25rpx;">
+      <!-- <view class="flex-row align-center  card justify-center itemaa shad" style="width:20%;" bindtap="goHome">
+        <image style="width: 100%;height: 100%;border-radius: 5px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/32/11/%E9%A6%96%E9%A1%B5.png" mode="aspectFill" />
+      </view> -->
+      <view class="flex-row align-center card  justify-center itemaa " style="width: 20%;flex-basis: 210rpx;" bindtap="createRecycle3">
+        <image style="width: 100%;height: 100%;border-radius: 5px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/1/%E5%85%AC%E7%9B%8A%E6%8D%90%E8%B5%A0.png" mode="aspectFill" />
+      </view>
+      <view class="flex-row align-center card  justify-center itemaa " style="width: 60%;flex: 1;" bindtap="createRecycle1">
+        <image style="width: 100%;height: 100%;border-radius: 5px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/1/%E7%AB%8B%E5%8D%B3%E9%A2%84%E7%BA%A6.png" mode="aspectFill" />
+      </view>
+      <!-- <view class="flex-row align-center flex-sub card justify-center itemaa" bindtap="createRecycle3">
+        <image style="width: 40rpx;margin-right: 10rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%85%9A%E5%BB%BA%E6%B4%BB%E5%8A%A8_%E7%88%B1%E5%BF%83%E6%8D%90%E8%B5%A0.png" mode="widthFix" />
+        公益赠送
+      </view>
+      <view class="flex-row align-center flex-sub card justify-center itemaa" bindtap="createRecycle1" style="background-color: #26FAC0;">
+        <image style="width: 40rpx;margin-right: 5rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%8E%AF%E4%BF%9D%E4%BF%A1%E6%81%AF%20%283%29.png " mode="widthFix" />
+        <image style="width: 120rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E7%AB%8B%E5%8D%B3%E9%A2%84%E7%BA%A61.png" mode="widthFix" />
+      </view>
+      <view class="flex-row align-center flex-sub card justify-center itemaa" bindtap="showModal" data-target="checkType">
+        <image style="width: 40rpx;margin-right: 10rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.png" mode="widthFix" />
+        定时回收
+      </view> -->
+    </view>
+  </view>
+
+</view>
+<view id="mask-b" wx:if="{{fingerpostVisible}}">
+  <view class="fingerpost-dialog-box"></view>
+  <view class="fingerpost-dialog">
+    <view style="text-align: center;">
+      <view style="font-size: 45rpx;font-weight: 700;">港城回收指南</view>
+      <view style="font-size: 30rpx;line-height: 80rpx;">连云港领先的互联网+废品回收服务平台</view>
+    </view>
+    <view>
+      <image style="width: 100%;" src="http://gchscc.zaishenziyuan.cn/%E5%85%AC%E5%91%8A%E8%83%8C%E6%99%AF%E5%9B%BE/%E7%94%B5%E5%95%86%E7%BE%8E%E5%AE%B9%E7%BE%8E%E5%A6%86%E4%BF%9D%E6%B9%BF%E9%9D%A2%E9%9C%9C%E8%99%9A%E6%8B%9F%E8%87%AA%E7%84%B6%E9%A3%8E%E5%90%88%E6%88%90%E6%B5%B7%E6%8A%A5.jpg" mode="widthFix" />
+    </view>
+    <view style="padding:  0 7rpx;">
+      <text style="font-weight: 700;line-height: 70rpx;">下单须知</text>
+      <text>
+        回收标准:每次最低10KG起收，衣服要干净干燥，不破干燥，不破不染色，不发霉不变形，拉链等配件完好;回收品类:[衣物类]家庭成员的衣物，鞋子(双只),包类:[家纺类]被单，被套，毛巾、浴巾、床单、窗帘。\n</text>
+      <text>
+        注意事项:请确认衣物符合我们的回收标准，不合格
+        衣物占比较多的订单，我们将不予回收。对于部分多次或者恶意提供不合格衣物的账户，可能会被采取以下措施，包括但不限于:限制下单功能，因情况而定。
+      </text>
+      <text>
+        下单注意：请在下单的时候选择好废品的分类和时间，尽量上传废品图片，我们的回收员会根据您的预约时间上门回收，回收员也会根据您上传的废品图片带好打包工具，大件废品也会因为你上传的图片重新报价。
+      </text>
+      <text>
+        推广员招募中···
+        回收员招募中···
+        加盟商招募中···
+        提示：合作的商铺/单位/政府/街道/社区价格更高\n
+      </text>
+      <text style="font-weight: 700;line-height: 70rpx;">回收电话</text>
+      <view bindtap="goPhone" data-phone='18551014057'>卞师傅：18551014057
+        <image style="width: 30rpx;vertical-align: middle;" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%94%B5%E8%AF%9D%20%281%29.png" mode="widthFix" />
+      </view>
+      <view bindtap="goPhone" data-phone='15195712972'>刘师傅：15195712972
+        <image style="width: 30rpx;vertical-align: middle;" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%94%B5%E8%AF%9D%20%281%29.png" mode="widthFix" />
+      </view>
+    </view>
+
+
+  </view>
+</view>
+
+
+
+<view bindtap="hideModal" class="cu-modal  {{modalName==='checkType'?'show':''}}">
+  <view catchtap class="cu-dialog" style="height: 300rpx;">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content ">
+        <image src="http://gchscc.zaishenziyuan.cn/%E8%AF%B7%E9%80%89%E6%8B%A9%E5%9B%9E%E6%94%B6%E5%91%A8%E6%9C%9F.png " mode="widthFix" />
+      </view>
+    </view>
+    <view class="cu-bar bg-white card">
+      <view bindtap="hideModal" class="action margin-0 flex-sub agg" style="background-color: #26FAC0;color:#fff">
+        <image style="width: 30rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%88%97%E8%A1%A8%E5%88%A0%E9%99%A4%E3%80%81%E5%8F%96%E6%B6%88_2.png" mode="widthFix" />
+        取消
+      </view>
+      <view bindtap="createRecycle2" data-type="3" class="action margin-0 flex-sub text-green solid-left agg">每天回收
+      </view>
+      <view bindtap="createRecycle2" data-type="1" class="action margin-0 flex-sub text-green solid-left agg">每周回收
+      </view>
+      <view bindtap="createRecycle2" data-type="2" class="action margin-0 flex-sub text-green solid-left agg">每月回收
+      </view>
+    </view>
+
+  </view>
+
+
+</view>
+
+<view id="mask" wx:if="{{showClausePropup}}">
+  <view class="propup-box">
+    <view class="p-content">
+      <rich-text nodes="{{clauseContent}}"></rich-text>
+    </view>
+    <view class="c-btn" bindtap="hideClause">确定</view>
+  </view>
+
+</view>
+
+
+<view bindtap="hideModal1" class="cu-modal  {{modalName1=== 1?'show':''}}">
+  <view catchtap class="cu-dialog card">
+    <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E9%A2%84%E7%BA%A6%E6%88%90%E5%8A%9F.png " mode="widthFix" />
+  </view>
+
+</view>

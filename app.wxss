@@ -1,0 +1,26 @@
+/**app.wxss**/
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+.main-font-color{
+    color: #49EAC1;
+}
+.bg-main{
+    background-color: #49EAC1;
+    color: #fff;
+}
+.face-img{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+    border: 5rpx solid #fff;
+    margin-left: 20rpx;
+}
+
+.banner{
+    width: 750rpx;
+    height: 420rpx;
+}
+
+.border-bottom{
+    border-bottom: 1rpx solid #e6e6e6;
+}

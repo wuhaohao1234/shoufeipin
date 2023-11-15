@@ -1,0 +1,439 @@
+<!--index.wxml-->
+<view id="page">
+  <view class="nav-box">
+    <!-- 状态栏高度 -->
+    <view style="height: {{titleTop}}px"></view>
+    <!-- 标题栏高度 -->
+    <view class='nav-img' style="height: {{titleHeight}}px;">
+      <image  mode='heightFix' class="ad_img" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/tit.png"></image>
+    </view>
+  </view>
+  <view style="height: {{titleTop+titleHeight}}px"></view>
+  <view class="ad_box" wx:if="{{ad_tiem>0}}">
+    <view class="close_ad" bindtap="hideAdImg" wx:if="{{index_adv_pic}}">{{ad_tiem}}跳过</view>
+    <image bindload="initAdImg" mode='widthFix' class="ad_img" src="{{index_adv_pic}}"></image>
+  </view>
+  <view class="main-top">
+    <view class="eye-box flex justify-center align-end" bindtap="protClick" style="height: 70rpx;">
+      <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/32/11/GIF%E7%8E%AF%E4%BF%9D%E8%BD%A6.gif" mode="widthFix" class="icon-address" style="width: 60rpx;height: 50rpx;"></image>
+    </view>
+    <!-- 定位 bindtap="toSite" :data-marker="checkMarker" -->
+    <view class="top-box">
+
+      <view class="location-box">
+        <image src="https://cdn.wuhuit.com/fths/index/icon_address.png" class="icon-address"></image>
+        <text class="location-text">{{addressText}}</text>
+        <!-- <text class="cuIcon-right"></text> -->
+      </view>
+      <view class="work-time">工作时间：{{workday}}</view>
+
+    </view>
+
+    <!-- banner -->
+    <view class="banner">
+      <swiper class="banner" autoplay="{{autoplay}}" duration="{{duration}}" indicatorActiveColor="rgb(255, 255, 255)" indicatorColor="rgba(255, 255, 255, 0.4)" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{banners}}" wx:key>
+          <image class="slide-image" height="500" src="{{item.picture}}" bindtap="toBanner" data-url="{{ item.link }}"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <view wx:if="{{announcement.length > 0}}" class="inform-box">
+      <view class="inform-box_ad">
+        <image src="http://gchscc.zaishenziyuan.cn/%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA/%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%91%8A.png" class="icon-message"></image>
+        <swiper class="inform-list" indicator-dots="{{false}}" circular="true" autoplay="true" vertical="true" interval="3000" duration="1000">
+          <swiper-item wx:for="{{ announcement }}" wx:key bindtap="showContent" data-content="{{item.content}}">
+            <view class="inform-item">
+              {{item.title}}
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+
+      <view class="index-xiaoac">
+        <image style="width: 24px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/%E5%8D%83%E5%BA%93%E7%BD%91_%E7%9B%B8%E6%9C%BA%E5%9B%BE%E6%A0%87_%E5%85%83%E7%B4%A0%E7%BC%96%E5%8F%B712444802.png" bindtap="toGarbageIdentification" />
+
+        <view bindtap="kfClick" class="index-lxkfbtn">
+          <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E5%8D%83%E5%BA%93%E7%BD%91_%E7%94%B5%E8%AF%9D%E5%9B%BE%E6%A0%87_%E5%85%83%E7%B4%A0%E7%BC%96%E5%8F%B712129644.png"></image>
+        </view>
+
+        <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/%E7%94%B5%E8%AF%9D.png" bindtap="toServe" />
+      </view>
+    </view>
+
+    <!-- 菜单 -->
+    <view class="tab-box flex justify-between">
+      <scroll-view scroll-x="{{true}}" class="flex">
+        <view class="flex">
+          <view wx:for="{{nav}}" wx:key bindtap="toNav" data-item="{{item}}" class="tab-item margin-tb">
+
+            <view class="flex justify-center">
+              <!-- <image wx:if="{{item.picture}}" class="litte-img" src="{{item.picture}}"></image> -->
+              <image class="litte-img" src="{{item.picture}}" mode=""></image>
+            </view>
+            <!-- <view class="flex justify-center">
+              <view class="margin-top-xs">
+                {{item.name}}
+              </view>
+            </view> -->
+          </view>
+        </view>
+
+      </scroll-view>
+
+    </view>
+
+    <!-- 价格 -->
+    <view class="price-box-v1">
+      <view class="type-list  margin-top-sm" style="margin-top: 10rpx;">
+        <view class="flex justify-between" wx:if="{{cateList.length <= 4}}">
+          <view style="display: flex;flex-direction: column;" bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" class="type-item text-center {{item.id === checkCateId? 'checked-item' : ''}} ">
+            <image src="{{item.picture}}"></image>
+            <view>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+        <scroll-view style="white-space: nowrap;" scroll-x="true" wx:else>
+          <view style="display: inline-block;" bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" class="type-item {{item.id === checkCateId? 'checked-item' : ''}} ">
+            <image src="{{item.picture}}"></image>
+            <view>
+              {{item.name}}
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view>
+        <scroll-view scroll-x="true" style="white-space: nowrap;">
+          <view bindtap="checkChildCate" data-id="{{item.id}}" wx:for="{{childCateList}}" style="display: inline-block;" class="priceSubCat-item-v1 {{item.id === childCateId? 'checked-type' : ''}}">
+            {{item.name}}
+          </view>
+        </scroll-view>
+
+        <view class="priceSubCat-body-v1">
+          <view class="flex priceSubCat-body-item-v1 title" style="margin-bottom: -20rpx;">
+            <view class="pricename-v1">
+              废品名称
+            </view>
+            <view class="padding text-red curprice" style="font-size: 15px;font-weight: 900;">
+              最新价格
+            </view>
+          </view>
+          <view wx:for="{{productList}}" bindtap="checkProduct" data-product="{{item}}" class="flex priceSubCat-body-item-v1  {{item.isCheck?'checked-item':''}}">
+            <view class="pricename-v1">
+              {{item.name}}
+            </view>
+
+            <view class="text-red curprice">
+              ¥{{item.money}}{{float_price_is_open==1 ?' - '+item.max_money:''}}元/{{item.unit_name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 预约图片 -->
+    <view class="subscribe-box">
+      <image src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E6%9C%AA%E5%91%BD%E5%90%8D%281%29%287%29%20%281%29.png" class="subscribe-path" mode="widthFix" bindtap="toLink"></image>
+    </view>
+
+    <!-- 便民电话 合作伙伴 -->
+    <view class="flex index-dhhb">
+      <!-- 便民电话 -->
+      <view class="inform-list_tel" bindtap="tabtelShow">
+        <image src="http://gchscc.zaishenziyuan.cn/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D.png" />
+      </view>
+
+      <!-- 合作 -->
+      <view class="inform-list_tel" bindtap="handleHzshow">
+        <image src="http://gchscc.zaishenziyuan.cn/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7/%E7%94%B3%E8%AF%B7%E5%90%88%E4%BD%9C.png" />
+      </view>
+    </view>
+
+    <!-- 回收分类 -->
+    <view>
+      <!-- <image style="width: 100%;height: 100%;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E6%9C%AA%E5%91%BD%E5%90%8D%281%29%287%29%20%284%29.png" mode="widthFix"></image> -->
+      <!-- <view class="plate-title">
+        <text class="plate-name">热门回收类别</text>
+      </view>
+      <view class="classify-box">
+        <view wx:for="{{ cateList }}" wx:key class="classify-item" bindtap="toRecovery" data-id="{{item.id}}">
+          <image class="classify-cover" style="margin-left:15px;" src="{{item.picture}}" mode="widthFix"></image>
+          <view class="classify-info">
+            <text class="classify-name">{{ item.name }}</text>
+            <text class="classify-describe">{{ item.describe }}</text>
+          </view>
+
+        </view>
+      </view> -->
+    </view>
+
+    <view class="banner" style="height: 130px;">
+      <swiper class="banner" style="height: 130px;" autoplay="{{autoplay}}" duration="{{duration}}" indicatorActiveColor="rgb(255, 255, 255)" indicatorColor="rgba(255, 255, 255, 0.4)" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item >
+          <image class="slide-image" mode="aspectFill" style="height: 130px;"  height="130" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%8E%AF%E4%BF%9D%E7%BB%BF%E8%89%B2%E6%B8%85%E6%96%B0%E7%94%9F%E6%80%81%E4%B8%BB%E9%A2%98%E6%8F%92%E7%94%BB%E7%94%9F%E6%80%81%E7%A0%94%E7%A9%B6%20%281%29.png" ></image>
+        </swiper-item>
+        <swiper-item >
+          <image class="slide-image" style="height: 130px;"  mode="aspectFit" height="130" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%8E%AF%E4%BF%9D%E7%BB%BF%E8%89%B2%E6%B8%85%E6%96%B0%E7%94%9F%E6%80%81%E4%B8%BB%E9%A2%98%E6%8F%92%E7%94%BB%E7%94%9F%E6%80%81%E7%A0%94%E7%A9%B6%20%282%29.png" ></image>
+        </swiper-item>
+        <swiper-item >
+          <image class="slide-image" style="height: 130px;" mode="aspectFit"  height="130" src="http://gchscc.zaishenziyuan.cn/e9/111/%E7%8E%AF%E4%BF%9D%E7%BB%BF%E8%89%B2%E6%B8%85%E6%96%B0%E7%94%9F%E6%80%81%E4%B8%BB%E9%A2%98%E6%8F%92%E7%94%BB%E7%94%9F%E6%80%81%E7%A0%94%E7%A9%B6%20%284%29.png" ></image>
+        </swiper-item>
+      </swiper>
+    </view>
+
+
+    <!-- 承诺 -->
+    <view class="plate-box" style="display: none;">
+      <view class="plate-title">
+        <text class="plate-name">我们的承诺</text>
+      </view>
+      <view class="promise-box">
+        <view wx:for="{{ requirement }}" wx:key class="promise-item">
+          <image class="promise-cover" src="{{item.picture}}"></image>
+          <text class="promise-name">{{ item.name }}</text>
+          <text class="promise-describe">{{ item.describe }}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 资讯动态 -->
+    <view class="plate-box" style="display: none;">
+      <view class="plate-title">
+        <text class="plate-name">资讯动态</text>
+        <view class="more-box" bindtap="toNews">
+          查看更多
+          <text class="cuIcon-right"></text>
+        </view>
+      </view>
+      <view class="news-box">
+        <view wx:for="{{news_list}}" wx:key class="news-item" bindtap="toNewsInfo" data-id="{{item.id}}">
+          <image class="news-cover" src="{{item.picture}}" mode="widthFix"></image>
+          <text class="news-name">{{ item.title }}</text>
+        </view>
+      </view>
+
+    </view>
+
+
+    <!-- 地图 -->
+    <view class="tabs">
+      <!--     <view class="" data-index="1" bindtap="checkmarker1">tabs</view>
+					 
+					 
+					<view class="" data-index="2" bindtap="checkmarker1">tabs</view> -->
+      <block wx:if="{{type == 1}}">
+        <image class="img-tab img-tab1" src="/images/no.png" data-index="1" bindtap="checkmarker1" mode="" />
+        <image class="img-tab img-tab2" src="/images/you.png" data-index="2" bindtap="checkmarker1" mode="" />
+      </block>
+      <block wx:else>
+        <image class="img-tab img-tab1" src="/images/no-1.png" data-index="1" bindtap="checkmarker1" mode="" />
+        <image class="img-tab img-tab2" src="/images/you-1.png" data-index="2" bindtap="checkmarker1" mode="" />
+      </block>
+
+    </view>
+    <view class="maps">
+      <map id="map" scale="14" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 60vh;" bindtap="checkmarker2"></map>
+
+      <view wx:if="{{checkMarker.id}}" class="showTip padding-sm margin-sm">
+        <view class="showTip1"></view>
+        <view class="margin-bottom-xs" style="line-height: 50rpx">
+          <view class="flex">
+            <view class="text-black text-bold text-xl">
+              <image class="marker-cover" src="http://gchscc.zaishenziyuan.cn/552a1d9c3e1abbcd7e395ad7288d29.png"></image>
+
+
+              <!-- <block wx:elif="{{type == 2}}">
+                  <image class="marker-cover" src=http://gchscc.zaishenziyuan.cn/%E6%96%B0%E9%97%BB%E8%B5%84%E8%AE%AF/%E4%BD%8F%E6%88%BF%E7%94%A8%E5%9C%B0.png"></image>
+           </block> -->
+            </view>
+            <view class="" style="margin-left:20rpx">
+              <view class="text-black text-bold text-xl">
+                {{checkMarker.name}}
+              </view>
+              <view class="text-black text-bold text-xl">
+                电话：{{checkMarker.phone}}
+              </view>
+            </view>
+          </view>
+          <view class="flex text-gray text-cut" style="color:#000">
+            <view class="cuIcon-locationfill"></view>
+            <view class="text-df">
+              {{checkMarker.meter}}
+            </view>
+            <view class="text-df margin-left">
+              {{checkMarker.address}}
+            </view>
+          </view>
+        </view>
+        <view class="" style="display: flex;justify-content: space-between;align-items: center;">
+          <view class="">
+            <view class="text-gray flex padding-bottom-sm" style="color:#000">
+              <text class="cuIcon-countdownfill margin-right-xs"></text>
+              <view>营业时间 {{checkMarker.business_hours}}</view>
+            </view>
+            <view class="text-gray flex padding-bottom-sm" style="color:#000;align-items: center;">
+              <image style="width:25rpx;height: 25rpx;" src="http://gchscc.zaishenziyuan.cn/e9/%E8%AF%84%E4%BB%B7.png" mode="widthFix"></image>
+              <image style="width:150rpx;height: 150rpx;margin-left: 5rpx; margin-bottom: 2rpx;" src="http://gchscc.zaishenziyuan.cn/e9/%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%86.png" mode="widthFix"></image>
+            </view>
+          </view>
+          <view class="" style="box-shadow: 1px 1px 5px #000;display: flex;background: #6CF8C7;padding: 5px;border-radius: 10rpx;align-items: center;margin-right:30rpx" data-t="{{checkMarker.phone}}" bindtap="phoneOn">
+
+            <image style="width:40rpx;height: 40rpx; margin-right:10rpx" src="http://gchscc.zaishenziyuan.cn/%E9%99%84%E8%BF%91%E7%B4%A0%E6%9D%90/%E8%81%94%E7%B3%BB.png" mode="widthFix"></image>
+
+            <view class="">
+              {{type == 1 ? '联系回收员' : '联系回收站'}}
+            </view>
+          </view>
+        </view>
+        <view class="price-list flex flex-wrap">
+          <view class="daohang" bindtap="toSite" data-marker="{{checkMarker}}">
+            <image style="width:90rpx;height: 40rpx;" src="http://gchscc.zaishenziyuan.cn/%E9%99%84%E8%BF%91%E7%B4%A0%E6%9D%90/%E5%AF%BC%E8%88%AA%20%281%29-1.png" mode="widthFix"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-popad" bindtap="hideAdPop" hidden="{{!showAdPop}}">
+	<view class="page-popad__inner" hidden="{{!showAdPop}}">
+      <view bindtap="hideAdPop" class="page-popad__close">
+        <image src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E9%A6%96%E9%A1%B5%E5%BC%B9%E7%AA%97/%E5%88%A0%E9%99%A4%20%281%29.png" />
+      </view>
+      <view class="page-popad__bg">
+        <image mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/2/%E6%96%B0%E8%83%8C%E6%99%AF%E5%9B%BE.png" mode="" />
+      </view>
+      <view class="page-popad__act">
+        <view class="page-popad__actitem" bindtap="hideAdPop">
+          <image src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E9%A6%96%E9%A1%B5%E5%BC%B9%E7%AA%97/%E6%88%91%E5%9C%A8%E9%80%9B%E9%80%9B%E5%9B%BE%E6%A0%87.png" />
+        </view>
+        <view class="page-popad__actitem" bindtap="toOrder">
+          <image src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E9%A6%96%E9%A1%B5%E5%BC%B9%E7%AA%97/%E7%AB%8B%E5%8D%B3%E4%B8%8B%E5%8D%95%E5%9B%BE%E6%A0%87.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="index-pop-gg" wx:if="{{ggShow}}">
+    <image bindtap="hideGg" src="http://gchscc.zaishenziyuan.cn/e9/111/%E5%88%A0%E9%99%A4%201.png" class="index-pop-gg__close" />
+    <view class="index-pop-gg__inner">
+      <image class="index-pop-gg__bg" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/1/2/%E9%87%91%E8%9E%8D%E4%BF%9D%E9%99%A9%E9%93%B6%E8%A1%8C%E7%A7%AF%E5%88%86%E5%85%91%E6%8D%A2%E6%98%A5%E5%AD%A3%E8%90%A5%E9%94%80%E6%B4%BB%E5%8A%A8%E6%B8%85%E6%96%B0%E6%8F%92%E7%94%BB%E9%A3%8E%E6%B5%B7%E6%8A%A5.png" />
+      <view class="index-pop-gg__nr">{{ggnr}}</view>
+    </view>
+  </view>
+
+  <!-- 合作弹窗 -->
+  <view class="index-pop-hz" wx:if="{{hzshow}}">
+    <image bindtap="handleHzHide" src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E5%88%A0%E9%99%A4.png" class="index-pop-hz__close" />
+    <view class="index-pop-hz__inner">
+      <image class="index-pop-hz__bg" src="http://gchscc.zaishenziyuan.cn/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7%E5%BC%B9%E7%AA%97.png" />
+      <view class="index-pop-hz__nr">
+        <!-- <view>合作方式一：关注微信公众号联系人工客服。</view>
+        <view>合作方式二：发送意向资料到邮箱568283146@qq.com</view>
+        <view>合作方式三：拨打电话咨询合作项18551014057</view>
+        <view>合作方式四：添加客服微信咨询18551014057</view> -->
+        <view class="index-pop-hz__nr_ac">
+          <image src="http://gchscc.zaishenziyuan.cn/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7/%E6%B7%BB%E5%8A%A0%E5%BE%AE%E4%BF%A1%E6%8C%89%E9%92%AE.png" bindtap="onCopy" />
+          <image src="http://gchscc.zaishenziyuan.cn/%E5%90%88%E4%BD%9C%E7%94%B3%E8%AF%B7/%E6%8B%A8%E6%89%93%E7%94%B5%E8%AF%9D%E6%8C%89%E9%92%AE.png" bindtap="toServe" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 电话 弹窗 -->
+  <view class="index-pop-dh" wx:if="{{telShow}}">
+    <image bindtap="tabtelHide" src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E5%88%A0%E9%99%A4.png" class="index-pop-dh__close" />
+    <view class="index-pop-dh__inner">
+      <image class="index-pop-dh__bg" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A21/%E8%A1%A5/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF%281%29%282%29%20%281%29.png" />
+      <view class="index-pop-dh__nr">
+        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+          <view class="scroll-view-item_H {{item.checkIn?' checkIn':''}}" wx:for="{{telList}}" data-i="{{index}}" bindtap="handleTelParentTap" data-childs="{{item.childs}}">
+            {{item.name}}
+          </view>
+        </scroll-view>
+        <block wx:if="{{curTels.length > 0}}">
+          <scroll-view style="height: 35vh;" scroll-y="true">
+            <image src="{{item.img}}" class="dh-item" wx:for="{{curTels}}" bindtap="phoneOn" data-t="{{item.tel}}" />
+          </scroll-view>
+        </block>
+        <view wx:else>
+          <image style="width: 200px;height: 220px;margin-left: 60rpx;margin-top: 20rpx;" src="http://gchscc.zaishenziyuan.cn/%E4%BE%BF%E6%B0%91%E7%94%B5%E8%AF%9D/%E6%9A%82%E6%9C%AA%E5%BC%80%E6%94%BE.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-prot" animation="{{protAnimation}}" hidden="{{!showProtPop}}">
+    <view class="prot-close">
+      <image class="prot-close-img" bindtap="hideProtPop" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E5%88%A0%E9%99%A4%E5%9B%BE%E6%A0%87.png" />
+    </view>
+    <view class="prot-con">
+      <image class="prot-con-tit" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E4%B8%AD%E9%97%B4%E5%A4%A7%E5%9B%BE%E5%BC%B9%E5%87%BA%E6%95%88%E6%9E%9C/%E9%BB%91%E9%87%91%E5%95%86%E5%8A%A1%E5%A4%A7%E6%B0%94%E9%AB%98%E7%BA%A7%E8%B4%A8%E6%84%9F%E5%9C%B0%E4%BA%A7%E4%B8%AA%E4%BA%BA%E5%90%8D%E7%89%87.png" />
+      <view class="prot-con-p1">
+        欢迎加入港城回收平台
+      </view>
+      <view class="prot-con-p2">
+        我们是连云港领先的020互联网+废品回收服务平台，也是连云港首家线上回收服务平台，是连云港无疆再生资源有限公司旗下的品牌之一，致力于建立可持续发展的社会和环境责任。作为专业的废旧物品回收服务提供商，我们致力于实现
+        资源再利用、减少垃圾污染，倡导绿色消费、低碳生活理念，积极推广废弃物再生利用的培训和技术支持。我们的业务覆盖了家庭、企业以及公共机构，并提供了环保、高效全面的回收服务。我们以科学、高效、透明的管理方式，吸引了一大批明智的消费者和合作伙伴，与他们合作，实现了互惠互利的双赢。港城回收是一家具备责任、专注和创新
+        的环保企业，利用最先进的技术与设施，提供覆盖全
+        面的回收服务，在重视环境保护、人文关怀和企业社
+        会责任的同时，植根于当地社区做出积极的贡献。我
+        们的使命是为客户提供最高品质的服务，同时保护环
+        境，降低资源浪费的程度，为社会和自然创造可持续
+        的未来。
+      </view>
+      <view class="prot-con-p3">
+        港城回收
+      </view>
+      <view class="prot-con-hint-box">
+        <text class="prot-con-hint">1.如果您是街道社区，可以找我们合作。
+          2.如果您是政府机构可以找我们合作。
+          3.如果您是工地工厂企业可以找我们合作。
+          4.如果您是商铺商家可以找我们合作。
+          5.如果您是学校可以找我们合作。
+          6.如果您准备创业可以加入我们成为回收员。
+          7.如果您是回收站或者打包站可以加盟我们。
+          8.如果您闲暇无事，可以成为我们推广员。
+          提醒：成为推广员睡觉都能赚钱哦
+        </text>
+      </view>
+
+      <view class="prot-con-way">
+        <view class="way-com" bindtap="makePhoneCall" data-phone="18551014057">
+          加盟电话：卞经理（18551014057）
+          <image class="way-com-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E7%94%B5%E8%AF%9D.png" />
+        </view>
+        <view class="way-com" bindtap="makePhoneCall" data-phone="18551014057">
+          合作电话：卞经理（18551014057）
+          <image class="way-com-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E7%94%B5%E8%AF%9D.png" />
+        </view>
+        <view class="way-com" bindtap="makePhoneCall" data-phone="16565055554">
+          售后电话：王佳丽（16565055554）
+          <image class="way-com-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E7%94%B5%E8%AF%9D.png" />
+        </view>
+        <view class="way-com" bindtap="makePhoneCall" data-phone="15195712972">
+          回收电话：刘师傅（15195712972）
+          <image class="way-com-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E7%94%B5%E8%AF%9D.png" />
+        </view>
+      </view>
+      <view class="prot-con-go" bindtap="toRecoveryNew">
+        <image class="go-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/%E5%8D%8A%E5%B1%8F%E6%95%88%E6%9E%9C/%E5%8E%BB%E5%8D%96%E5%BA%9F%E5%93%81%E5%9B%BE%E6%A0%87.png" />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 音乐悬窗 -->
+  <view class="msc-wrapper" wx:if="{{showMusicBox}}" bindtap="playMusic">
+	  <view class="msc-content" >
+		  <!-- 音乐旋转背景 -->
+		  <view class="msc-bg-group">
+			  <image class="msc-bg-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/e9/%E9%9F%B3%E4%B9%90/%E8%83%8C%E6%99%AF%E5%9B%BE.png" />
+			  <image 
+				animation="{{mscBgAnimation}}"
+				class="msc-pic-icon" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/e9/%E9%9F%B3%E4%B9%90/%E4%B8%AD%E9%97%B4%E5%B0%8F%E5%9B%BE%E6%A0%87.png" />
+		  </view>
+		  <!-- 关闭按钮 -->
+		  <image class="msc-close-icon" catchtap="closePlayMusic" mode="widthFix" src="http://gchscc.zaishenziyuan.cn/e9/%E9%9F%B3%E4%B9%90/%E5%88%A0%E9%99%A4%201.png" />
+	  </view>
+  </view>
+  
+</view>

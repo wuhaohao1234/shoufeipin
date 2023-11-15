@@ -1,0 +1,11 @@
+/* pages/shop/pointsDetails/pointsDetails.wxss */
+.top{
+  width: 750rpx;
+  height: 260rpx;
+}
+
+.list-item{
+  border-bottom: 1rpx solid #efefef;
+  height: 120rpx;
+  padding-top: 20rpx;
+}

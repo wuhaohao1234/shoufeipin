@@ -1,0 +1,40 @@
+<view class="logo">
+    <image mode="widthFix" src='{{images}}'></image>
+    <text></text>
+</view>
+<view class="bg-white">
+    <view class="flex padding justify-around">
+        <button bindtap="authFalse" class="cu-btn  bg-gray" style="width:42%;height: 80rpx;">我在想想</button>
+        <button bindtap="showDialog" class="cu-btn  bg-blue" style="width:42%; height: 80rpx;" wx:if="{{canIUse}}">登录</button>
+    </view>
+
+</view>
+
+<van-dialog
+        closeOnClickOverlay="{{true}}"
+        use-slot
+        title="完善您的头像、昵称"
+        show="{{ show }}"
+        show-confirm-button="{{false}}"
+        bind:close="onClose"
+>
+    <view>
+        <form bind:submit="updateUserInfo">
+            <mp-cells>
+                <mp-cell title="头像" link="{{true}}">
+                    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                        <image class="avatar" src="{{avatarUrl}}"></image>
+                    </button>
+                </mp-cell>
+                <mp-cell title="昵称" link="{{true}}">
+                    <input bind:input="editNickName" value="{{nickName}}" name="nickname"
+                           type="nickname" class="weui-input" placeholder="请输入昵称"/>
+                </mp-cell>
+            </mp-cells>
+            <view class="flex btn-wrap">
+                <button form-type="submit" class="cu-btn bg-blue"
+                        style="width:42%; height: 80rpx;" wx:if="{{canIUse}}">确认登录</button>
+            </view>
+        </form>
+    </view>
+</van-dialog>

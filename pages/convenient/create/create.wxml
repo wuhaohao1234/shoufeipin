@@ -1,0 +1,100 @@
+<view>
+    <view class="top-bg">
+
+    </view>
+
+    <view class="padding-sm">
+        <view class="consignee-information item flex justify-between" bindtap="checkAddress">
+            <view>
+                <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+            </view>
+
+            <view wx:if="{{address.id}}" style="max-width: 500rpx">
+                <view class="text-black text-lg">{{address.name}} {{address.phone}}</view>
+                <view class="text-gray text-cut">{{address.province}} {{address.city}} {{address.district}}
+                    {{address.street}} {{address.address}}
+                </view>
+            </view>
+            <view wx:else style="max-width: 500rpx;flex-grow: 1">
+                <view class="text-black text-lg padding-top text-left">添加地址</view>
+                <!-- <view class="text-gray">点击此处添加地址 </view> -->
+            </view>
+
+            <view class="cuIcon-right text-xxl padding-top" style="font-size: 50rpx">
+
+            </view>
+        </view>
+
+        <view class="item margin-top">
+            <view class="flex justify-between check-item">
+                <view class="flex justify-between padding-sm has-b-border">
+                    <view class="text-lg">
+                        预约时间
+                    </view>
+                    <pickerYMDHM date="{{date}}" startDate="{{startDate}}" endDate="{{endDate}}" class="" bind:onPickerChange="bindDateChange">
+                    </pickerYMDHM>
+                </view>
+                <view class="cuIcon-right text-center text-gray" style="line-height: 80rpx">
+
+                </view>
+            </view>
+
+            <view class="flex justify-between check-item">
+                <view class="flex justify-between padding-sm has-b-border">
+                    <view class="text-lg">
+                        备注
+                    </view>
+                    <input placeholder="输入备注" bindinput="editUserRemark" value="{{user_remark}}" name="user_remark"></input>
+                </view>
+            </view>
+
+            <view class="padding-sm" style="flex-grow: 1">
+                <view class="text-lg">
+                    添加产品图片
+                </view>
+
+                <view wx:if="{{imgList.length === 0}}" class="text-center text-gray margin-top-sm">
+                    可描述物体状态，特殊需求
+                </view>
+
+                <view bindtap="uplaod" wx:if="{{imgList.length === 0}}" style="font-size: 120rpx"
+                      class="cuIcon-camerafill text-center margin text-gray">
+
+                </view>
+                <view wx:if="{{imgList.length > 0}}" class="cu-form-group">
+                    <view class="grid col-3 grid-square flex-sub padding-sm">
+                        <view class="padding-xs bg-img" style="background-image:url({{item.url}});" wx:for="{{imgList}}"
+                              wx:key="{{index}}">
+                            <view bindtap="deleteImg" class="cu-tag bg-red" data-id="{{index}}">
+                                <text class="cuIcon-close"></text>
+                            </view>
+                        </view>
+                        <view bindtap="uplaod" class="padding-xs solids" wx:if="{{imgList.length<3}}">
+                            <text class="cuIcon-cameraadd" wx:if="{{loading}}"></text>
+                            <text class="cuIcon-loading2 iconfont-spin" wx:else></text>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="flex justify-center margin-sm">
+                    <view class="text-gray">
+                        确认等于同意
+                    </view>
+                    <view class="main-font-color" bindtap="toTerms">
+                        《便民服务条款》
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="flex justify-between" hover-class="none" hover-stop-propagation="false">
+            <view class="enter-btn" bindtap="createRecycle">
+                提交预约
+            </view>
+        </view>
+
+
+    </view>
+</view>
+

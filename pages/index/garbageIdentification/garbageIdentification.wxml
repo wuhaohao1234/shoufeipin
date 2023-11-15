@@ -1,0 +1,132 @@
+<!--pages/index/garbageIdentification/garbageIdentification.wxml-->
+<view>
+    <view>
+        <view class="flex justify-center">
+            <view class="text-xxl text-black text-bold margin" style="margin-top: 200rpx">
+                垃圾分类直接问我
+            </view>
+
+        </view>
+        <view class="flex justify-center item">
+            <view class="little-tap" style="background-color: #49EAC1">
+
+            </view>
+            <view>
+                西瓜皮是什么垃圾
+            </view>
+
+        </view>
+        <view class="flex justify-center item">
+            <view class="little-tap" style="background-color: #448aca">
+
+            </view>
+            <view>
+                湿纸巾是什么垃圾
+            </view>
+
+        </view>
+        <view class="flex justify-center item">
+            <view class="little-tap" style="background-color: #ff0000">
+
+            </view>
+            <view>
+                易拉罐是什么垃圾
+            </view>
+
+        </view>
+    </view>
+
+    <view class="btn-list flex justify-center padding shadow">
+        <view class="little-round shadow" bindtap="photo">
+            <view class="cuIcon-camera text-bold" style="font-size: 40rpx">
+
+            </view>
+            <view>
+                拍照识别
+            </view>
+
+        </view>
+
+        <!-- <view class="main-round shadow">
+            <view class="cuIcon-voicefill text-bold" style="font-size: 80rpx;margin-top: 10rpx">
+
+            </view>
+            <view class="text-xxl">
+                语音识别
+            </view>
+
+        </view> -->
+
+        <view bindtap="showModal" data-target="showInput" class="little-round shadow">
+            <view class="cuIcon-search text-bold" style="font-size: 40rpx">
+
+            </view>
+            <view>
+                文字查询
+            </view>
+
+        </view>
+    </view>
+</view>
+<view bindtap="hideModal" class="cu-modal  {{modalName==='showInput'?'show':''}}">
+    <view catchtap class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content ">文子查询</view>
+        </view>
+        <view class="padding-xl">
+            <input placeholder="请输入要查询物品" bindinput="textInput"></input>
+        </view>
+        <view class="cu-bar bg-white">
+            <view bindtap="hideModal" class="action margin-0 flex-sub ">返回</view>
+            <view bindtap="searchText" class="action margin-0 flex-sub text-green solid-left">查询</view>
+        </view>
+    </view>
+
+</view>
+
+<view bindtap="hideModal" class="cu-modal  {{modalName==='showResource'?'show':''}}">
+    <view catchtap class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content ">查询结果</view>
+        </view>
+        <view class="padding-xl">
+            <view wx:for="{{content}}">
+                <view wx:if="{{item.name}}">
+                    <view class="flex">
+                        <view class="">
+                            {{item.name}}:
+                        </view>
+                        <view class="main-font-color">
+                            {{item.category}}
+                        </view>
+                    </view>
+                </view>
+
+                <view wx:else>
+                    <view class="flex justify-between">
+                        <view class="">
+                            识别结果:{{item.keyword}}
+                        </view>
+                        <view class="margin-left">
+                            相似度:{{item.score * 100 | int}}%
+                        </view>
+                    </view>
+                    <view wx:for="{{item.list}}">
+                        <view class="flex margin-left">
+                            <view class="">
+                                ---{{item.name}}:
+                            </view>
+                            <view class="main-font-color">
+                                {{item.category}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+        <view class="cu-bar bg-white">
+            <view catchtap bindtap="hideModal" class="action margin-0 flex-sub  solid-left">我知道了</view>
+        </view>
+    </view>
+</view>

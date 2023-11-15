@@ -1,0 +1,41 @@
+.the_body{
+    background: #f4f4f4;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.address-item{
+    width: 670rpx;
+    min-height: 120rpx;
+    /*border-radius: 12rpx;*/
+    background: #fff;
+    border-bottom: 3rpx solid #eee;
+}
+
+.address-top{
+    border-bottom: 1rpx solid #efefef;
+    padding-bottom: 40rpx;
+}
+
+.address-bottom{
+    padding-top: 10rpx;
+    line-height: 60rpx;
+    width: 100%;
+}
+
+.add-btn{
+    background: #49EAC1;
+    color: #fff;
+    text-align: center;
+    width: 670rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    font-size: 35rpx;
+}
+.title{
+    min-width: 180rpx;
+}
+.bg-img{
+
+}

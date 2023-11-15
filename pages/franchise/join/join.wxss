@@ -1,0 +1,4 @@
+/* pages/franchise/join/join.wxss */
+.title{
+    min-width: 200rpx;
+}

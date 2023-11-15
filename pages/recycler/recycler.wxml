@@ -1,0 +1,227 @@
+<!--pages/recycler/recycler.wxml-->
+<view>
+    <view class="little-bg">
+        <view class="flex justify-center padding-sm">
+            <view class="flex justify-center">
+                <view>
+                    <image class="face-img" src="{{userInfo.avatar}}"></image>
+                </view>
+                <view class="margin-sm text-white">
+                    <view class="name  text-bold text-xl ">
+                        {{userInfo.nickname}}
+                    </view>
+                    <view wx:if="{{userInfo.collector.work_status=='0'}}">
+                        上班中
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="flex justify-between padding-lr text-center text-white margin-top">
+            <view>
+                <view bindtap="scanUserCode" class="cuIcon-scan big-tag"></view>
+                <view>
+                    面对面下单
+                </view>
+            </view>
+
+            <view bindtap="toRecoveryStatistics">
+                <view class="cuIcon-text big-tag"></view>
+                <view>
+                    回收统计
+                </view>
+            </view>
+
+            <view bindtap="toRanking">
+                <view class="cuIcon-rank big-tag"></view>
+                <view>
+                    排行榜
+                </view>
+            </view>
+        </view>
+
+        <view class="flex  padding-lr bg-white round white-search">
+
+            <swiper style="width: 100%;height: 100%" indicator-dots="{{false}}" circular="{{true}}"
+                    class="little-advert" autoplay="{{true}}" vertical="{{true}}" interval="{{3000}}"
+                    duration="{{1000}}">
+                <swiper-item class="flex" wx:for="{{info.wtoutiao}}">
+                    <view class="main-font-color">
+                        {{item.title}}
+                    </view>
+
+                    <view class="margin-left">
+                        {{item.content}}
+                    </view>
+                </swiper-item>
+            </swiper>
+
+        </view>
+
+    </view>
+
+    <view class="check-tab-list to-top margin-sm justify-between">
+        <view class="flex justify-between padding">
+            <view class="text-black text-bold">
+                今日数据
+            </view>
+
+            <view class="flex check-btn justify-between">
+                <view bindtap="checkStatus" data-status="0" class="{{userInfo.collector.work_status=='0'?'enter-status':'text-center' }}">
+                    上班中
+                </view>
+                <view bindtap="checkStatus" data-status="1" class="{{userInfo.collector.work_status=='1'?'enter-status':'text-center' }}" style="flex-grow: 1;">
+                    请假
+                </view>
+            </view>
+        </view>
+
+        <view class="flex justify-between padding">
+            <view class="text-center" style="flex-grow: 1">
+                <view class="text-bold text-black text-xxl">
+                    {{info.day_reservation_count}}
+                </view>
+                <view class="text-gray">
+                    预约订单
+                </view>
+            </view>
+
+            <view class="text-center" style="flex-grow: 1">
+                <view class="text-bold text-black text-xxl">
+                    {{info.day_period_count}}
+                </view>
+                <view class="text-gray">
+                    定期订单
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="check-tab to-top bg-white flex justify-between">
+        <view bindtap="checkTab" data-status="1" class="tab">
+            <view class="{{status==='1'?'checked-tab':''}} ">
+                订单池
+            </view>
+        </view>
+
+        <view bindtap="checkTab" data-status="2" class="tab">
+            <view class="{{status==='2'?'checked-tab':''}} ">
+                待回收
+            </view>
+        </view>
+
+        <view bindtap="checkTab" data-status="3" class="tab">
+            <view class="{{status==='3'?'checked-tab':''}} ">
+                已回收
+            </view>
+        </view>
+
+        <view bindtap="checkTab" data-status="4" class="tab">
+            <view class="{{status==='4'?'checked-tab':''}} ">
+                已取消
+            </view>
+        </view>
+    </view>
+
+    <view class="order-list to-top">
+        <view wx:for="{{orders}}" class="order-item margin">
+            <view wx:if="{{item.type==1}}" class="the-tag bg-blue">
+                预
+            </view>
+            <view wx:if="{{item.type==2}}" class="the-tag bg-orange">
+                定
+            </view>
+            <view class="flex margin-top-xs" style="line-height: 80rpx">
+                <view style="height: 30rpx;width: 6rpx;margin-top: 25rpx;margin-right: 20rpx" class="bg-main">
+
+                </view>
+                <view class="text-xl text-black text-bold">
+                    回收
+                </view>
+                <view wx:if="{{item.reservation_time}}" class="margin-left-xl">
+                    预约{{item.reservation_time}}上门
+                </view>
+            </view>
+
+            <view bindtap="orderDetail" data-id="{{item.id}}" class="flex padding-lr">
+                <view class="cuIcon-locationfill main-font-color" style="font-size: 60rpx">
+
+                </view>
+
+                <view>
+                    <view class="flex">
+                        <view>
+                            {{item.name}}
+                        </view>
+                        <view class="margin-left">
+                            {{item.phone}}
+                        </view>
+                    </view>
+                    <view>
+                        {{item.address}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="flex padding-lr margin-top-xs">
+                <view class="text-gray">
+                    备注:{{item.describe || "无备注"}}
+                </view>
+            </view>
+            <view class="flex padding-lr margin-top-xs">
+                <view class="little-round" style="position: absolute;left: -15rpx">
+
+                </view>
+                <view class="little-round" style="position: absolute;right: -15rpx">
+
+                </view>
+            </view>
+
+            <view wx:if="{{item.status == 1}}" class="flex padding-lr margin-top-xl justify-around">
+                <view class="order-btn" bindtap="collectorRefuse" data-id="{{item.id}}">
+                    拒绝接单
+                </view>
+
+                <view bindtap="collectorConfirm" data-id="{{item.id}}" class="order-btn">
+                    确认接单
+                </view>
+            </view>
+            <view wx:if="{{item.status == 2}}" class="flex padding-lr margin-top-xl justify-around">
+                <view class="order-btn" bindtap="toUser" data-address="{{item.address}}">
+                    查看导航
+                </view>
+
+                <view class="order-btn" bindtap="callUser" data-phoneNumber="{{item.phone}}">
+                    联系客户
+                </view>
+            </view>
+
+            <view wx:if="{{item.status == 3 || item.status == 4}}" class="flex padding-lr margin-top-xl justify-around">
+                <view class="order-btn" bindtap="toUser" data-address="{{item.address}}">
+                    查看导航
+                </view>
+
+                <view class="order-btn"  bindtap="orderDetail" data-id="{{item.id}}">
+                    查看订单
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+</view>
+
+<view bindtap="hideModal" class="cu-modal  {{modalName==='collectorRefuse'?'show':''}}">
+    <view catchtap class="cu-dialog">
+        <view class="cu-form-group margin-top">
+            <view class="title" style="flex-grow: 1">拒绝理由</view>
+            <input placeholder="输入拒绝理由" value="{{refuse_reason}}" name="refuse_reason" bindinput="editRefuse_reason"></input>
+        </view>
+        <view class="cu-bar bg-white">
+            <view bindtap="hideModal" class="action margin-0 flex-sub ">再想想</view>
+            <view bindtap="enterCollectorRefuse" data-type="1" class="action margin-0 flex-sub text-green solid-left">确认拒绝</view>
+        </view>
+    </view>
+
+</view>

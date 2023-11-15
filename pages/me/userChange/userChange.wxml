@@ -1,0 +1,136 @@
+<!--pages/me/userChange/userChange.wxml-->
+<view>
+    <view class="top padding">
+        <view class="text-center text-white">可提现余额</view>
+
+        <view class="text-center text-white margin-top-sm text-sl">{{info.may_withdraw_money}}</view>
+    <view class="flex justify-center">
+        <view class="cu-btn text-center bg-main radius" bindtap="userRecharge" wx:if="{{false}}">
+            充值
+        </view>
+
+        <view wx:if="{{radio}}" style="margin-left: 10rpx;" class="cu-btn text-center bg-main radius" bindtap="pointsMoney">
+            积分兑金额
+        </view>
+    </view>
+        <view class="margin-top flex justify-between text-white">
+            <view class="text-center data-item">
+                <view class=" text-xl">
+                    {{info.accumulate}}
+                </view>
+
+                <view class="text-sm margin-top-sm">
+                    累计下单金额
+                </view>
+            </view>
+
+            <view class="text-center data-item">
+                <view class=" text-xl">
+                    {{info.already_money}}
+                </view>
+
+                <view class="text-sm margin-top-sm">
+                    已提现
+                </view>
+            </view>
+
+            <view class="text-center data-item">
+                <view class=" text-xl">
+                    {{info.withdraw_proceed}}
+                </view>
+
+                <view class="text-sm margin-top-sm">
+                    提现中
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <view class="check-tab flex justify-between">
+        <view bindtap="checkTab" data-status="0" class="tab">
+            <view class="text-df {{status==='0'?'checked-tab':''}} ">
+                全部
+            </view>
+        </view>
+        <view bindtap="checkTab" data-status="1" class="tab">
+            <view class="text-df {{status==='1'?'checked-tab':''}}  ">
+                审核中
+            </view>
+        </view>
+        <view bindtap="checkTab" data-status="2" class="tab">
+            <view class="text-df {{status==='2'?'checked-tab':''}}  ">
+                已提现
+            </view>
+        </view>
+        <view bindtap="checkTab" data-status="3" class="tab">
+            <view class="text-df {{status==='3'?'checked-tab':''}}  ">
+                未通过
+            </view>
+        </view>
+    </view>
+
+    <view class="padding">
+        <view class="item padding margin-bottom" style="padding-left: 0" wx:for="{{list}}">
+            <view class="title flex justify-between">
+                <view class="text-bold text-xl text-black title-tag padding-left">
+                    提现{{item.money}}元
+                </view>
+                <view class="main-font-color" wx:if="{{item.status==1}}">
+                    提现中
+                </view>
+                <view class="text-green" wx:if="{{item.status==2}}">
+                    已提现
+                </view>
+                <view class="text-red" wx:if="{{item.status==3}}">
+                    未通过
+                </view>
+            </view>
+
+            <view class="padding-left padding-top-xs">
+                打款方式:后台转账
+            </view>
+<!--            <view class="padding-left padding-top-xs">-->
+<!--                打款账户:{{}}-->
+<!--            </view>-->
+
+            <view class="padding-left padding-top-sm text-gray">
+                提现时间:{{item.create_at}}
+            </view>
+            <view wx:if="{{item.status==3}}" class="padding-left padding-top-sm text-red">
+                驳回原因:{{item.cause}}
+            </view>
+
+        </view>
+
+      
+    </view>
+
+    <view class="getChangeBtn" bindtap="getChange" data-money="{{info.may_withdraw_money}}" >
+        立即提现
+    </view>
+</view>
+
+<view class="cu-modal {{modalName=='userRecharge'?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">用户充值</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl">
+            <view class="cu-form-group ">
+                <view class="title">充值金额</view>
+                <input placeholder="输入充值金额" value="{{money}}" name="money" bindinput="editMoney"></input>
+            </view>
+        </view>
+        <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn line-main text-main" bindtap="hideModal">取消</button>
+                <button class="cu-btn bg-main margin-left" bindtap="enterUserRecharge">确定</button>
+
+            </view>
+        </view>
+    </view>
+</view>

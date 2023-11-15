@@ -1,0 +1,66 @@
+<view>
+    <view>
+        <view class="bg-white">
+            <view class="flex margin-top-xl justify-center">
+                <image class="shop-pic" src="{{picture}}">
+
+                </image>
+            </view>
+
+            <view class="text-center text-bold text-lg margin-top">
+                {{data.shop_name}}
+            </view>
+
+            <view class="flex justify-between padding-lr-xl text-center margin-top">
+                <view bindtap="storeScan">
+                    <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/shop-scan.svg"></image>
+                    <view>
+                        扫码核销
+                    </view>
+                </view>
+                <!-- <view bindtap="scanOrderCode">
+                    <view>
+                        <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/store/scan.png"></image>
+                    </view>
+                    <view>
+                        扫码核销
+                    </view>
+                </view> -->
+
+                <view bindtap="shopInfo">
+                    <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/shop-info.svg"></image>
+                    <view>
+                        店铺信息
+                    </view>
+                </view>
+                <view bindtap="orderRecords">
+                     <!-- <view class="cuIcon-wenzi" style="font-size: 55rpx; margin-top: 15rpx;color:#434343;"></view> -->
+                     <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/shop-recode.svg"></image>
+                    <view>
+                        收款记录
+                    </view>
+                </view>
+                <view bindtap="shopGoods">
+                    <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/shop-goods.svg"></image>
+                    <view>
+                        商品管理
+                    </view>
+                </view>
+            </view>
+            <!-- <view class="flex justify-between padding-lr-xl text-center margin-top">
+                <view bindtap="shopMoney">
+                    <image class="tag-pic" src="../https://cdn.wuhuit.com/fths/shop-convert.svg"></image>
+                    <view>
+                        兑换金额
+                    </view>
+                </view>
+            </view> -->
+        </view>
+        <view>
+
+        </view>
+
+
+    </view>
+
+</view>

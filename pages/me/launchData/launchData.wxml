@@ -1,0 +1,97 @@
+<view>
+    <view class="little-bg">
+        <view class="flex justify-between padding-sm">
+            <view class="flex">
+                <view>
+                    <image class="face-img" src="{{userInfo.avatar}}"></image>
+                </view>
+                <view class="margin-sm text-white">
+                    <view class="name  text-bold text-xl ">
+                        {{userInfo.nickname}}
+                    </view>
+                    <view>
+                        ID：{{uid}}
+                    </view>
+                </view>
+
+            </view>
+            <view  class="text-edit margin margin-top-xl">
+
+            </view>
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm padding-sm">
+        <view class="flex data-price padding-sm">
+            <view class="text-gray text-df margin-right-xs">余额</view>
+            <view class="main-font-color text-xxl">{{userInfo.points}}</view>
+        </view>
+
+        <view class="data-content flex justify-between flex-wrap padding-sm">
+            <view class="content-item">
+                <view class="text-gray">
+                    预约单数
+                </view>
+                <view class="text-black">
+                    {{info.appointment_order_count}}
+                </view>
+            </view>
+
+            <view class="content-item">
+                <view class="text-gray">
+                    面对面单数
+                </view>
+                <view class="text-black">
+                    {{info.face_order_count}}
+                </view>
+            </view>
+
+            <view class="content-item">
+                <view class="text-gray">
+                    预约总重量
+                </view>
+                <view class="text-black">
+                    {{info.appointment_sum_weight}}kg
+                </view>
+            </view>
+
+            <view class="content-item">
+                <view class="text-gray">
+                    面对面总重量
+                </view>
+                <view class="text-black">
+                    {{info.face_sum_weight}}kg
+                </view>
+            </view>
+        </view>
+
+        <!-- <view class="flex data-price padding-sm">
+            <view class="text-gray text-df margin-right-xs">收益</view>
+            <view class="main-font-color text-xxl">¥{{info.get_money}}</view>
+        </view> -->
+    </view>
+
+    <view class="check-tab to-top margin-sm padding-sm text-df">
+        <view class="flex list-item" wx:for="{{info.category_data}}">
+            <view>
+                <view style="background-color:#3eaff7; width: 30rpx; height: 30rpx;border-radius: 3rpx;margin-top: 15rpx">
+
+                </view>
+            </view>
+            <view class="text-gray margin-left-sm">
+                {{item.name}}: {{item.weight}}kg
+            </view>
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm padding-sm text-df" style="overflow: hidden">
+        <view class="flex justify-end text-black">
+<!--            <view>2019.2-2020.2</view>-->
+            <view>回收重量</view>
+        </view>
+
+        <canvas canvas-id="columnCanvas" disable-scroll="true" class="pieCanvas"></canvas>
+    </view>
+
+
+</view>

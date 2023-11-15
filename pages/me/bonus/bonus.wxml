@@ -1,0 +1,35 @@
+<!--pages/shop/pointsDetails/pointsDetails.wxml-->
+<view>
+
+    <view class="padding">
+        <view class="flex justify-end">
+            <view class="text-black text-lg text-bold">
+<!--                03月2020年-->
+            </view>
+        </view>
+
+        <view wx:if="{{ list.length > 0 }}" class="list">
+            <view wx:for="{{list}}" class="flex justify-between list-item">
+                <view>
+                    <view class="text-black text-lg">
+                        {{item.name}}
+                    </view>
+                    <view class="text-gray padding-top-xs">
+                        {{item.create_at}}
+                    </view>
+                </view>
+
+                <view wx:if="{{item.status == 2}}" class="text-red text-xxl padding-top-sm">
+                    +{{item.money}}
+                </view>
+
+                <view wx:else class="text-black text-xxl padding-top-sm">
+                    -{{item.money}}
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            暂无记录
+        </view>
+    </view>
+</view>

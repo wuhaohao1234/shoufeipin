@@ -1,0 +1,114 @@
+<!--pages/shop/confirmOrder/confirmOrder.wxml-->
+<view>
+    <view class="address flex justify-between padding margin-top-sm bg-white" bindtap="checkAddress">
+        <view>
+            <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+        </view>
+
+        <view wx:if="{{address}}" style="max-width: 500rpx">
+            <view class="text-black text-lg">{{address.name}} {{address.phone}}</view>
+            <view class="text-gray">  {{address.province}} {{address.city}}  {{address.district}}  {{address.street}} {{address.address}}</view>
+        </view>
+        <view wx:else style="max-width: 500rpx">
+            <view class="text-black text-lg">选择地址</view>
+            <view class="text-gray"> </view>
+        </view>
+
+        <view class="cuIcon-right text-xxl padding-top"  style="font-size: 50rpx">
+
+        </view>
+    </view>
+    <image style="width: 100vw;height: 10rpx;margin-bottom: 20rpx" src="../https://cdn.wuhuit.com/fths/test/分割.png"></image>
+
+    <view class="bg-white padding">
+        <view class="text-black text-bold text-lg">
+            商品信息
+        </view>
+
+        <view class="flex justify-between margin-top-sm" >
+            <view>
+                <image class="goods-img" src="{{goods.picture[0]}}">
+
+                </image>
+            </view>
+
+            <view class="padding-lr flex justify-between flex-direction">
+                <view>
+                    {{goods.name}}
+                </view>
+                <view class="flex justify-end">
+                    <view class="cu-btn sm radius bg-blue text-lg" bindtap="addGoodsNum">
+                        +
+                    </view>
+                    <view class="cu-btn sm round bg-gray text-lg margin-lr-xs">
+                        x{{goods_num}}
+                    </view>
+                    <view class="cu-btn sm radius bg-red text-lg" bindtap="delGoodsNum">
+                        -
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+
+    <view class="bg-white padding-lr margin-top">
+<!--        <view class="flex justify-between list-item">-->
+<!--            <view class="text-gray">-->
+<!--                配送方式-->
+<!--            </view>-->
+
+<!--            <view>-->
+<!--                快递 运费:¥8.00-->
+<!--            </view>-->
+<!--        </view>-->
+
+<!--        <view class="flex justify-between list-item">-->
+<!--            <view class="text-gray">-->
+<!--                优惠券-->
+<!--            </view>-->
+
+<!--            <view class="flex">-->
+<!--                <view>-->
+<!--                    暂无可用-->
+<!--                </view>-->
+
+<!--                <view class="cuIcon-right"></view>-->
+<!--            </view>-->
+<!--        </view>-->
+
+        <view class="flex justify-between list-item">
+            <view class="text-gray">
+                支付方式
+            </view>
+
+            <view>
+                余额支付
+            </view>
+        </view>
+    </view>
+
+    <view class="enter-order flex justify-between">
+        <view class="flex">
+            <view >
+                实付
+            </view>
+            <view class="cuIcon-coin main-font-color">
+
+            </view>
+            <view class="main-font-color text-xxl">
+                {{goods.points*goods_num}}
+            </view>
+            <view class="margin-left-xs">
+                +
+            </view>
+            <view class="margin-left-xs text-xl">
+                ¥{{goods.money*goods_num}}
+            </view>
+        </view>
+
+        <view class="cu-btn round bg-main" bindtap="enterOrder">
+            确认兑换
+        </view>
+    </view>
+</view>

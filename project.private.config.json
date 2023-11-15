@@ -1,0 +1,189 @@
+{
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "projectname": "shoufeipin",
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/recycler/ranking/ranking",
+          "pathName": "pages/recycler/ranking/ranking",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/me/moneyDetails/moneyDetails",
+          "pathName": "pages/me/moneyDetails/moneyDetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/shop/pointsDetails/pointsDetails",
+          "pathName": "pages/shop/pointsDetails/pointsDetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "公益回收",
+          "pathName": "pages/publicBenefit/recovery",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/publicBenefit/order/order",
+          "pathName": "pages/publicBenefit/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/recovery/recovery",
+          "pathName": "pages/recovery/recovery",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/userAddress/detail/index",
+          "pathName": "pages/me/userAddress/detail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/homemaking/index",
+          "pathName": "pages/homemaking/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/donate/index",
+          "pathName": "pages/donate/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/store/index/index",
+          "pathName": "pages/store/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "扫码收积分",
+          "pathName": "pages/franchisee/store/form/form",
+          "query": "code_number=76260f3846bc3d4d",
+          "scene": null
+        },
+        {
+          "name": "pages/me/userStore/userStore",
+          "pathName": "pages/me/userStore/userStore",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/homemaking/order/list",
+          "pathName": "pages/homemaking/order/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "门店后台",
+          "pathName": "pages/me/userStore/userStore",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/me",
+          "pathName": "pages/me/me",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "注册",
+          "pathName": "pages/me/userRegister/userRegister",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/recovery/recovery",
+          "pathName": "pages/recovery/recovery",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/userAddress/detail/index",
+          "pathName": "pages/me/userAddress/detail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "地址管理",
+          "pathName": "pages/me/userAddress/userAddress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/recovery/recoveryPrice/recoveryPrice",
+          "pathName": "pages/recovery/recoveryPrice/recoveryPrice",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/me/userExtension/userExtension",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分享",
+          "pathName": "pages/me/userExtension/userExtension",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "海报",
+          "pathName": "pages/me/userExtension/userExtension",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/bindData/bindData",
+          "pathName": "pages/me/bindData/bindData",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/me/ranking/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/me/ranking/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/recovery/recovery",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/recovery/recovery",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "libVersion": "3.0.1"
+}

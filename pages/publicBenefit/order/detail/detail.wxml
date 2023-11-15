@@ -1,0 +1,38 @@
+<!--pages/recovery/order/detail/detail.wxml-->
+<view>
+    <view class="little-bg">
+        <view class="padding-sm padding-top text-white text-xxl">
+            <view  wx:if="{{info.status == 2}}">
+                回收已完成
+            </view>
+            <view  wx:if="{{info.status == 1}}">
+                订单已结束
+            </view>
+            <view  wx:if="{{info.status == 0}}">
+                订单进行中
+            </view>
+        </view>
+        <view class="padding-sm text-white">
+            订单编号:{{info.order_no}}
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm flex justify-between">
+        <view  style="max-width: 600rpx" class="padding-sm ">
+            <view class="text-black text-lg">{{info.name}} {{info.phone}}</view>
+            <view class="text-gray text-cut">{{info.address}}</view>
+            <view class="text-gray text-cut margin-top">下单时间: {{info.create_at}}</view>
+        </view>
+        <view wx:if="{{ info.status == 0 }}" class="close-btn" bindtap="clearOrder">取消订单</view>
+    </view>
+
+   
+    <view class="check-tab to-top margin-sm padding-sm">
+        <view class="text-gray text-cut">物品: {{info.cate_name}}</view>
+        <view class="text-gray text-cut">物流公司: {{info.logistics || '暂无'}}</view>
+        <view class="text-gray text-cut">订单号: {{info.mail_no || '暂无'}}</view>
+        <view class="text-gray text-cut">状态: {{info.status_type_str || '暂无'}}</view>
+        <view class="text-gray text-cut">备注: {{info.describe || ""}}</view>
+    </view>
+
+</view>

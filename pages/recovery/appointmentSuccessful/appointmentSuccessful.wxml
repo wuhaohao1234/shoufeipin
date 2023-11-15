@@ -1,0 +1,24 @@
+<!--pages/recovery/appointmentSuccessful/appointmentSuccessful.wxml-->
+<view>
+    <view class="margin-top-xl flex justify-center">
+        <view class="success-btn bg-main cuIcon-check">
+
+        </view>
+    </view>
+    <view class="text-black text-lg text-center margin-top-sm">
+        下单成功
+    </view>
+    <view class="text-gray text-center margin-top-sm">
+        等待回收员接单
+    </view>
+
+    <view class="flex justify-around text-lg padding-xl">
+        <view class="successfully-btn">
+            完成
+        </view>
+
+        <view class="successfully-btn bg-main">
+            查看订单
+        </view>
+    </view>
+</view>

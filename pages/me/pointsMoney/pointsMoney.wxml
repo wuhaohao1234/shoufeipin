@@ -1,0 +1,40 @@
+<view>
+    
+
+    <view class="margin-top bg-white padding">
+        <view class="margin-bottom-sm">
+            兑换金额
+        </view>
+
+        <view class="text-sl price flex" style="height: 120rpx;font-size: 20px;">
+            <input style="height: 80rpx" bindinput="changeGetPoints" value="{{get_points}}" placeholder="输入需要兑换的积分"></input>
+        </view>
+
+        <view class="flex justify-between margin-top-sm">
+            <view class="flex">
+                <view class="text-gray">
+                    可兑换积分
+                </view>
+                <view class="text-red margin-left-sm">
+                    {{userInfo.points}}
+                </view>
+            </view>
+            <view class="flex">
+                <view class="text-gray">
+                    获得金额
+                </view>
+                <view class="text-red margin-left-sm">
+                    {{cateMoney}}
+                </view>
+            </view>
+            <view class="text-red" bindtap = "getAll">
+                全部提现
+            </view>
+        </view>
+       
+    </view>
+    
+    <view class="getChangeBtn" bindtap="entersubmit">
+        提交
+    </view>
+</view>

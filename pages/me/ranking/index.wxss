@@ -1,0 +1,355 @@
+page {
+  background-color: #EAFCFC;
+}
+
+.nav-box {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: transparent;
+  z-index: 11111;
+}
+
+.ad_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 750rpx;
+  height: 100vh;
+  background: #fff;
+  z-index: 1000;
+}
+
+.nav-img {
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.ad_img {
+  height: 60%;
+}
+
+
+page::after {
+  position: absolute;
+  width: 177rpx;
+  height: 177rpx;
+  background: linear-gradient(206deg, #49EAC1 0%, #E8FBFF 100%);
+  opacity: 0.5574;
+  filter: blur(13.600000381469727px);
+  top: 5rpx;
+  right: 100rpx;
+  z-index: -1;
+  content: '';
+}
+
+page::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  height: 1200rpx;
+  width: 100%;
+  background: linear-gradient(187deg, #49EAC1 0%, #EAFCFC 100%);
+  top: 0;
+}
+
+.filter-box {
+  width: 572rpx;
+  height: 66rpx;
+  background: rgba(255, 255, 255, 0.3098);
+  box-shadow: inset 5rpx 3rpx 7rpx 0rpx rgba(255, 255, 255, 0.3098);
+  opacity: 1;
+  border: 1rpx solid #FFFFFF;
+  margin: 20rpx auto;
+  border-radius: 50rpx;
+  display: flex;
+  overflow: hidden;
+}
+
+.filter-box .filter-item {
+  position: relative;
+  height: 66rpx;
+  line-height: 66rpx;
+  width: 25%;
+  text-align: center;
+  color: #242428;
+  font-size: 26rpx;
+
+  color: #396968;
+}
+
+.filter-box .filter-item.sel::after {
+  content: '';
+  position: absolute;
+  height: 65rpx;
+  width: 1rpx;
+  right: 0;
+  background-color: #fff;
+}
+
+.filter-box .filter-item.sel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4196) 0%, rgba(255, 255, 255, 0.4196) 100%);
+
+  color: #242428;
+}
+
+.my-ranking {
+  text-align: right;
+  margin-right: 40rpx;
+  margin-top: 40rpx;
+}
+
+/* 排行榜中间部分 */
+
+.top-show {
+  margin-top: 80rpx;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bg{
+  position: absolute;
+  width: 740rpx;
+  height: 540rpx;
+}
+
+.top-show::after {
+  position: absolute;
+  width: 202rpx;
+  height: 276rpx;
+  background: linear-gradient(212deg, #009F6E 0%, #A9FCFD 100%);
+  opacity: 0.19899999999999998;
+  right: -150rpx;
+  z-index: -1;
+  content: '';
+  border-radius: 5rpx;
+  transform: rotate(-35deg);
+}
+
+.top-show::before {
+  position: absolute;
+  width: 202rpx;
+  height: 276rpx;
+  background: linear-gradient(216deg, #20b3d8 0%, rgba(172, 253, 253, 0.5882) 100%);
+  opacity: 0.19899999999999998;
+  left: -150rpx;
+  z-index: -1;
+  content: '';
+  border-radius: 5rpx;
+  transform: rotate(35deg);
+}
+
+.top-show .top-item .img-box{
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20rpx;
+  width: 89rpx;
+  height: 89rpx;
+}
+
+.top-show .top-item.top-1 .img-box .img-bg{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: -25rpx;
+  right: 5rpx;
+}
+
+.top-show .top-item.top-2 .img-box .img-bg{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: -16rpx;
+  right: -3rpx;
+}
+.top-show .top-item.top-3 .img-box .img-bg{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: -16rpx;
+  right: -7rpx;
+}
+
+
+.top-show .top-item .user-avatar {
+  width: 89rpx;
+  height: 89rpx;
+  border: 4rpx solid #E4F40B;
+  border-radius: 50%;
+}
+
+.top-show .top-item.top-1 {
+  color: #956AAA;
+  position: relative;
+}
+
+.top-show .top-item.top-1 .user-avatar {
+  border: 4rpx solid #0909EE;
+}
+
+.top-show .top-item.top-1 {
+  color: #3F7AA0;
+  position: relative;
+  top: 50rpx;
+}
+
+.top-show .top-item.top-1 .top-info {
+  transform: rotate(-10deg);
+  position: relative;
+  right: -20rpx;
+}
+
+
+.top-show .top-item.top-1 .top-info .user-name {
+  font-size: 24rpx;
+  margin-top: 40rpx;
+}
+
+.top-show .top-item.top-1 .top-info .user-count {
+  font-size: 20rpx;
+}
+
+.top-show .top-item.top-1 .top-info .user-ranking {
+  font-size: 60rpx;
+}
+
+
+.top-show .top-item.top-2 {
+  color: #437C84;
+  position: relative;
+  top: 
+  -75rpx;
+}
+.top-show .top-item.top-2 .user-avatar {
+  position: absolute;
+}
+
+.top-show .top-item.top-2 .top-info .user-name {
+  font-size: 30rpx;
+  margin-top: 60rpx;
+}
+
+.top-show .top-item.top-2 .top-info .user-count {
+  font-size: 23rpx;
+}
+
+.top-show .top-item.top-2 .top-info .user-ranking {
+  font-size: 80rpx;
+}
+
+.top-show .top-item.top-3 {
+  color: #3F7AA0;
+  position: relative;
+  top: 90rpx;
+}
+
+.top-show .top-item.top-3 .top-info {
+  transform: rotate(15deg);
+  position: relative;
+  left: -30rpx;
+}
+
+
+.top-show .top-item.top-3 .user-avatar {
+  position: absolute;
+  border: 4rpx solid #0F5243;
+}
+
+.top-show .top-item.top-3 .top-info .user-name {
+  font-size: 22rpx;
+  margin-top: 50rpx;
+}
+
+.top-show .top-item.top-3 .top-info .user-count {
+  font-size: 18rpx;
+}
+
+.top-show .top-item.top-3 .top-info .user-ranking {
+  font-size: 45rpx;
+}
+
+.top-show .top-item .top-info {
+  text-align: center;
+}
+
+.top-show .top-item .top-info .user-name {
+  font-size: 24rpx;
+  width: 180rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 排行榜 */
+.list-box {
+  position: relative;
+  width: 679rpx;
+  background: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  border: 1rpx solid #FFFFFF;
+  margin: -17rpx auto 20rpx auto;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  z-index: 99;
+}
+
+.list-box .list-title {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+.list-box .list .item {
+  display: flex;
+  align-items: center;
+  margin: 15rpx 0;
+}
+
+.list-box .list .item .no {
+
+  color: #99A7AD;
+  font-size: 40rpx;
+  margin-right:
+    15rpx;
+}
+
+.list-box .list .item .user-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border: 4rpx solid #009F6E;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+
+.list-box .list .item .info {
+  width:
+    400rpx;
+}
+
+.list-box .list .item .info .user-name {
+
+  color: #333330;
+  font-size: 30rpx;
+}
+
+.list-box .list .item .info .user-id {
+
+  font-size: 24rpx;
+  color: #423C3C;
+}
+
+.list-box .list .item .count {
+
+  font-size: 26rpx;
+  color: #333330;
+}

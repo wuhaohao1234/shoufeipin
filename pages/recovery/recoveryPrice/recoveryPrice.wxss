@@ -1,0 +1,41 @@
+/* pages/recoveryPrice/recoveryPrice.wxss */
+.type-list{
+    border-bottom: 1rpx solid #efefef;
+}
+.item{
+    width: 710rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    padding: 20rpx;
+}
+
+.type-item{
+    width: 170rpx;
+    padding-bottom: 20rpx;
+	flex-shrink:0;
+}
+
+.type-item image{
+    width: 50rpx;
+    height: 75rpx;
+    /*margin-left: 45rpx;*/
+    margin-bottom: 10rpx;
+}
+
+.type-item view{
+    text-align: center;
+}
+
+.checked-item{
+    border-bottom: 5rpx solid #49EAC1;
+}
+
+.checked-type{
+    background-color: #fff;
+    color: #49EAC1;
+    border-left: 5rpx solid #49EAC1;
+}
+
+.checked-product{
+
+}

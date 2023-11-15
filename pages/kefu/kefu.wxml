@@ -1,0 +1,17 @@
+<!--pages/kefu/kefu.wxml-->
+<view class="nav">
+<view class="ul">
+  <view class="nav-item active">
+  1
+  </view>
+  <view class="nav-item">
+  2
+  </view>
+  <view class="nav-item">
+  3
+  </view>
+  <view class="nav-item">
+  4
+  </view>
+</view>
+</view>

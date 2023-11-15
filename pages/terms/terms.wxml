@@ -1,0 +1,6 @@
+<!--pages/terms/terms.wxml-->
+<view>
+    <rich-text nodes="{{content}}">
+
+    </rich-text>
+</view>

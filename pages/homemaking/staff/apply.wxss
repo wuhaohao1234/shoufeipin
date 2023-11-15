@@ -1,0 +1,89 @@
+page {
+  background-color: #f3f3f3;
+}
+
+.info-box {
+  border-radius: 10rpx;
+  overflow: hidden;
+  padding: 0 20rpx;
+  background-color: #fff;
+  margin: 20rpx;
+}
+
+.up-box{
+  margin-bottom: 120rpx;
+  padding-bottom: 30rpx;
+}
+
+.info-item {
+  text-align: justify;
+  padding-right: 30rpx;
+  font-size: 30rpx;
+  position: relative;
+  padding: 30rpx 30rpx 0 30rpx;
+}
+
+.imgs-box{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20rpx;
+}
+
+.imgs-box .img-item{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.imgs-box .img-add{
+  width: 120rpx;
+  height: 120rpx;
+  color: #999;
+  background: #E6E6E6;
+  font-size: 100rpx;
+  line-height: 120rpx;
+  text-align: center;
+}
+
+.text-gray {
+  color: #777;
+}
+
+.cu-form-group input {
+  width: 260rpx;
+  text-align: right;
+  padding-right: 0;
+  font-size: 24rpx;
+}
+
+.cu-form-group picker {
+  width: 260rpx;
+  text-align: right;
+  padding-right: 0;
+  font-size: 24rpx;
+}
+
+.main-btn {
+  width: 690rpx;
+  margin-left: 30rpx;
+  position: fixed;
+  bottom: 40rpx;
+}
+
+/* 按钮 */
+.submit-btn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #49EAC1;
+  font-size: 36rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+}
+
+.submit-btn::after {
+  border: none;
+}

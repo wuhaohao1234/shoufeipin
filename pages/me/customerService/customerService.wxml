@@ -1,0 +1,63 @@
+<!--pages/me/customerService/customerService.wxml-->
+
+<view class="padding">
+    <view class="padding text-center text-gray">
+        今天,08:00
+    </view>
+
+    <view class=" flex justify-between">
+        <view style="flex-grow: 1" class="flex justify-end">
+            <view class="msg-content-user padding padding-top-xs">
+                11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+            </view>
+        </view>
+        <view class="flex justify-end flex-direction">
+            <image style="width: 100rpx;flex-grow: 0"  class="little-face" src="../https://cdn.wuhuit.com/fths/test/kefu.png"></image>
+        </view>
+    </view>
+
+    <view class=" flex justify-between">
+        <view style="width: 100rpx;flex-grow: 0" class="flex justify-end flex-direction">
+            <image class="little-face" src="../https://cdn.wuhuit.com/fths/test/kefu.png"></image>
+        </view>
+        <view style="flex-grow: 1">
+            <view class="msg-content-customer padding padding-top-xs">
+                22222222222222222222222222222222222222222222222222222223333333333333333333222222222222223
+            </view>
+        </view>
+    </view>
+
+    <view class=" flex justify-between">
+        <view style="flex-grow: 1" class="flex justify-end">
+            <view class="msg-content-user padding padding-top-xs">
+                哦,好的
+            </view>
+        </view>
+        <view class="flex justify-end flex-direction">
+            <image style="width: 100rpx;flex-grow: 0"  class="little-face" src="../https://cdn.wuhuit.com/fths/test/kefu.png"></image>
+        </view>
+    </view>
+
+    <view class=" flex justify-between">
+        <view style="flex-grow: 1" class="flex justify-end">
+            <view class="msg-content-user padding padding-top-xs">
+                哈哈哈  合作愉快
+            </view>
+        </view>
+        <view class="flex justify-end flex-direction">
+            <image style="width: 100rpx;flex-grow: 0"  class="little-face" src="../https://cdn.wuhuit.com/fths/test/kefu.png"></image>
+        </view>
+    </view>
+</view>
+
+<view class="send-msg padding-lr flex justify-between">
+    <view class="flex">
+        <view class="cuIcon-writefill text-black text-xxl">
+
+        </view>
+        <input class="margin-left-xs" style="height: 100rpx" placeholder="请输入内容" />
+    </view>
+    <view class="send-btn bg-main">
+        发送
+    </view>
+</view>

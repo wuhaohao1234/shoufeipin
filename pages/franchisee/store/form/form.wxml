@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit" class="">
+    <view class="bg-white cu-card case margin-top-sm ">
+        <view class="cu-form-group">
+            <view class="title text-black">付款人</view>
+            <input class="radius text-right" name="name" placeholder="付款人" disabled="true" value="{{name}}"></input>
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">积分</view>
+            <input class="radius text-right" name="points" placeholder="填写积分" value="{{points}}"></input>
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">金额</view>
+            <input class="radius text-right" name="money" placeholder="填写金额" value="{{money}}"></input>
+        </view>
+        <view class="cu-form-group">
+            <view class="title text-black">备注</view>
+            <input class="radius text-right" name="remark" placeholder="填写备注" value="{{remark}}"></input>
+        </view>
+    </view>
+    <button class="cu-btn block bg-main margin-tb-sm lg text-white margin" formType="submit">提交</button>
+</form>

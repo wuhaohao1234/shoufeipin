@@ -1,0 +1,36 @@
+<!--pages/recycler/list/list.wxml-->
+<view class="item margin-sm padding-sm radius bg-white" wx:for="{{list}}" bindtap="toDetail" data-id="{{item.id}}">
+    <view class="flex justify-between align-center">
+        <view class="flex align-center">
+            <view class="margin-right-xs">
+                <image class="face-img" src="{{item.avatar}}"></image>
+            </view>
+            <view>
+                <view class="text-black text-lg">
+                    {{item.name}}
+                </view>
+                <view class="text-gray margin-top-sm text-sm">
+                    回收时间：{{item.business_hours || '未填写'}}
+                </view>
+            </view>
+        </view>
+
+        <view>
+            <view class="cu-btn line-main radius sm" bindtap="toMapOne" data-item = "{{item}}">
+                查看回收员
+            </view>
+        </view>
+    </view>
+    <view class="flex margin-top-sm align-center">
+        <view class="cuIcon-locationfill">
+
+        </view>
+        <view>
+            {{item.area || '未填写'}}
+        </view>
+    </view>
+</view>
+
+<view class="cu-btn lg bg-main tag-btn round" bindtap="toMap" >
+    地图模式
+</view>

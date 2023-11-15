@@ -1,0 +1,54 @@
+<view> 
+    <image  src="{{bg}}" style="width: 100vw;height: 100vh;position: fixed;z-index: -11"></image>
+    <view class="flex justify-center padding">
+        <image class="qr-code" src="{{img}}">
+
+        </image>
+
+
+    </view>
+
+    <view class="flex justify-between main-item">
+        <view class="flex">
+            已成功邀请<view class="main-font-color">{{userInfo.recommend_number}}</view>人
+        </view>
+        <view class="main-font-color" bindtap="toUserExtensionList">
+            查看详情
+        </view>
+    </view>
+
+    <view class="flex justify-center">
+        <button open-type="share" class="enter-btn" style="margin: 0 25rpx 0 0;">
+            <view>
+                发送给朋友
+            </view>
+        </button>
+
+        <button catchtap="makerPlacard" class="enter-btn" style="margin: 0;">
+            <view>
+                生成海报
+            </view>
+        </button>
+    </view>
+    <view bindtap="toStrategy" class="flex justify-center margin-top-xs">
+        <view class="main-font-color">
+            查看攻略与奖励
+        </view>
+    </view>
+     
+    
+    <!--  bindtap="placardClose" -->
+    <view  wx:if="{{isPlacard}}" catchtap="" class="placard" >
+      <image class="close"  bindtap="placardClose"  src="https://cdn.wuhuit.com/fths/index/close.png"></image>
+      <view class="placard-image">
+        <!-- <image src="https://phpjm.wuhunet.com/upload/c3/13ddb7be88053096c99ad4b531827f.jpg"></image> -->
+        <canvas style="width: 634rpx;height:1128rpx; background-color: #ccc;" canvas-id="1"/>
+        <view class="flex justify-around poster-btn">
+            <button class="btn" type="primary" open-type="share" >分享朋友</button>
+            <view class="btn" catchtap="newSaveCanvasImage">保存图片</view>
+        </view>
+      </view>
+    </view>
+
+
+</view>

@@ -1,0 +1,122 @@
+<!--pages/recycler/collector/create.wxml-->
+<wxs module="filters" src="../filters.wxs"></wxs>
+<view>
+    <view class="margin bg-white radius">
+        <view class="cu-form-group" >
+            <view style="min-width: 160rpx" class="title text-black text-bold">
+                姓名
+            </view>
+            <input  placeholder="用户姓名" bindinput="editName"  value="{{name}}" ></input>
+            <view class="cuIcon-right"></view>
+        </view>
+        <view class="cu-form-group" >
+            <view style="min-width: 160rpx" class="title text-black text-bold">
+                电话
+            </view>
+            <input  placeholder="用户手机号码" bindinput="editPhone"  value="{{phone}}" ></input>
+            <view class="cuIcon-right"></view>
+        </view>
+    </view>
+
+    <view class="margin bg-white radius text-center">
+        <view wx:if="{{products.length === 0}}" bindtap="addProduct" class="padding padding-top-xl">
+            <view class="text-gray">请添加回收的商品</view>
+            <view class="flex justify-center text-xl" style="line-height: 120rpx">
+                <view class="cuIcon-roundaddfill text-main"></view>
+                <view class="text-black">立即添加</view>
+            </view>
+        </view>
+        <view wx:else class="padding">
+            <view class="cu-form-group" wx:for="{{products}}">
+                <view style="min-width: 160rpx" class="title text-black text-bold">{{item.name}}</view>
+                <view class="flex">
+                    <input style="width: 80rpx" placeholder="" bindinput="editWeight" data-id="{{item.id}}" value="{{item.weight}}" ></input>
+                    <view style="padding-top: 5rpx">{{item.unit_name}}</view>
+                </view>
+                <view style="min-width: 120rpx">{{ filters.toFix(item.money*item.weight)}}元</view>
+            </view>
+            <view bindtap="addProduct" class=" text-black text-bold text-center padding-top-sm" style="border-top: 1rpx solid #999">
+                继续添加
+            </view>
+        </view>
+    </view>
+
+    <view class="margin bg-white radius" bindtap="toMap">
+        <view class="cu-form-group" >
+            <view style="min-width: 160rpx" class="title text-black text-bold">
+                回收地址
+            </view>
+            <view class="flex">
+                {{address}}
+            </view>
+            <view class="cuIcon-right"></view>
+        </view>
+    </view>
+
+    <view class="margin bg-white radius">
+        <view class="cu-form-group" >
+            <view style="min-width: 160rpx" class="title text-black text-bold">
+                备注留言
+            </view>
+            <input  placeholder="备注留言" bindinput="editDescribe"  value="{{collector_describe}}" ></input>
+            <view class="cuIcon-right"></view>
+        </view>
+    </view>
+
+    <view class="margin bg-white radius" wx:if="{{is_bing_bag ==1}}" bindtap="checkType">
+        <view class="cu-form-group" >
+            <view style="min-width: 160rpx" class="title text-black text-bold">
+                使用当前用户绑定垃圾袋完成订单
+            </view>
+            <view wx:if="{{type==1}}" class="cuIcon-roundcheckfill text-main" style="font-size: 46rpx"></view>
+            <view wx:else class="cuIcon-round text-gray" style="font-size: 46rpx"></view>
+        </view>
+    </view>
+
+    <view class="margin bg-white radius">
+        <view class="padding-sm" style="flex-grow: 1">
+            <view class="title text-black text-bold">
+                添加产品图片
+            </view>
+
+            <view wx:if="{{imgList.length === 0}}" class="text-center text-gray margin-top-sm">
+                可描述物体状态，特殊需求
+            </view>
+
+            <view bindtap="uplaod" wx:if="{{imgList.length === 0}}" style="font-size: 120rpx" class="cuIcon-camerafill text-center margin text-gray">
+
+            </view>
+            <view wx:if="{{imgList.length > 0}}" class="cu-form-group">
+                <view class="grid col-3 grid-square flex-sub padding-sm">
+                    <view class="padding-xs bg-img" style="background-image:url({{item.url}});" wx:for="{{imgList}}" wx:key="{{index}}">
+                        <view bindtap="deleteImg" class="cu-tag bg-red" data-id="{{index}}">
+                            <text class="cuIcon-close"></text>
+                        </view>
+                    </view>
+                    <view bindtap="uplaod" class="padding-xs solids" wx:if="{{imgList.length<3}}">
+                        <text class="cuIcon-cameraadd" wx:if="{{loading}}"></text>
+                        <text class="cuIcon-loading2 iconfont-spin" wx:else></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="enter-order flex justify-between">
+        <view>
+            <view class="text-black flex">
+                <view>预估价格</view>
+                <view class="text-red">{{filters.toFix(total_money)}}</view>
+                <view>元</view>
+            </view>
+            <view class="text-gray">
+                成交价格以实际评估为准
+            </view>
+        </view>
+
+        <view class="cu-btn round bg-main" bindtap="thsEnterOrder">
+            确认下单
+        </view>
+    </view>
+
+</view>

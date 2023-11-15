@@ -1,0 +1,73 @@
+<!--pages/recovery/order/detail/detail.wxml-->
+<view>
+    <view class="little-bg">
+        <view class="padding-sm padding-top text-white text-xxl">
+            <view  wx:if="{{info.status == 0}}">
+                待接单
+            </view>
+            <view  wx:if="{{info.status == 1}}">
+                已接单
+            </view>
+            <view  wx:if="{{info.status == 2}}">
+                已取消
+            </view>
+        </view>
+        <view class="padding-sm text-white">
+            订单编号:{{info.order_no}}
+        </view>
+    </view>
+
+    <view class="check-tab to-top margin-sm flex justify-between align-center padding-right-sm">
+        <view  style="max-width: 600rpx" class="padding-sm ">
+            <view class="text-black text-lg">{{info.name}} {{info.phone}}</view>
+            <view class="text-gray text-cut">{{info.address}}</view>
+            <view class="text-gray text-cut margin-top">下单时间: {{info.create_at}}</view>
+            <view class="text-gray text-cut">备注: {{info.user_remark || ""}}</view>
+        </view>
+        <view class="cu-btn line-main round" bindtap="clearOrder" data-id="{{info.id}}" wx:if="{{info.status === 0}}">
+            取消订单
+        </view>
+    </view>
+
+    <view wx:if="{{info.status === 1}}" class="check-tab to-top margin-sm">
+        <view class="flex justify-between padding-sm">
+            <view >
+                <view class="text-gray text-bold text-xl">回收员信息</view>
+
+                <view class="flex margin-top">
+                    <view class="sm-img margin-top-xs margin-right-xs">
+                        <image class="sm-img" src="{{info.avatar}}"></image>
+                    </view>
+
+                    <view>
+                        <view class="flex">
+                            <view class="bg-main margin-right">回收员</view>
+                            <view>{{info.c_name}}</view>
+                        </view>
+                        <view>
+                            {{info.c_phone}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+            <view class="cu-btn line-main round" bindtap="phone" data-number="{{info.c_phone}}" wx:if="{{info.status === 1}}">
+                联系师傅
+            </view>
+        </view>
+    </view>
+    <view class="check-tab to-top margin-sm padding-sm">
+        <view class="text-bold margin-bottom-xs">
+            订单图片
+        </view>
+        <view wx:for="{{info.user_picture}}" class="padding">
+            <image src="{{item}}" style="width: 100%" mode="widthFix"></image>
+        </view>
+    </view>
+
+
+
+
+
+</view>

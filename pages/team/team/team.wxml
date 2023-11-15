@@ -1,0 +1,210 @@
+<view>
+    <view class="top-bg">
+        <view class="flex justify-between padding text-white" wx:if="{{is_head}}">
+            <view>
+
+            </view>
+            <view bindtap="editTeam" class="flex align-center">
+                <view class="">
+                    编辑
+                </view>
+                <view class="cuIcon-edit">
+
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if="{{is_team===false}}" class="padding-sm margin-top-xl" style="margin-top:80rpx" >
+        <view class="item  text-center">
+            <view class="first-item flex justify-between align-center " >
+                <view class="flex align-center">
+                    <view class="">
+                        <image src="../https://cdn.wuhuit.com/fths/test/team.png" class="group-face"></image>
+                    </view>
+                    <view class="margin-left-xs text-gray">
+                        未加入团队
+                    </view>
+                </view>
+                <view bindtap="scanTeamCode" class="flex align-center">
+                    <view class="text-sm text-gray">
+                        加入团队
+                    </view>
+                    <view class="cuIcon-scan text-main margin-left-xs text-bold" style="font-size:48rpx">
+
+                    </view>
+                </view>
+            </view>
+
+            <view class="margin-top text-gray text-sm">
+                我的积分
+            </view>
+
+            <view class="margin-top text-main text-xxl">
+                {{userInfo.points}}
+            </view>
+
+            <view class="margin-top text-black text-sm">
+                未加入团队
+            </view>
+
+        </view>
+
+        <view class="item margin-top-xl">
+            <view bindtap="scanTeamCode" class="flex justify-between align-center">
+                <view>
+                    <view class="text-lg text-black">
+                        扫码加入团队
+                    </view>
+
+                    <view class="text-gray margin-top-sm">
+                        扫描团队邀请码即加入团队
+                    </view>
+                </view>
+
+                <view class="cuIcon-scan text-main" style="font-size:100rpx">
+
+                </view>
+            </view>
+        </view>
+
+        <view bindtap="createTeam" class="item margin-top-xl">
+            <view class="flex justify-between align-center">
+                <view>
+                    <view class="text-lg text-black">
+                        创建新团队
+                    </view>
+
+                    <view class="text-gray margin-top-sm">
+                        创建一个由你带领的全新团队
+                    </view>
+                </view>
+
+                <view class="cuIcon-group text-main" style="font-size:100rpx">
+
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <view wx:if="{{is_team===true}}" class="padding-sm margin-top" style="margin-top:80rpx" >
+        <view class="item  text-center">
+            <view class="first-item flex justify-between align-center " >
+                <view class="flex align-center">
+                    <view class="">
+                        <image src="{{team.team_avatar}}" class="group-face"></image>
+                    </view>
+                    <view class="margin-left-xs text-gray text-black text-bold text-lg">
+                        {{team.team_name}}
+                    </view>
+                </view>
+                <view bindtap="showImage" class="flex align-center">
+                    <view class="text-sm text-gray">
+                        邀请加入
+                    </view>
+                    <view class="cuIcon-qr_code text-main margin-left-xs text-bold" style="font-size:48rpx">
+
+                    </view>
+                </view>
+            </view>
+
+            <view class="flex justify-around">
+                <view>
+                    <view class="margin-top text-gray text-sm">
+                        团队积分
+                    </view>
+
+                    <view class="margin-top text-main text-xxl">
+                        {{team.team_points}}
+                    </view>
+
+                    <view class="margin-top text-black text-sm">
+                        团队人数{{team.team_count}}人
+                    </view>
+                </view>
+
+                <view>
+                    <view class="margin-top text-gray text-sm">
+                        我的积分
+                    </view>
+
+                    <view class="margin-top text-main text-xxl">
+                        {{userInfo.points}}
+                    </view>
+
+                    <view wx:if="{{is_head}}" bindtap="teamDismiss" class="margin-top text-main text-sm flex align-center">
+                        <view>
+                            解散团队
+                        </view>
+                        <view class="cuIcon-exit">
+
+                        </view>
+                    </view>
+
+                    <view wx:else bindtap="quitTeam" class="margin-top text-main text-sm flex align-center">
+                        <view>
+                            退出团队
+                        </view>
+                        <view class="cuIcon-exit">
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="item margin-top-xl">
+            <view wx:for="{{team.detail}}" class="flex justify-between align-center padding-tb-sm border-bottom">
+
+                <view class="flex">
+                    <view style=" position: relative;">
+                        <image class="{{item.type==1?'check-head':''}}" style="width:80rpx;height:80rpx;border-radius:40rpx" src="{{item.avatar}}">
+
+                        </image>
+                        <view wx:if="{{item.type==1}}" class="cu-btn bg-main round head-btn">
+                            团长
+                        </view>
+                    </view>
+
+                    <view class="margin-left-sm">
+                        <view class="text-lg">
+                            {{item.nickname}}
+                        </view>
+                        <view class="margin-top-xs text-gray">
+                            加入时间:{{item.create_at}}
+                        </view>
+                    </view>
+                </view>
+                <view>
+                    <view class="text-xl text-main">
+                        {{item.amass_points}}分
+                    </view>
+                    <view class="margin-top-xs text-sm">
+                        已贡献
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view bindtap="hideModal" class="cu-modal  {{modalName==='img'?'show':''}}">
+    <view catchtap class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content ">邀请入团</view>
+        </view>
+        <view class="cu-bar bg-white" style="width:100%">
+            <view class="flex justify-center padding" style="width:100%">
+                <image class="qr-code" src="{{img}}">
+
+                </image>
+            </view>
+        </view>
+    </view>
+
+</view>
+
+

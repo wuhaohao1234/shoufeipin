@@ -1,0 +1,137 @@
+<view>
+    <view class="top-bg">
+
+    </view>
+
+    <view class="padding-sm">
+        <view class="consignee-information item flex justify-between" bindtap="checkAddress">
+            <view>
+                <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+            </view>
+
+            <view wx:if="{{address.id}}" style="max-width: 500rpx">
+                <view class="text-black text-lg">{{address.name}} {{address.phone}}</view>
+                <view class="text-gray text-cut"> {{address.province}} {{address.city}} {{address.district}}
+                    {{address.street}} {{address.address}}</view>
+            </view>
+            <view wx:else style="max-width: 500rpx;flex-grow: 1">
+                <view class="text-black text-lg padding-top text-left">添加地址</view>
+                <!-- <view class="text-gray">点击此处添加地址 </view> -->
+            </view>
+
+            <view class="cuIcon-right text-xxl padding-top" style="font-size: 50rpx">
+
+            </view>
+        </view>
+
+        <view class="service-type item margin-top-sm">
+            <view class=" flex justify-between">
+                <view>
+                    <view class="text-lg">
+                        请选择回收类型
+                    </view>
+                </view>
+            </view>
+
+            <view class="type-list  margin-top-sm">
+                <view class="flex" wx:if="{{cateList.length <= 4}}">
+                    <view bindtap="checkCate" data-id="{{item.cate_id}}" wx:for="{{cateList}}"
+                        class="type-item text-center {{cate_id===item.cate_id? 'checkCate' : ''}} ">
+                        <image src="{{item.picture}}"></image>
+                        <view>
+                            {{item.cate_name}}
+                        </view>
+                    </view>
+                </view>
+                <scroll-view scroll-x="true" wx:else>
+                    <view class="flex">
+                        <view bindtap="checkCate" data-id="{{item.cate_id}}" wx:for="{{cateList}}"
+                            class="type-item {{cate_id===item.cate_id? 'checkCate' : ''}} ">
+                            <image src="{{item.picture}}"></image>
+                            <view>
+                                {{item.cate_name}}
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+
+        </view>
+
+        <view class="item margin-top">
+          
+            <view class="flex justify-between check-item">
+                <view class="flex justify-between padding-sm has-b-border">
+                    <view class="text-lg">
+                        预估重量
+                    </view>
+                    <input bindinput="editWeight" placeholder="例如：1KG" type="digit"></input>
+                </view>
+            </view>
+            <view class="flex justify-between check-item">
+                <view class="flex justify-between padding-sm has-b-border">
+                    <view class="text-lg">
+                        预约备注
+                    </view>
+                    <input bindinput="editDescribe" placeholder="请输入回收备注"></input>
+                </view>
+            </view>
+
+            <view class="padding-sm" style="flex-grow: 1">
+                <view class="text-lg">
+                    添加产品图片
+                </view>
+
+                <view wx:if="{{imgList.length === 0}}" class="text-center text-gray margin-top-sm">
+                    可描述物体状态，特殊需求
+                    <!-- 不满10kg可攒一攒再预约哦! -->
+                </view>
+
+                <view bindtap="uplaod" wx:if="{{imgList.length === 0}}" style="font-size: 120rpx"
+                    class="cuIcon-camerafill text-center margin text-gray">
+
+                </view>
+                <view wx:if="{{imgList.length > 0}}" class="cu-form-group">
+                    <view class="grid col-3 grid-square flex-sub padding-sm">
+                        <view class="padding-xs bg-img" style="background-image:url({{item.url}});" wx:for="{{imgList}}"
+                            wx:key="{{index}}">
+                            <view bindtap="deleteImg" class="cu-tag bg-red" data-id="{{index}}">
+                                <text class="cuIcon-close"></text>
+                            </view>
+                        </view>
+                        <view bindtap="uplaod" class="padding-xs solids" wx:if="{{imgList.length<3}}">
+                            <text class="cuIcon-cameraadd" wx:if="{{loading}}"></text>
+                            <text class="cuIcon-loading2 iconfont-spin" wx:else></text>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="flex justify-center margin-sm">
+                    <view class="text-gray">
+                        确认上门回收等于同意
+                    </view>
+                    <view class="main-font-color" bindtap="toTerms">
+                        《上门回收免责条款》
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+
+        <view wx:if="{{canCreate}}" class="flex justify-center align-center margin-top" hover-class="none"
+            hover-stop-propagation="false">
+            <view class="enter-btn bg-main" bindtap="createRecycle">
+                预约回收
+            </view>
+        </view>
+
+        <view wx:else class="flex justify-center align-center margin-top" hover-class="none"
+            hover-stop-propagation="false">
+            <view class="cu-btn round lg bg-gray ">
+                预约回收
+            </view>
+        </view>
+
+    </view>
+</view>

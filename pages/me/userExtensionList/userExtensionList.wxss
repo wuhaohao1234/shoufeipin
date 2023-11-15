@@ -1,0 +1,37 @@
+/* pages/me/userExtensionList/userExtensionList.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.top-bg{
+    background-color: #43ecbf;
+    height: 200rpx;
+    width: 750rpx;
+    border-bottom-left-radius:30rpx;
+    border-bottom-right-radius: 30rpx;
+    position: fixed;
+    top: 0;
+    z-index: -11;
+}
+
+.main-total{
+    width: 710rpx;
+    height: 210rpx;
+    border-radius: 16rpx;
+    background: #fff;
+}
+
+.jfjf-av {
+  margin-top: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+.list {
+  padding: 10px;
+}
+.item{
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 19rpx;
+}

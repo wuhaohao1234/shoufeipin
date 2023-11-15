@@ -1,0 +1,120 @@
+<view>
+    <image style="width: 100%;height: 200px;" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A21/%E5%9B%BE%E6%80%AA%E5%85%BD_f84e78ff508a65c0cbbaa4ae9b595fbb_77219.png" mode=""/>
+    <form bindsubmit="formSubmit" class="" >
+        <view class="margin-top-sm">
+
+            <view class="address flex justify-between padding margin-top-sm bg-white" style="border: 1rpx solid #efefef" bindtap="checkAddress">
+                <view>
+                    <view class="cuIcon-locationfill text-xxl padding-top" style="font-size: 50rpx"></view>
+                </view>
+
+                <view wx:if="{{address.id}}" style="max-width: 500rpx">
+                    <view class="text-black text-lg">{{address.name}} {{address.phone}}</view>
+                    <view class="text-gray">  {{address.province}} {{address.city}}  {{address.district}}  {{address.street}} {{address.address}}</view>
+                </view>
+                <view wx:else  style="max-width: 500rpx;flex-grow: 1">
+                    <view class="text-black text-lg padding-top text-left">添加地址</view>
+                    <!-- <view class="text-gray">点击此处添加地址 </view> -->
+                </view>
+
+                <view class="cuIcon-right text-xxl padding-top"  style="font-size: 50rpx">
+
+                </view>
+            </view>
+
+            <view class="cu-form-group ">
+                <view class="title">具体地址</view>
+                <input disabled bindtap="chooseMap" placeholder="选择具体位置" value="{{address_desc}}" name="community"></input>
+            </view>
+
+            <view class="cu-form-group ">
+                <view class="title">所属小区</view>
+                <input placeholder="输入所属小区" value="{{community}}" name="community"></input>
+            </view>
+
+            <view class="cu-form-group ">
+                <view class="title">姓名</view>
+                <input placeholder="输入真实姓名" value="{{name}}" name="name"></input>
+            </view>
+            <!--            <view class="cu-form-group">-->
+            <!--                <view class="title">电话号码</view>-->
+            <!--                <input bindinput="phoneInput" placeholder="输入电话号码" value="{{phone}}" name="phone"></input>-->
+            <!--            </view>-->
+            <view class="cu-form-group">
+                <view class="title">电话号码</view>
+                <input placeholder="电话号码" value="{{phone}}" disabled name="phone" />
+                <button wx:if="{{!phone}}" bindgetphonenumber="getPhoneNumber" openType="getPhoneNumber" style="width: 80rpx" class='cu-btn sm radio bg-green round'>获取</button>
+            </view>
+            <!--            <view class="cu-form-group">-->
+            <!--                <view class="title">验证码</view>-->
+            <!--                <input placeholder="输入接到的验证码" value="{{code}}" name="code"></input>-->
+            <!--                <button wx:if="{{send}}" style="width: 80rpx" class='cu-btn sm radio bg-green round' bindtap="getCode">获取</button>-->
+            <!--                <button wx:else style="width: 80rpx" class='cu-btn sm radio bg-gray round' disabled>{{second}}</button>-->
+            <!--            </view>-->
+            <view class="cu-form-group ">
+                <view class="title">登陆密码</view>
+                <input placeholder="输入登陆密码" value="{{password}}" name="password"></input>
+            </view>
+
+            <view class="cu-form-group">
+                <view class="title text-black">选择加盟商</view>
+                <picker bindchange="bindAllianceChange" value="{{alliance_index}}" range="{{check_alliance_arr}}">
+                    <view wx:if="{{alliance_index <0}}">
+                        --请选择--
+                    </view>
+                    <view wx:else  class="picker">
+                        {{check_alliance_arr[alliance_index]}}
+                    </view>
+                </picker>
+            </view>
+
+            <view class="cu-form-group ">
+                <view class="title">工作时间</view>
+                <input placeholder="请填写每日工作时间段 如：9点到晚上19点" value="{{business_hours}}" name="business_hours"></input>
+            </view>
+
+            <!-- <view class="cu-form-group ">
+                <view class="title">身份证号</view>
+                <input placeholder="请填写身份证号" value="{{identity_number}}" name="identity_number"></input>
+            </view>
+            <view class="cu-form-group ">
+                <view class="title">身份证照片</view>
+                <view class="cuIcon-right"  style="font-size: 36rpx; color: #999">
+                </view>
+            </view>
+            <view class="flex justify-between" >
+                <view bindtap="uploadIdentity" data-type="identity_front" class="text-center margin-lr-sm" style="flex-grow: 1">
+                    <view>
+                        <image wx:if="{{identity_front}}" class="identity-img" src="{{identity_front}}"></image>
+                        <view wx:else class="identity-img">
+                            +
+                        </view>
+                    </view>
+                    <view  class="margin-top-xl">
+                        身份证正面
+                    </view>
+                </view>
+
+                <view bindtap="uploadIdentity" data-type="identity_behind" class="text-center margin-lr-sm" style="flex-grow: 1">
+                    <view>
+                        <image wx:if="{{identity_behind}}" class="identity-img" src="{{identity_behind}}"></image>
+                        <view wx:else class="identity-img">
+                            +
+                        </view>
+                    </view>
+                    <view class="margin-top-xl">
+                        身份证反面
+                    </view>
+                </view>
+            </view> -->
+
+        </view>
+
+        <button form-type="submit" style="width: 690rpx;margin: 30rpx;margin-top: 80rpx" class="cu-btn lg bg-main text-white round main-btn">
+            申请
+        </button>
+    </form>
+
+
+
+</view>

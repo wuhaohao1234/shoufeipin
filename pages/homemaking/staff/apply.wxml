@@ -1,0 +1,91 @@
+<form bindsubmit="onSubmit">
+  <view class="info-box">
+    <view class="cu-form-group ">
+      <view class="title">姓名</view>
+      <input placeholder="请填写您的真实姓名" value="{{name}}" name="name"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">手机号码</view>
+      <input placeholder="请填写您的手机号码" value="{{phone}}" type="number" name="phone"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">所在地</view>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" name="location">
+        <view wx:if="{{ region.length > 0 }}" class="text-gray">
+          {{region[0]}}{{region[1]}}{{region[2]}}<text class="cuIcon-right"></text>
+        </view>
+        <view wx:else class="text-gray">请选择<text class="cuIcon-right"></text></view>
+      </picker>
+    </view>
+    <view wx:if="{{streetList.length > 0}}" class="cu-form-group">
+      <view class="title">街道</view>
+      <picker bindchange="bindStreetChange" value="{{address_street}}" name="address_street" range="{{streetList}}">
+        <view wx:if="{{!address_street}}" class="text-gray">请选择<text class="cuIcon-right"></text> </view>
+        <view wx:else class="text-gray">{{streetList[address_street]}}<text class="cuIcon-right"></text></view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">详细地址</view>
+      <input placeholder="请输入细地址" value="{{address}}" name="address"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">年龄</view>
+      <input placeholder="请填写年龄" value="{{age}}" type="number" name="age"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">工作年限</view>
+      <input placeholder="请填写工作年限" value="{{work_experience}}" type="number" name="work_experience"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">加盟商</view>
+      <picker bindchange="bindAllianceChange" value="{{allianceIndex}}" name="alliance" range="{{allianceList}}" range-key='alliance_name'>
+        <view wx:if="{{!allianceIndex}}" class="text-gray">请选择<text class="cuIcon-right"></text> </view>
+        <view wx:else class="text-gray">{{allianceList[allianceIndex].alliance_name}}<text class="cuIcon-right"></text></view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">服务开始时间</view>
+      <picker mode="time" value="{{work_start_time}}" name="work_start_time" bindchange="bindStartTimeChange">
+        <view wx:if="{{ work_start_time }}" class="text-gray">
+          {{ work_start_time }}<text class="cuIcon-right"></text>
+        </view>
+        <view wx:else class="text-gray">请选择<text class="cuIcon-right"></text></view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">服务结束时间</view>
+      <picker mode="time" value="{{work_end_time}}" name="work_end_time" bindchange="bindEndTimeChange">
+        <view wx:if="{{ work_end_time }}" class="text-gray">
+          {{ work_end_time }}<text class="cuIcon-right"></text>
+        </view>
+        <view wx:else class="text-gray">请选择<text class="cuIcon-right"></text></view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">简介</view>
+      <input placeholder="请输入您的简介" value="{{about}}" name="about"></input>
+    </view>
+  </view>
+
+  <!-- 上传图片 -->
+  <view class="info-box up-box">
+    <view class="info-item">
+      <view class="title">请上传家艺师logo</view>
+      <view class="imgs-box" bindtap="uploadAvatar">
+        <image wx:if="{{logo_picture.length > 0 }}" src="{{logo_picture[0]}}" class="img-item" mode="aspectFill"></image>
+        <view wx:else class="img-add cuIcon-add"></view>
+      </view>
+    </view>
+    <view class="info-item">
+      <view class="title">上传证书</view>
+      <view class="imgs-box" bindtap="uploadPicture">
+        <image wx:if="{{certificate_picture.length > 0}}" src="{{certificate_picture[0]}}" class="img-item" mode="aspectFill"></image>
+        <view wx:else class="img-add cuIcon-add"></view>
+      </view>
+    </view>
+  </view>
+
+  <button form-type="submit" class="submit-btn">
+    申请
+  </button>
+</form>

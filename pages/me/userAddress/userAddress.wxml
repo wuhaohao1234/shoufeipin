@@ -1,0 +1,41 @@
+<!--pages/me/userAddress/userAddress.wxml-->
+<view class="padding-lg the_body">
+    <view class="address-list">
+        <view class="address-item margin-bottom-sm padding" wx:for="{{list}}">
+            <view class="address-top" bindtap="checkAddress" data-address="{{item}}">
+                <view class="text-black text-xl">
+                    {{item.name}} {{item.phone}}
+                </view>
+
+                <view class="text-gray margin-top-sm">
+                    {{item.province}} {{item.city}}  {{item.district}}  {{item.street}} {{item.address}} {{item.comunity_name}}
+                </view>
+            </view>
+            <view class="address-bottom flex justify-between">
+                <view wx:if="{{item.is_default}}" class="flex">
+                    <view class="cuIcon-roundcheckfill main-font-color"></view>
+                    <view class="margin-left-xs">默认地址</view>
+                </view>
+                <view wx:else class="flex" bindtap="checkDefaultAddress" data-id="{{item.id}}">
+                    <view class="cuIcon-round"></view>
+                    <view class="margin-left-xs">选择该地址</view>
+                </view>
+
+                <view class="flex">
+                    <view class="flex"  bindtap="editAddress" data-address="{{item}}">
+                        <view class="cuIcon-edit"></view>
+                        <view class="margin-left-xs">编辑</view>
+                    </view>
+                    <view class="flex margin-left-xl" bindtap="deleteAddress" data-id="{{item.id}}">
+                        <view class="cuIcon-delete"></view>
+                        <view class="margin-left-xs">删除</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="add-btn" bindtap="addAddress">
+        新增地址
+    </view>
+</view>

@@ -1,0 +1,74 @@
+<!--捐赠详情-->
+<image class="donate-cover" src="{{infoData.main_picture}}" mode="widthFix"></image>
+<view class="donate-info">
+  <view class="text-xl text-bold title">{{ infoData.title }}</view>
+  <progress percent="{{progressVal}}" active stroke-width="3" stroke-width='10' border-radius="20"
+    activeColor="#34D4AB" />
+  <view class="progress-info flex justify-between align-center">
+    <view class="progress-l">已累计捐赠{{infoData.this_money}}元</view>
+    <view class="progress-r">目前进度{{progressVal}}%</view>
+  </view>
+  <view class="text-df text-gray padding-top-xs">目标{{ infoData.schedule_money }}元，还剩{{ infoData.schedule_money -
+    infoData.this_money }}元</view>
+  <view class="text-df text-darkGray padding-top-xs">{{ infoData.subtitle }}</view>
+</view>
+<view class="donate-content">
+  <view class="title">项目说明</view>
+  <view class="info-contnt">
+    <rich-text nodes="{{infoData.explain}}"></rich-text>
+  </view>
+</view>
+<view class="donate-bottom">
+  <view wx:if="{{progressVal < 100}}" class="popup-btn" bindtap="showSelect">立刻捐赠</view>
+  <view wx:else class="popup-btn finish">已完成目标金额</view>
+</view>
+
+<!-- 弹窗 -->
+<view wx:if='{{ isShowSelect }}' class="select-popup">
+  <view class="select-box">
+    <text class="cuIcon-close" bindtap="closeSelect"></text>
+    <view class="popup-title">请选择捐赠的金额</view>
+    <view class="flex justify-between">
+      <view class="select-val {{ now == 1 ? 'sel' : '' }}" bindtap="onSwitch" data-index="1">10元</view>
+      <view class="select-val {{ now == 2 ? 'sel' : '' }}" bindtap="onSwitch" data-index="2">50元</view>
+      <view class="select-val {{ now == 3 ? 'sel' : '' }}" bindtap="onSwitch" data-index="3">自定义金额</view>
+    </view>
+    <input wx:if="{{now == 3}}" value="{{selectVal}}" placeholder="请输入" type="number" bindinput="bindKeySelect"
+      class="select-input"></input>
+    <view wx:if="{{progressVal < 100}}" class="popup-btn" bindtap="onSubmit">立刻捐赠</view>
+    <view wx:else class="popup-btn finish">已完成目标金额</view>
+  </view>
+</view>
+
+
+<!-- 证书弹窗 -->
+<view wx:if='{{ isShowPopup }}' class="donate-popup">
+  <view class="certificate-box">
+    <text class="cuIcon-close" bindtap="closeShow"></text>
+    <view class="certificate-main">
+      <view class="certificate-name">{{ certificateData.nickname }}</view>
+      <view class="certificate-hint">感谢您的无私奉献，您捐赠的爱心会帮助到更 多的人，感谢你们！</view>
+      <view class="flex">
+        <view class="certificate-item">
+          <view class="certificate-item-name">本次捐赠</view>
+          <view class="certificate-item-val">{{ certificateData.this_count }}</view>
+        </view>
+        <view class="certificate-item">
+          <view class="certificate-item-name">累计捐赠</view>
+          <view class="certificate-item-val">{{ certificateData.this_money }}</view>
+        </view>
+      </view>
+      <view class="issue-box">
+        <view class="issue-item">
+          <text class="color-gray">颁发机构</text>
+          {{ certificateData.company }}
+        </view>
+        <view class="issue-item">
+          <text class="color-gray">颁发时间</text>
+          {{ certificateData.issue_date }}
+        </view>
+      </view>
+      <image src="{{ certificateData.mini_signet }}" class="issue-logo" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

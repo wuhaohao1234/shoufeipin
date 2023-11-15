@@ -1,0 +1,53 @@
+<!--pages/recovery/order/order.wxml-->
+<view>
+    <view class="check-tab flex justify-between bg-white shadow">
+        <view bindtap="checkTab"   data-status="0" class="tab">
+            <view class="{{status==='0'?'checked-tab':''}} ">
+                全部
+            </view>
+        </view>
+
+        <view bindtap="checkTab"   data-status="1" class="tab">
+            <view class="{{status==='1'?'checked-tab':''}} ">
+                执行中
+            </view>
+        </view>
+
+        <view bindtap="checkTab"   data-status="2" class="tab">
+            <view class="{{status==='2'?'checked-tab':''}} ">
+                已结束
+            </view>
+        </view>
+
+    </view>
+
+    <view class="padding">
+        <view class="order" wx:for="{{orders}}">
+            <view class="text-gray">下次回收时间: {{item.next_recycle_time}}</view>
+            <view class="order-item" >
+                <view bindtap="toDetail" data-id="{{item.id}}" class="flex justify-between padding-top-sm padding-right-sm">
+                    <view wx:if="{{item.period_interval ==1}}" style="border-left:5rpx solid #49EAC1; padding-left: 20rpx">
+                        回收周期:每周
+                    </view>
+                    <view wx:if="{{item.period_interval ==2}}" style="border-left:5rpx solid #49EAC1; padding-left: 20rpx">
+                        回收周期:每月
+                    </view>
+					<view wx:if="{{item.period_interval ==0}}" style="border-left:5rpx solid #49EAC1; padding-left: 20rpx">
+					    
+					</view>
+                    <view class="text-main" wx:if="{{item.status == 1}}">
+                        执行中>
+                    </view>
+                    <view class="text-main" wx:if="{{item.status == 2}}">
+                        已结束>
+                    </view>
+                </view>
+
+                <view bindtap="toDetail" data-pid="{{item.pid}}"  style="max-width: 600rpx" class="padding-sm ">
+                    <view class="text-black text-lg">{{item.name}} {{item.phone}}</view>
+                    <view class="text-gray text-cut">{{item.address}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

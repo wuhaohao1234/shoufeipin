@@ -1,0 +1,51 @@
+<view>
+    <!-- <view class="padding">
+        <view class="cu-bar search bg-white">
+            <view class="search-form round" style="margin: 0">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="请输入关键词" confirm-type="search"></input>
+            </view>
+
+        </view>
+    </view> -->
+    <view class="type-list  margin-top-sm">
+		<view class="flex justify-between" wx:if="{{cateList.length <= 4}}">
+			<view  bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" class="type-item text-center {{item.id === checkCateId? 'checked-item' : ''}} ">
+			    <image src="{{item.picture}}"></image>
+			    <view>
+			        {{item.name}}
+			    </view>
+			</view>
+		</view>
+        <scroll-view scroll-x="true"   wx:else>
+			<view class="flex">
+				<view  bindtap="checkCate" data-id="{{item.id}}" wx:for="{{cateList}}" class="type-item {{item.id === checkCateId? 'checked-item' : ''}} ">
+				    <image src="{{item.picture}}"></image>
+				    <view>
+				        {{item.name}}
+				    </view>
+				</view>
+			</view>
+		</scroll-view>
+    </view>
+
+    <view class="flex justify-between">
+        <view class="left-cate bg-gray">
+            <view bindtap="checkChildCate" data-id="{{item.id}}" wx:for="{{childCateList}}" class="padding text-center {{item.id === childCateId? 'checked-type' : ''}}">
+                {{item.name}}
+            </view>
+        </view>
+
+        <view style="flex-grow: 1">
+            <view wx:for="{{productList}}" bindtap="checkProduct" data-product="{{item}}" class="flex justify-between {{item.isCheck?'checked-item':''}}">
+                <view class="padding text-center">
+                    {{item.name}}
+                </view>
+
+                <view class="padding text-center text-red">
+                    ¥{{item.money}}{{float_price_is_open==1 ?' - '+item.max_money:''}}元/{{item.unit_name}}
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

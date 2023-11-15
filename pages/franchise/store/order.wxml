@@ -1,0 +1,46 @@
+<!--pages/me/userBag/userBag.wxml-->
+<view>
+    <view class="item margin padding radius bg-white" wx:for="{{list}}">
+        <view class="flex justify-between align-center">
+            <view class="text-black text-bold">
+                {{item.nickname}}
+            </view>
+
+            <view class="text-gray margin-right-sm" >
+                {{item.phone || ""}}
+            </view>
+        </view>
+
+        <view class="flex">
+            <view>
+                收款时间:
+            </view>
+            <view>
+                {{item.create_at}}
+            </view>
+        </view>
+        <view class="flex">
+            <view>
+                金额:
+            </view>
+            <view>
+                {{item.money}}
+            </view>
+
+            <view class="margin-left-sm">
+                平台佣金:
+            </view>
+            <view>
+                {{item.commission}}
+            </view>
+        </view>
+        <view class="flex">
+            <view>
+                备注:
+            </view>
+            <view>
+                {{item.remark}}
+            </view>
+        </view>
+    </view>
+</view>

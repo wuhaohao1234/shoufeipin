@@ -1,0 +1,74 @@
+<!--排行榜-->
+<view id="page">
+  <view class="nav-box">
+    <!-- 状态栏高度 -->
+    <view style="height: {{titleTop}}px"></view>
+    <!-- 标题栏高度 -->
+    <view class='nav-img' style="height: {{titleHeight}}px;">
+      <image bindload="initAdImg" mode='heightFix' class="ad_img" src="http://gchscc.zaishenziyuan.cn/%E4%B8%8B%E5%8D%95%E7%95%8C%E9%9D%A2/11/11/%E9%A1%B6%E9%83%A8%E5%9B%BE%E7%89%87/%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%9B%BE1.png"></image>
+    </view>
+  </view>
+  <view style="height: {{titleTop+titleHeight}}px"></view>
+  <view class="main">
+    <view class="filter-box">
+      <view class="{{ statu === 0 ? 'sel filter-item' : 'filter-item' }}" bindtap="switchTab" data-status="0">日榜</view>
+      <view class="{{ statu === 1 ? 'sel filter-item' : 'filter-item' }}" bindtap="switchTab" data-status="1">周榜</view>
+      <view class="{{ statu === 2 ? 'sel filter-item' : 'filter-item' }}" bindtap="switchTab" data-status="2">月榜</view>
+      <view class="{{ statu === 3 ? 'sel filter-item' : 'filter-item' }}" bindtap="switchTab" data-status="3">总榜</view>
+    </view>
+    <view class="my-ranking">我的排名: {{chaertn}}</view>
+    <view wx:if="{{top3.length <= 3}}" class="top-show">
+      <image src="https://www.zaishenziyuan.cn/upload/00/ranking_bg.png" class="bg"></image>
+      <view class="top-item top-1">
+        <div class="img-box">
+          <image class="img-bg" src="../../../images/top2.svg"></image>
+          <image class="user-avatar" src="{{ top3[1].avatar }}"></image>
+        </div>
+        <view class="top-info">
+          <view class="user-name">{{ top3[1].nickname }}</view>
+          <view class="user-count">金额：{{ top3[1].moneycount }}</view>
+          <view class="user-ranking">2</view>
+        </view>
+      </view>
+      <view class="top-item top-2">
+        <div class="img-box">
+          <image class="img-bg" src="../../../images/top1.svg"></image>
+          <image class="user-avatar" src="{{ top3[0].avatar }}"></image>
+        </div>
+        <view class="top-info">
+          <view class="user-name">{{ top3[0].nickname }}</view>
+          <view class="user-count">金额：{{ top3[0].moneycount }}</view>
+          <view class="user-ranking">1</view>
+        </view>
+      </view>
+      <view class="top-item top-3">
+        <div class="img-box">
+          <image class="img-bg" src="../../../images/top3.svg"></image>
+          <image class="user-avatar" src="{{ top3[2].avatar }}"></image>
+        </div>
+        <view class="top-info">
+          <view class="user-name">{{ top3[2].nickname }}</view>
+          <view class="user-count">金额：{{ top3[2].moneycount }}</view>
+          <view class="user-ranking">3</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{list.length > 0}}" class="list-box">
+      <view class="list-title">
+        <view>排名</view>
+        <view>废品金额(元)</view>
+      </view>
+      <view class="list">
+        <view wx:for="{{list}}" wx:for-item="item" wx:key="index" class="item">
+          <text class="no">{{ index <= 5 ? '0' : '' }}{{ index + 4}}</text>
+              <image class="user-avatar" src="{{ item.avatar }}"></image>
+              <view class="info">
+                <view class="user-name">{{ item.nickname }}</view>
+                <view class="user-id">ID：{{ item.uid }}</view>
+              </view>
+              <view class="count">{{ item.moneycount }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<!--家政首页-->
+<view class="top-box">
+  <view class="search-box">
+    <text class="cuIcon-search"></text>
+    <input value="{{keyword}}" type="text" placeholder="搜索你想要的服务" confirm-type="search" bindinput="bindKeyInput"
+      bindconfirm="onKeyword"></input>
+  </view>
+  <scroll-view scroll-x="true" enable-flex="true" class="nav-box">
+    <view wx:for="{{ navList }}" wx:key="id" class="nav-item {{ sel === item.id ? 'sel' : ''}}" data-id='{{ item.id }}'
+      bindtap="switchNav">{{ item.name }}</view>
+  </scroll-view>
+</view>
+<view class="area-content" bindtap="switchArea">
+  <text>当前区域：{{ allianceData.order_address }}</text>
+  <text class="cuIcon-right"></text>
+</view>
+<!-- 商品列表 -->
+<view class="goods-box">
+  <view class="goods-left">
+    <block wx:for="{{goodsList}}" wx:key="id">
+      <template wx:if="{{index%2==0}}" is="item" data="{{...item}}"></template>
+    </block>
+  </view>
+  <view class="goods-right">
+    <block wx:for="{{goodsList}}" wx:key="id">
+      <template wx:if="{{index%2==1}}" is="item" data="{{...item}}"></template>
+    </block>
+  </view>
+  <view wx:if='{{isLoading}}' class="loading-box">
+    <view class="cuIcon-loading2 iconfont-spin"></view>
+    <view>加载中..</view>
+  </view>
+</view>
+
+
+<!-- 模块 -->
+<template name="item">
+  <view class="goods-item" bindtap="onJumpDetails" data-id="{{id}}">
+    <image src="{{main_picture}}" mode="widthFix" lazy-load></image>
+    <view class="goods-info">
+      <text class="name">{{title}}</text>
+      <text class="money">¥{{money}}/{{unit}}</text>
+    </view>
+    <view class="goods-hint">{{subtitle}}</view>
+  </view>
+</template>
+
+<!-- 区域表 -->
+<view wx:if='{{ isShowArea }}' class="area-popup">
+  <view class="area-box">
+    <view class="popup-title">选择区域</view>
+    <view class="area-search">
+    <text class="cuIcon-search"></text>
+    <input value="{{areaKeyword}}" type="text" placeholder="搜索区域" confirm-type="search" bindinput="bindKeyArea"
+      bindconfirm="onAreaKeyword" ></input>
+  </view>
+    <view class="popup-subhead">已开通家政区域：</view>
+    <view class="area-list">
+      <view wx:for="{{areaList}}" wx:key="{{item}}" class="area-item {{allianceData.alliance_id == item.alliance_id ? 'sel' : ''}}"
+        bindtap="areaChange" data-item='{{item}}'>
+        <view class="area-name">{{item.order_address}}</view>
+      </view>
+    </view>
+    <view class="popup-btn" bindtap="submitArea">确定</view>
+  </view>
+</view>
